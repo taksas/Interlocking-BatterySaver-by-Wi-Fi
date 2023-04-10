@@ -74,7 +74,6 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
             p.Start();
 
             string s = p.StandardOutput.ReadToEnd();
-            AP_Name.Text = s;
             string s1 = "";
 
 
@@ -89,12 +88,13 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
                 s1 = s.Substring(s.IndexOf("SSID"));
                 s1 = s1.Substring(s1.IndexOf(":"));
                 s1 = s1.Substring(2, s1.IndexOf("\n")).Trim();
+                AP_Name.Text = s1;
             } else
             {
                 AP_Name.Text = "Could not find AP!";
             }
 
-            // AP_Name.Text = s1;
+            
             p.WaitForExit();
         }
 
