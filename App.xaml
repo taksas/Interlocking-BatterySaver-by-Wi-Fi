@@ -1,0 +1,9 @@
+﻿<Application x:Class="Minimal_BatterySaver_Enabler__with_Wi_Fi_.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Minimal_BatterySaver_Enabler__with_Wi_Fi_"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
