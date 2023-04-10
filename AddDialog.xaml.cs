@@ -65,8 +65,10 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
         private void Button_Click_Now(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process p = new System.Diagnostics.Process();
-            p.StartInfo.FileName = "netsh.exe";
-            p.StartInfo.Arguments = "wlan show interfaces";
+            //ComSpec(cmd.exe)のパスを取得して、FileNameプロパティに指定
+            p.StartInfo.FileName = System.Environment.GetEnvironmentVariable("ComSpec");
+            string cmd = "chcp 437 && netsh.exe wlan show interfaces";
+            p.StartInfo.Arguments = @"/c " + cmd;
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.RedirectStandardOutput = true;
             p.Start();
@@ -74,11 +76,22 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
             string s = p.StandardOutput.ReadToEnd();
             AP_Name.Text = s;
             string s1 = "";
-            if (s == "aaaa")
-            {
+
+
+            if (s.Length > 120)    
+                /*/ If you use Windows11, you got 
+                        "Active code page: 437
+                        There is no wireless interface on the system.
+                        Hosted network status  : Not available"
+                    so you need to set more than 108 charactors.
+                /*/
+                            {
                 s1 = s.Substring(s.IndexOf("SSID"));
                 s1 = s1.Substring(s1.IndexOf(":"));
                 s1 = s1.Substring(2, s1.IndexOf("\n")).Trim();
+            } else
+            {
+                AP_Name.Text = "Could not find AP!";
             }
 
             // AP_Name.Text = s1;
