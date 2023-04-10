@@ -22,6 +22,11 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
     public partial class MainWindow : Window
     {
         public Dictionary<string, string> PercentageDic { get; set; }
+
+
+        
+
+
         public MainWindow()
         {
             PercentageDic  = new Dictionary<string, string>()
@@ -40,7 +45,7 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        {/*
             // Process オブジェクトを生成
             System.Diagnostics.Process p = new System.Diagnostics.Process();
             //ComSpec(cmd.exe)のパスを取得して、FileNameプロパティに指定
@@ -52,7 +57,8 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
             p.StartInfo.Arguments = @"/c " + cmd;
             //起動
             p.Start();
-            
+            */
+            new AddDialog(this).ShowDialog();
 
         }
 
