@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,9 +25,6 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
         /// 編集した入力値を呼び出し元に返すためのプロパティ
         /// </summary>
         string[] APs = new string[3];
-        APs[0] = "0";
-        APs[1] = "";
-        APs[2] = "100";
         public string[] AddAP { get { return APs; } set { APs = value; } }
 
 
@@ -36,6 +34,10 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
 
         public AddDialog(Window owner)
         {
+            APs[0] = "0";
+            APs[1] = "";
+            APs[2] = "100";
+
             PercentageDic = new Dictionary<string, string>()
             {
                 { "100", "Always" },
@@ -62,7 +64,25 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
 
         private void Button_Click_Now(object sender, RoutedEventArgs e)
         {
+            System.Diagnostics.Process p = new System.Diagnostics.Process();
+            p.StartInfo.FileName = "netsh.exe";
+            p.StartInfo.Arguments = "wlan show interfaces";
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.Start();
 
+            string s = p.StandardOutput.ReadToEnd();
+            AP_Name.Text = s;
+            string s1 = "";
+            if (s == "aaaa")
+            {
+                s1 = s.Substring(s.IndexOf("SSID"));
+                s1 = s1.Substring(s1.IndexOf(":"));
+                s1 = s1.Substring(2, s1.IndexOf("\n")).Trim();
+            }
+
+            // AP_Name.Text = s1;
+            p.WaitForExit();
         }
 
 
