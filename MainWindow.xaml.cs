@@ -21,9 +21,22 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Dictionary<string, string> PercentageDic { get; set; }
         public MainWindow()
         {
+            PercentageDic  = new Dictionary<string, string>()
+            {
+                { "100", "Always" },
+                { "50", "50%" },
+                { "40", "40%" },
+                { "30", "30%" },
+                { "20", "20%" },
+                { "10", "10%" },
+                { "0", "None" },
+            };
+
             InitializeComponent();
+            DataContext = this;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -52,7 +65,7 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
             //ウィンドウを表示しないようにする
             p.StartInfo.CreateNoWindow = true;
 
-            string cmd = " powercfg /setdcvalueindex SCHEME_CURRENT SUB_ENERGYSAVER ESBATTTHRESHOLD 0 && powercfg /setactive scheme_current";
+            string cmd = " powercfg /setdcvalueindex SCHEME_CURRENT SUB_ENERGYSAVER ESBATTTHRESHOLD "+ cmb.SelectedValue.ToString() + " && powercfg /setactive scheme_current";
             p.StartInfo.Arguments = @"/c " + cmd;
             //起動
             p.Start();

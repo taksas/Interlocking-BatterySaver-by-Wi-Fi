@@ -11,15 +11,19 @@
     Height="450"
     ui:WindowHelper.UseModernWindowStyle="True"
     mc:Ignorable="d">
-    <ui:SimpleStackPanel Margin="12" Spacing="24">
-        <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="My first ModernWPF app" />
-        <ComboBox Name="cmbSample" Margin="10,10,10,94" IsEditable="False">
-            <ComboBoxItem Content="晴れ"/>
-            <ComboBoxItem Content="hhhhhhhhhh曇り"/>
-            <ComboBoxItem Content="雨"/>
-            <ComboBoxItem Content="雪"/>
-        </ComboBox>
-        <Button Content="I am a button" Click="Button_Click" />
-        <Button Content="I am an accent button" Click="Button_Click_1" Style="{StaticResource AccentButtonStyle}" />
-    </ui:SimpleStackPanel>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1" >
+            <ui:SimpleStackPanel Margin="12" Spacing="24">
+                <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="My first ModernWPF app" />
+                <ComboBox Name="cmb" IsEditable="False"  Width="100" ItemsSource="{Binding PercentageDic}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedIndex="6" />
+                <Button Content="I am a button" Click="Button_Click" />
+                <Button Content="I am an accent button" Click="Button_Click_1" Style="{StaticResource AccentButtonStyle}" />
+            </ui:SimpleStackPanel>
+        </Grid>
+    </Grid>
 </Window>
