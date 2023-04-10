@@ -16,6 +16,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -44,6 +45,10 @@
         </Grid>
 
         <Grid Grid.Row="2" VerticalAlignment="Center">
+            <TextBlock x:Name="Reconfirm_tb" Foreground ="Red" HorizontalAlignment="Center" />
+        </Grid>
+
+        <Grid Grid.Row="3" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="0.5*"/>

@@ -59,6 +59,8 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
             p.Start();
             */
             new AddDialog(this).ShowDialog();
+            string[] temp = AddDialog.AddAP;
+            Title.Text = ;
 
         }
 

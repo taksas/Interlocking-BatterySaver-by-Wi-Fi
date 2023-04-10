@@ -74,7 +74,6 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
             p.Start();
 
             string s = p.StandardOutput.ReadToEnd();
-            string s1 = "";
 
 
             if (s.Length > 120)    
@@ -85,28 +84,39 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
                     so you need to set more than 108 charactors.
                 /*/
                             {
-                s1 = s.Substring(s.IndexOf("SSID"));
-                s1 = s1.Substring(s1.IndexOf(":"));
-                s1 = s1.Substring(2, s1.IndexOf("\n")).Trim();
-                AP_Name.Text = s1;
+                APs[1] = s.Substring(s.IndexOf("SSID"));
+                APs[1] = APs[1].Substring(APs[1].IndexOf(":"));
+                APs[1] = APs[1].Substring(2, APs[1].IndexOf("\n")).Trim();
+                
             } else
             {
-                AP_Name.Text = "Could not find AP!";
+                APs[1] = "Could not find AP!";
             }
+            AP_Name.Text = APs[1];
 
-            
             p.WaitForExit();
         }
 
 
         private void Button_Click_Cancel(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void Button_Click_Add(object sender, RoutedEventArgs e)
         {
-
+            APs[1] = AP_Name.Text;
+            if (APs[1] != "" && APs[1] != "Could not find AP!")
+            {
+                Reconfirm_tb.Text = "";
+                APs[0] = "1";
+                APs[2] = cmb.SelectedValue.ToString();
+                this.Close();
+            }
+            else
+            {
+                Reconfirm_tb.Text = "Invalid AP name is set. Please reconfirm.";
+            }
         }
     }
 }
