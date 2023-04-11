@@ -28,23 +28,9 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {/*
-            // Process オブジェクトを生成
-            System.Diagnostics.Process p = new System.Diagnostics.Process();
-            //ComSpec(cmd.exe)のパスを取得して、FileNameプロパティに指定
-            p.StartInfo.FileName = System.Environment.GetEnvironmentVariable("ComSpec");
-            //ウィンドウを表示しないようにする
-            p.StartInfo.CreateNoWindow = true;
-
-            string cmd = " powercfg /setdcvalueindex SCHEME_CURRENT SUB_ENERGYSAVER ESBATTTHRESHOLD 100 && powercfg /setactive scheme_current";
-            p.StartInfo.Arguments = @"/c " + cmd;
-            //起動
-            p.Start();
-            */
+        private void AddAP_Button_Click(object sender, RoutedEventArgs e)
+        {
             new AddDialog(this).ShowDialog();
-            Title.Text = "Dialog Showed.";
-
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
