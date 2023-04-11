@@ -12,15 +12,9 @@
     ui:WindowHelper.UseModernWindowStyle="True"
     mc:Ignorable="d">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="0*"/>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1" >
+        <Grid >
             <ui:SimpleStackPanel Margin="12" Spacing="24">
                 <TextBlock x:Name="Title" Style="{StaticResource HeaderTextBlockStyle}" Text="My first ModernWPF app" />
-                <ComboBox Name="cmb" IsEditable="False"  Width="100" ItemsSource="{Binding PercentageDic}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedIndex="6" />
                 <Button Content="I am a button" Click="Button_Click" />
                 <Button Content="I am an accent button" Click="Button_Click_1" Style="{StaticResource AccentButtonStyle}" />
             </ui:SimpleStackPanel>
