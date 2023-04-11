@@ -38,7 +38,11 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
         {
             InitializeComponent();
             RescanAPList();
+
         }
+
+
+
 
         private void AddAP_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -99,5 +103,7 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
             }
             sr.Close();
         }
+
+
     }
 }

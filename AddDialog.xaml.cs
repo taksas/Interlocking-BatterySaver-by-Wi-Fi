@@ -71,6 +71,7 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
             string cmd = "chcp 437 && netsh.exe wlan show interfaces";
             p.StartInfo.Arguments = @"/c " + cmd;
             p.StartInfo.UseShellExecute = false;
+            p.StartInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
             p.StartInfo.RedirectStandardOutput = true;
             p.Start();
 

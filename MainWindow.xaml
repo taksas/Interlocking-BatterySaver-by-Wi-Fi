@@ -9,9 +9,10 @@
     Title="MainWindow"
     Width="700"
     Height="450"
-    ui:WindowHelper.UseModernWindowStyle="True"
+    WindowStyle="None"
+    Background="Gray"
     mc:Ignorable="d">
-    <Grid Margin="12,12,12,12" >
+    <Grid Margin="12,12,12,12">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="3*"/>
@@ -24,7 +25,7 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Image Grid.Column="0" Source="leaf_20579.ico" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <ui:SimpleStackPanel Grid.Column="1" Spacing="24"  VerticalAlignment="Center">
+            <ui:SimpleStackPanel Grid.Column="1" Spacing="24"  VerticalAlignment="Top">
                 <TextBlock x:Name="Title" Style="{StaticResource HeaderTextBlockStyle}" Text=" Minimal BatterySaver Enabler" HorizontalAlignment="Left" />
             </ui:SimpleStackPanel>
         </Grid>
@@ -35,7 +36,7 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1">
-                <ListView Name="APList" SelectionMode="Single" Margin="0,-81,10,-77" >
+                <ListView Name="APList" SelectionMode="Single" Margin="0,-70,10,-77" >
                     <ListView.View>
                         <GridView>
                             <GridViewColumn

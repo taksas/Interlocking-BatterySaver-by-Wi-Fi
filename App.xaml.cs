@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Drawing;
 using System.IO;
+using System.Diagnostics;
 
 namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
 {
@@ -18,7 +19,11 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
     {
 
         //常駐終了時に開放するために保存しておく
+        private System.Windows.Forms.ContextMenuStrip _menu;
         private System.Windows.Forms.NotifyIcon _notifyIcon;
+        private MainWindow _win = null;  //２重起動防止用
+
+        bool shutdown = false;
 
         /// <summary>
         /// 常駐開始時の初期化処理
@@ -32,12 +37,16 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
             //アイコンの取得
             var icon = GetResourceStream(new Uri("leaf_20579.ico", UriKind.Relative)).Stream;
 
+            // コンテキストメニューを作成
+            _menu = CreateMenu();
+
             //通知領域にアイコンを表示
             _notifyIcon = new System.Windows.Forms.NotifyIcon
             {
                 Visible = true,
                 Icon = new System.Drawing.Icon(icon),
-                Text = "Minimal BS"
+                Text = "Minimal BS",
+                ContextMenuStrip = _menu
             };
 
 
@@ -64,6 +73,25 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
 
 
 
+            //アイコンがクリックされたら設定画面を表示
+            _notifyIcon.MouseClick += (s, er) =>
+            {
+                if (er.Button == System.Windows.Forms.MouseButtons.Left)
+                {
+                    ShowMainWindow();
+                }
+            };
+
+
+
+            Deactivated += ((obj, ev) => {
+                if (!shutdown)
+                {
+                    System.Windows.Application.Current.Shutdown();
+                    System.Windows.Forms.Application.Restart();
+                }
+            });
+
 
 
             //別タスクで監視処理を実行
@@ -80,6 +108,76 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
 
             //継承元の終了イベントを呼び出す
             base.OnExit(e);
+        }
+
+
+
+
+
+        /// <summary>
+        /// 設定画面を表示
+        /// </summary>
+        private void ShowMainWindow()
+        {
+            if (_win == null)
+            {
+                _win = new MainWindow();
+
+                /*
+                * Windowの表示位置をマニュアル指定
+                */
+                _win.WindowStartupLocation = WindowStartupLocation.Manual;
+
+                /*
+                 * 表示位置(Top)を調整。
+                 * 「ディスプレイの作業領域の高さ」-「表示するWindowの高さ」
+                 */
+                _win.Top = SystemParameters.WorkArea.Height - _win.Height;
+
+                /*
+                 * 表示位置(Left)を調整
+                 * 「ディスプレイの作業領域の幅」-「表示するWindowの幅」
+                 */
+                _win.Left = SystemParameters.WorkArea.Width - _win.Width;
+
+                _win.WindowStyle = WindowStyle.None;
+
+                //Windowsを表示する
+                _win.Show();
+
+                /*
+                //閉じるボタンが押された時のイベント処理を登録
+                _win.Closing += (s, e) =>
+                {
+                    System.Windows.Application.Current.Shutdown();
+                    System.Windows.Forms.Application.Restart();
+                    //_win.Hide();        //非表示にする
+                    //e.Cancel = true;    //閉じるをキャンセルする
+                };
+                */
+                
+            }
+            else
+            {
+                //Windowsを表示する
+                _win.Show();
+            }
+        }
+
+
+        /// <summary>
+        /// コンテキストメニューの表示
+        /// </summary>
+        /// <returns></returns>
+        private ContextMenuStrip CreateMenu()
+        {
+            var menu = new System.Windows.Forms.ContextMenuStrip();
+            menu.Items.Add("Settings", null, (s, e) => { ShowMainWindow(); });
+            menu.Items.Add("Exit", null, (s, e) => {
+                shutdown = true;
+                Shutdown();
+            });
+            return menu;
         }
 
 
