@@ -41,7 +41,7 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
 
             PercentageDic = new Dictionary<string, string>()
             {
-                { "100", "Always" },
+                { "100", "100%" },
                 { "90", "90%" },
                 { "80", "80%" },
                 { "70", "70%" },
@@ -51,7 +51,7 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
                 { "30", "30%" },
                 { "20", "20%" },
                 { "10", "10%" },
-                { "0", "None" },
+                { "0", "0%" },
             };
 
             InitializeComponent();
