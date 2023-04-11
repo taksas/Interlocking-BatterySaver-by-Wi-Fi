@@ -116,23 +116,6 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
                 var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
                 var filePath = System.IO.Path.Combine(roamingDirectory, "MBSEwW\\data.txt");
 
-                // FileInfoのインスタンスを生成する
-                FileInfo fileInfo = new FileInfo(filePath);
-
-                // フォルダーが存在するかどうかを確認
-                if (!fileInfo.Directory.Exists)
-                {
-                    // フォルダーが存在しない場合は作成
-                    fileInfo.Directory.Create();
-                }
-                // ファイルが存在するかどうかを確認
-                if (!File.Exists(filePath))
-                {
-                    fileInfo.Create().Close();
-                }
-                
-
-
                 File.AppendAllText(filePath, APs[1] + "," + APs[2] + "\n");
 
 
