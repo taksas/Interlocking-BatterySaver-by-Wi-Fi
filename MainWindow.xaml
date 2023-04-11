@@ -19,8 +19,13 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <ui:SimpleStackPanel Spacing="24">
-                <TextBlock x:Name="Title" Style="{StaticResource HeaderTextBlockStyle}" Text="My first ModernWPF app" />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Source="leaf_20579.ico" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <ui:SimpleStackPanel Grid.Column="1" Spacing="24"  VerticalAlignment="Center">
+                <TextBlock x:Name="Title" Style="{StaticResource HeaderTextBlockStyle}" Text=" Minimal BatterySaver Enabler" HorizontalAlignment="Left" />
             </ui:SimpleStackPanel>
         </Grid>
 
