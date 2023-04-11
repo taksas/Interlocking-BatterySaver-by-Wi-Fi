@@ -9,9 +9,14 @@
     Title="MainWindow"
     Width="700"
     Height="450"
-    WindowStyle="None"
-    Background="Gray"
+    
+    ui:WindowHelper.UseModernWindowStyle="True"
+    
     mc:Ignorable="d">
+
+
+
+
     <Grid Margin="12,12,12,12">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -64,4 +69,5 @@
             </Grid>
         </Grid>
     </Grid>
+
 </Window>

@@ -140,8 +140,6 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
                  */
                 _win.Left = SystemParameters.WorkArea.Width - _win.Width;
 
-                _win.WindowStyle = WindowStyle.None;
-
                 //Windowsを表示する
                 _win.Show();
 

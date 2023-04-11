@@ -8,7 +8,9 @@
             <ResourceDictionary.MergedDictionaries>
                 <ui:ThemeResources />
                 <ui:XamlControlsResources />
+                <!-- Other merged dictionaries here -->
             </ResourceDictionary.MergedDictionaries>
+            <!-- Other app resources here -->
         </ResourceDictionary>
     </Application.Resources>
 </Application>
