@@ -123,23 +123,6 @@ namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
             {
                 _win = new MainWindow();
 
-                /*
-                * Windowの表示位置をマニュアル指定
-                */
-                _win.WindowStartupLocation = WindowStartupLocation.Manual;
-
-                /*
-                 * 表示位置(Top)を調整。
-                 * 「ディスプレイの作業領域の高さ」-「表示するWindowの高さ」
-                 */
-                _win.Top = SystemParameters.WorkArea.Height - _win.Height;
-
-                /*
-                 * 表示位置(Left)を調整
-                 * 「ディスプレイの作業領域の幅」-「表示するWindowの幅」
-                 */
-                _win.Left = SystemParameters.WorkArea.Width - _win.Width;
-
                 //Windowsを表示する
                 _win.Show();
 

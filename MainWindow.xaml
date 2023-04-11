@@ -9,10 +9,10 @@
     Title="MainWindow"
     Width="700"
     Height="450"
-    
-    ui:WindowHelper.UseModernWindowStyle="True"
-    
-    mc:Ignorable="d">
+    ui:WindowHelper.UseModernWindowStyle="True" 
+    mc:Ignorable="d"
+    ResizeMode="NoResize"
+    WindowStyle="ToolWindow">
 
 
 
