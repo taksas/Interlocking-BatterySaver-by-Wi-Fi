@@ -7,11 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.modernwpf.com/2019"
     Title="MainWindow"
-    Width="600"
+    Width="700"
     Height="450"
     ui:WindowHelper.UseModernWindowStyle="True"
     mc:Ignorable="d">
-    <Grid Margin="12,12,0,12" HorizontalAlignment="Left" Width="576" >
+    <Grid Margin="12,12,12,12" >
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="3*"/>
@@ -30,17 +30,17 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1">
-                <ListView Name="APList" SelectionMode="Single" Margin="0,-81,0,-80" >
+                <ListView Name="APList" SelectionMode="Single" Margin="0,-81,10,-77" >
                     <ListView.View>
                         <GridView>
                             <GridViewColumn
-                        Width="250"
+                        Width="270"
                         DisplayMemberBinding="{Binding AP_Name}"
                         Header="AP Name" />
                             <GridViewColumn
-                        Width="70"
+                        Width="100"
                         DisplayMemberBinding="{Binding Battery}"
-                        Header="Battery %" />
+                        Header="Battery (%)" />
                         </GridView>
                     </ListView.View>
                 </ListView>
