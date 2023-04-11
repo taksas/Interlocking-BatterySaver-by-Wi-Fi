@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 
-namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
+namespace Interlocking_BatterySaver_by_Wi_Fi_
 {
     /// <summary>
     /// AddDialog.xaml の相互作用ロジック

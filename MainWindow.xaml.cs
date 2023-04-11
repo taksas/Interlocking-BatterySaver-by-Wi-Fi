@@ -19,7 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
+namespace Interlocking_BatterySaver_by_Wi_Fi_
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

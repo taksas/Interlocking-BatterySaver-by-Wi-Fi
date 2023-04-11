@@ -10,7 +10,7 @@ using System.Drawing;
 using System.IO;
 using System.Diagnostics;
 
-namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_
+namespace Interlocking_BatterySaver_by_Wi_Fi_
 {
     /// <summary>
     /// Interaction logic for App.xaml

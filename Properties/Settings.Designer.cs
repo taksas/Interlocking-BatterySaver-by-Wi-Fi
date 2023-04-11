@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Minimal_BatterySaver_Enabler__with_Wi_Fi_.Properties {
+namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
-    <RootNamespace>Minimal_BatterySaver_Enabler__with_Wi_Fi_</RootNamespace>
+    <RootNamespace>Interlocking_BatterySaver_by_Wi_Fi_</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>

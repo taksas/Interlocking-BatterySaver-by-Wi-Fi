@@ -1,7 +1,7 @@
-﻿<Application x:Class="Minimal_BatterySaver_Enabler__with_Wi_Fi_.App"
+﻿<Application x:Class="Interlocking_BatterySaver_by_Wi_Fi_.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Minimal_BatterySaver_Enabler__with_Wi_Fi_"
+             xmlns:local="clr-namespace:Interlocking_BatterySaver_by_Wi_Fi_"
              xmlns:ui="http://schemas.modernwpf.com/2019">
     <Application.Resources>
         <ResourceDictionary>
