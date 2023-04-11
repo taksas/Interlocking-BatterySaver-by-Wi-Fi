@@ -29,7 +29,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Text="Wi-Fi AP : " VerticalAlignment="Center" FontSize="18"/>
             <TextBox x:Name="AP_Name" Grid.Column="1" Text="" VerticalAlignment="Center"/>
-            <Button Grid.Column="2" Content="Now AP" Click="Button_Click_Now" VerticalAlignment="Center" HorizontalAlignment="Right" />
+            <Button Grid.Column="2" Content="Current AP" Click="Button_Click_Now" VerticalAlignment="Center" HorizontalAlignment="Right" />
         </Grid>
 
         <Grid Grid.Row="1" VerticalAlignment="Center">

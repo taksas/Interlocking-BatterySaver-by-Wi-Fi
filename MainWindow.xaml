@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.modernwpf.com/2019"
     Title="MainWindow"
-    Width="700"
-    Height="450"
+    Width="350"
+    Height="400"
     ui:WindowHelper.UseModernWindowStyle="True" 
     mc:Ignorable="d"
     ResizeMode="NoResize"
@@ -19,54 +19,31 @@
 
     <Grid Margin="12,12,12,12">
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="4*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.3*"/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
-            <Image Grid.Column="0" Source="leaf_20579.ico" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <ui:SimpleStackPanel Grid.Column="1" Spacing="24"  VerticalAlignment="Top">
-                <TextBlock x:Name="Title" Style="{StaticResource HeaderTextBlockStyle}" Text=" Minimal BatterySaver Enabler" HorizontalAlignment="Left" />
-            </ui:SimpleStackPanel>
-        </Grid>
 
-        <Grid Grid.Row="1" Margin="0,0,0,84" Height="79" VerticalAlignment="Bottom">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.4*"/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="1">
-                <ListView Name="APList" SelectionMode="Single" Margin="0,-70,10,-77" >
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn
-                        Width="270"
+        <Grid Grid.Row="0" VerticalAlignment="Top" >
+            <ListView Name="APList" SelectionMode="Single" Height="300" VerticalAlignment="Top" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn
+                        Width="200"
                         DisplayMemberBinding="{Binding AP_Name}"
                         Header="AP Name" />
-                            <GridViewColumn
+                        <GridViewColumn
                         Width="100"
                         DisplayMemberBinding="{Binding Battery}"
                         Header="Battery (%)" />
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </Grid>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </Grid>
 
-        <Grid Grid.Row="2" VerticalAlignment="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.4*"/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="1">
-                <Button Content="Delete" Click="Delete_Button_Click"  Background ="Red" />
-                <Button Content="Add IP" Click="AddAP_Button_Click" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Right" />
-            </Grid>
+        <Grid Grid.Row="1" VerticalAlignment="Center">
+            <Button Content="Delete" Click="Delete_Button_Click"  Background ="Red" />
+            <Button Content="Add IP" Click="AddAP_Button_Click" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Right" />
         </Grid>
     </Grid>
 
