@@ -11,7 +11,7 @@
     Height="450"
     ui:WindowHelper.UseModernWindowStyle="True"
     mc:Ignorable="d">
-    <Grid Margin="12" >
+    <Grid Margin="12,12,0,12" HorizontalAlignment="Left" Width="576" >
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="3*"/>
@@ -26,22 +26,34 @@
 
         <Grid Grid.Row="1" Margin="0,0,0,84" Height="79" VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1.4*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1">
-                <ListBox Name="APList" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" >
-                </ListBox>
+                <ListView Name="APList" SelectionMode="Single" Margin="0,-81,0,-80" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn
+                        Width="250"
+                        DisplayMemberBinding="{Binding AP_Name}"
+                        Header="AP Name" />
+                            <GridViewColumn
+                        Width="70"
+                        DisplayMemberBinding="{Binding Battery}"
+                        Header="Battery %" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
             </Grid>
         </Grid>
 
         <Grid Grid.Row="2" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1.4*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1">
-                <Button Content="Cancel" Click="AddAP_Button_Click"  />
+                <Button Content="Delete" Click="Delete_Button_Click"  Background ="Red" />
                 <Button Content="Add IP" Click="AddAP_Button_Click" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Right" />
             </Grid>
         </Grid>
