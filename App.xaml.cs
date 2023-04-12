@@ -196,8 +196,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         private void NetworkChange_NetworkAvailabilityChanged(
             object sender, EventArgs e)
         {
-            if (!APDetectGate) return;
-            APDetectGateFunc();
+            //if (!APDetectGate) return;
+            //APDetectGateFunc();
             ExecuteMainFunc();
             
         }
@@ -235,11 +235,16 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 so you need to set more than 108 charactors.
             /*/
             {
-                string APs = s.Substring(s.IndexOf("SSID"));
-                APs = APs.Substring(APs.IndexOf(":"));
-                APs = APs.Substring(2, APs.IndexOf("\n")).Trim();
+                try
+                {
+                    string APs = s.Substring(s.IndexOf("SSID"));
+                    APs = APs.Substring(APs.IndexOf(":"));
+                    APs = APs.Substring(2, APs.IndexOf("\n")).Trim();
 
-                WiFiMode(APs);
+                    WiFiMode(APs);
+                } catch { 
+                    NoWifiMode(); 
+                }
 
             }
             else
@@ -275,10 +280,11 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                     p.StartInfo.FileName = System.Environment.GetEnvironmentVariable("ComSpec");
                     //ウィンドウを表示しないようにする
                     p.StartInfo.CreateNoWindow = true;
-                    string cmd = " powercfg /setdcvalueindex SCHEME_CURRENT SUB_ENERGYSAVER ESBATTTHRESHOLD" + temp2 + "&& powercfg /setactive scheme_current";
+                    string cmd = " powercfg /setdcvalueindex SCHEME_CURRENT SUB_ENERGYSAVER ESBATTTHRESHOLD " + temp2 + " && powercfg /setactive scheme_current";
                     p.StartInfo.Arguments = @"/c " + cmd;
                     //起動
                     p.Start();
+                    Debug.Print(cmd);
                     break;
                 }
 
