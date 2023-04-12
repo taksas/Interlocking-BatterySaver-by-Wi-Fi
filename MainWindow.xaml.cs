@@ -110,6 +110,59 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         }
 
 
+        private void Update_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            DeleteB.IsEnabled = false;
+            UpdateB.IsEnabled = false;
+
+
+            var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            var filePath = System.IO.Path.Combine(roamingDirectory, "IBSbW\\data.txt");
+            //ファイルを読み込みで開く
+            System.IO.StreamReader sr = new System.IO.StreamReader(filePath);
+            //一時ファイルを作成する
+            string tmpPath = System.IO.Path.GetTempFileName();
+            //一時ファイルを書き込みで開く
+            System.IO.StreamWriter sw = new System.IO.StreamWriter(tmpPath);
+
+            int n = 0;
+            //内容を一行ずつ読み込む
+            while (sr.Peek() > -1)
+            {
+                //一行読み込む
+                string line = sr.ReadLine();
+                bool isChanged = false;
+                for (int i = 1; i < UpdateWaiting.Length; i++)
+                {
+                    //ターゲットの行でなければ、飛ばさずWriteLineする
+                    if (n.ToString() == UpdateWaiting[i].Substring(0, UpdateWaiting[i].IndexOf(".")))
+                    {
+                        
+                        sw.WriteLine(line.Substring(0, line.IndexOf(",")) + "," + UpdateWaiting[i].Substring(UpdateWaiting[i].IndexOf(".") + 1));
+                        Debug.Print(line.Substring(0, line.IndexOf(",")) + "," + UpdateWaiting[i].Substring(UpdateWaiting[i].IndexOf(".") + 1));
+                        isChanged = true;
+                        break;
+                    }
+                }
+                if(!isChanged) sw.WriteLine(line);
+                n++;
+
+            }
+            //閉じる
+            sr.Close();
+            sw.Close();
+
+            //一時ファイルと入れ替える
+            System.IO.File.Copy(tmpPath, filePath, true);
+            System.IO.File.Delete(tmpPath);
+
+
+
+            RescanAPList();
+        }
+
 
         private void RescanAPList()
         {
@@ -171,6 +224,10 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         }
 
 
+
+
+        
+
         private void Help_Button_Click(object sender, RoutedEventArgs e)
         {
             OpenUrl("https://taksas.net");
@@ -203,6 +260,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 UpdateWaiting[UpdateWaiting.Length - 1] = temp;
             }
             for(int i = 0; i < UpdateWaiting.Length; i++) Debug.Print(UpdateWaiting[i]);
+            UpdateB.IsEnabled = true;
         }
 
 

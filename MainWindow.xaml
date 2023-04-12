@@ -56,7 +56,7 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0"  Name="DeleteB" Content="Delete" Click="Delete_Button_Click"  Background ="Red" VerticalAlignment="Stretch" IsEnabled="False" />
-            <Button Grid.Column="0" Name="UpdateB" Content="Update" Click="Delete_Button_Click" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Right" VerticalAlignment="Stretch" IsEnabled="False"  />
+            <Button Grid.Column="0" Name="UpdateB" Content="Update" Click="Update_Button_Click" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Right" VerticalAlignment="Stretch" IsEnabled="False"  />
             <Button Grid.Column="1" Content="Help" Click="Help_Button_Click" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
             <Button Grid.Column="1" Content="Add AP" Click="AddAP_Button_Click" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
         </Grid>
