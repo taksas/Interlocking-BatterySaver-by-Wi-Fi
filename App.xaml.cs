@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.IO;
 using System.Diagnostics;
+using System.Net.NetworkInformation;
 
 namespace Interlocking_BatterySaver_by_Wi_Fi_
 {
@@ -71,6 +72,10 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 fileInfo.Create().Close();
             }
 
+            //NetworkAvailabilityChangedイベントハンドラを追加
+            System.Net.NetworkInformation.NetworkChange.NetworkAvailabilityChanged +=
+                new System.Net.NetworkInformation.NetworkAvailabilityChangedEventHandler(
+                NetworkChange_NetworkAvailabilityChanged);
 
 
             //アイコンがクリックされたら設定画面を表示
@@ -185,6 +190,19 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 Shutdown();
             });
             return menu;
+        }
+
+
+        //ネットワーク接続状況が変化した
+        private void NetworkChange_NetworkAvailabilityChanged(
+            object sender, System.Net.NetworkInformation.NetworkAvailabilityEventArgs e)
+        {
+            
+
+            if (e.IsAvailable)
+                Debug.Print("ネットワーク接続が有効になりました。");
+            else
+                Debug.Print("ネットワーク接続が無効になりました。");
         }
 
 
