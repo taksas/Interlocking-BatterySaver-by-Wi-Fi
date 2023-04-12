@@ -13,18 +13,20 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Interlocking_BatterySaver_by_Wi_Fi_
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : System.Windows.Window
     {
 
         public class AP
@@ -143,5 +145,22 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
             return Process.Start(pi);
         }
+
+
+
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            System.Windows.Controls.ComboBox senderComboBox = (System.Windows.Controls.ComboBox)sender;
+
+            // Change the length of the text box depending on what the user has 
+            // selected and committed using the SelectionLength property.
+            if (senderComboBox != null)
+            {
+                Debug.Print(senderComboBox.SelectedItem.ToString());
+            }
+        }
+
+
+
     }
 }
