@@ -115,7 +115,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 APs[2] = cmb.SelectedValue.ToString();
 
                 var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                var filePath = System.IO.Path.Combine(roamingDirectory, "MBSEwW\\data.txt");
+                var filePath = System.IO.Path.Combine(roamingDirectory, "IBSbW\\data.txt");
 
                 File.AppendAllText(filePath, APs[1] + "," + APs[2] + "\n");
 

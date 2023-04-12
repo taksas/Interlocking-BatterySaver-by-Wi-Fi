@@ -54,7 +54,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
 
             var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            var filePath = System.IO.Path.Combine(roamingDirectory, "MBSEwW\\data.txt");
+            var filePath = System.IO.Path.Combine(roamingDirectory, "IBSbW\\data.txt");
 
             // FileInfoのインスタンスを生成する
             FileInfo fileInfo = new FileInfo(filePath);

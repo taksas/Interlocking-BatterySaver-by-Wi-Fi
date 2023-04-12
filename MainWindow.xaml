@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:Interlocking_BatterySaver_by_Wi_Fi_"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.modernwpf.com/2019"
-    Title="MainWindow"
+    Title="Interlocking BatterySaver by Wi-Fi"
     Width="350"
     Height="400"
     ui:WindowHelper.UseModernWindowStyle="True" 
@@ -43,7 +43,9 @@
 
         <Grid Grid.Row="1" VerticalAlignment="Center">
             <Button Content="Delete" Click="Delete_Button_Click"  Background ="Red" />
-            <Button Content="Add IP" Click="AddAP_Button_Click" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Right" />
+            <Button Content="Help" Click="Help_Button_Click" HorizontalAlignment="Center" VerticalAlignment="Stretch"  >
+            </Button>
+            <Button Content="Add IP" Click="AddAP_Button_Click" Style="{StaticResource AccentButtonStyle}" Grid.Column="1" Margin="262,0,0,0" />
         </Grid>
     </Grid>
 

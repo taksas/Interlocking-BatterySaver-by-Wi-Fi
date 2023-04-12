@@ -58,7 +58,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
 
             var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            var filePath = System.IO.Path.Combine(roamingDirectory, "MBSEwW\\data.txt");
+            var filePath = System.IO.Path.Combine(roamingDirectory, "IBSbW\\data.txt");
             //ファイルを読み込みで開く
             System.IO.StreamReader sr = new System.IO.StreamReader(filePath);
             //一時ファイルを作成する
@@ -92,7 +92,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             APList.Items.Clear();
 
             var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            var filePath = System.IO.Path.Combine(roamingDirectory, "MBSEwW\\data.txt");
+            var filePath = System.IO.Path.Combine(roamingDirectory, "IBSbW\\data.txt");
             StreamReader sr = new StreamReader(filePath, Encoding.GetEncoding("UTF-8"));
             while (sr.EndOfStream == false)
             {
@@ -105,5 +105,20 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         }
 
 
+        private void Help_Button_Click(object sender, RoutedEventArgs e)
+        {
+            OpenUrl("https://taksas.net");
+        }
+
+        private Process OpenUrl(string url)
+        {
+            ProcessStartInfo pi = new ProcessStartInfo()
+            {
+                FileName = url,
+                UseShellExecute = true,
+            };
+
+            return Process.Start(pi);
+        }
     }
 }
