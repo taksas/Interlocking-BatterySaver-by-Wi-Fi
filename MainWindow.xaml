@@ -24,8 +24,8 @@
         </Grid.RowDefinitions>
 
 
-        <Grid Grid.Row="0" VerticalAlignment="Top" >
-            <ListView Name="APList" SelectionMode="Single" Height="300" VerticalAlignment="Top" >
+        <Grid Grid.Row="0" >
+            <ListView Name="APList" SelectionMode="Single" VerticalAlignment="Top" >
                 <ListView.View>
                     <GridView>
                         <GridViewColumn
