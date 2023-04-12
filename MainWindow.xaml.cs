@@ -30,8 +30,11 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         public class AP
         {
             public string AP_Name { get; set; }
-            public string Battery { get; set; }
+            public string[] Battery { get; set; }
+            public string SelectedIndex { get; set; }
+
         }
+
 
 
         public MainWindow()
@@ -91,17 +94,35 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         {
             APList.Items.Clear();
 
+
+            Dictionary<string, string> PercentageToIndex = new Dictionary<string, string>()
+            {
+                { "100", "0" },
+                { "90", "1" },
+                { "80", "2" },
+                { "70", "3" },
+                { "60", "4" },
+                { "50", "5" },
+                { "40", "6" },
+                { "30", "7" },
+                { "20", "8" },
+                { "10", "9" },
+                { "0", "10" },
+            };
+
+            string[] PercentageStringDic =
+                new string[] { "Always", "90%", "80%", "70%", "60%", "50%", "40%", "30%", "20%", "10%", "None" };
+
             var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             var filePath = System.IO.Path.Combine(roamingDirectory, "IBSbW\\data.txt");
             StreamReader sr = new StreamReader(filePath, Encoding.GetEncoding("UTF-8"));
+
             while (sr.EndOfStream == false)
             {
                 string line = sr.ReadLine();
                 string APName = line.Remove(line.IndexOf(","));
                 string Battery = line.Remove(0, line.IndexOf(",") + 1);
-                if (Battery == "100") Battery = "Always";
-                else if (Battery == "0") Battery = "None";
-                APList.Items.Add(new AP { AP_Name = APName, Battery = Battery });
+                APList.Items.Add(new AP { AP_Name = APName, Battery = PercentageStringDic, SelectedIndex = PercentageToIndex[Battery] });
             }
             sr.Close();
         }

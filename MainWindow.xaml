@@ -34,8 +34,15 @@
                         Header="AP Name" />
                         <GridViewColumn
                         Width="100"
-                        DisplayMemberBinding="{Binding Battery}"
-                        Header="Battery (%)" />
+                        Header="Battery (%)" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate DataType="wpf:Entry">
+                                    <ComboBox x:Name="comboBox" ItemsSource="{Binding Battery}" SelectedIndex="{Binding SelectedIndex}" >
+                                    </ComboBox>
+                                </DataTemplate>
+                                
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
