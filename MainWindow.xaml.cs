@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -35,8 +36,9 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         public class AP
         {
             public string AP_Name { get; set; }
-            public string[] Battery { get; set; }
+            public Dictionary<string, string> Battery { get; set; }
             public string SelectedIndex { get; set; }
+            public string CBIndex { get; set; }
 
         }
 
@@ -131,12 +133,32 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             var filePath = System.IO.Path.Combine(roamingDirectory, "IBSbW\\data.txt");
             StreamReader sr = new StreamReader(filePath, Encoding.GetEncoding("UTF-8"));
 
+            int index = 0;
             while (sr.EndOfStream == false)
             {
                 string line = sr.ReadLine();
                 string APName = line.Remove(line.IndexOf(","));
                 string Battery = line.Remove(0, line.IndexOf(",") + 1);
-                APList.Items.Add(new AP { AP_Name = APName, Battery = PercentageStringDic, SelectedIndex = PercentageToIndex[Battery] });
+
+
+                Dictionary<string, string> PercentageAndIndex = new Dictionary<string, string>()
+            {
+                { index.ToString() + ".100", "Always" },
+                { index.ToString() + ".90", "90%" },
+                { index.ToString() + ".80", "80%" },
+                { index.ToString() + ".70", "70%" },
+                { index.ToString() + ".60", "60%" },
+                { index.ToString() + ".50", "50%" },
+                { index.ToString() + ".40", "40%" },
+                { index.ToString() + ".30", "30%" },
+                { index.ToString() + ".20", "20%" },
+                { index.ToString() + ".10", "10%" },
+                { index.ToString() + ".0", "None" },
+            };
+
+
+                APList.Items.Add(new AP { CBIndex=index.ToString(), AP_Name = APName, Battery = PercentageAndIndex, SelectedIndex = PercentageToIndex[Battery] });
+                index++;
             }
             sr.Close();
         }
@@ -168,10 +190,12 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             // selected and committed using the SelectionLength property.
             if (senderComboBox != null)
             {
-                
+                Debug.Print(senderComboBox.SelectedItem.ToString());
                 UpdateB.IsEnabled = true;
             }
         }
+
+
 
         private void APList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

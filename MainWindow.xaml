@@ -39,7 +39,7 @@
                         Header="Battery (%)" >
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate DataType="wpf:Entry">
-                                    <ComboBox Name="comboBox" Width="80" ItemsSource="{Binding Battery}" SelectedIndex="{Binding SelectedIndex}"  SelectionChanged="comboBox_SelectionChanged">
+                                    <ComboBox Name="comboBox" Width="80" ItemsSource="{Binding Battery}" DisplayMemberPath="Value" SelectedIndex="{Binding SelectedIndex}"  SelectionChanged="comboBox_SelectionChanged">
                                     </ComboBox>
                                 </DataTemplate>
                                 
