@@ -10,6 +10,7 @@ using System.Drawing;
 using System.IO;
 using System.Diagnostics;
 using System.Net.NetworkInformation;
+using System.Xml.Serialization;
 
 namespace Interlocking_BatterySaver_by_Wi_Fi_
 {
@@ -197,7 +198,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         {
             if (!APDetectGate) return;
             APDetectGateFunc();
-            Debug.Print("ネットワーク接続が有効になりました。");
+            ExecuteMainFunc();
             
         }
 
@@ -209,5 +210,86 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             APDetectGate = true;
         }
 
+
+
+        private void ExecuteMainFunc()
+        {
+            System.Diagnostics.Process p = new System.Diagnostics.Process();
+            //ComSpec(cmd.exe)のパスを取得して、FileNameプロパティに指定
+            p.StartInfo.FileName = System.Environment.GetEnvironmentVariable("ComSpec");
+            string cmd = "chcp 437 && netsh.exe wlan show interfaces";
+            p.StartInfo.Arguments = @"/c " + cmd;
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
+            p.StartInfo.RedirectStandardOutput = true;
+            p.Start();
+
+            string s = p.StandardOutput.ReadToEnd();
+
+
+            if (s.Length > 120)
+            /*/ If you use Windows11, you got 
+                    "Active code page: 437
+                    There is no wireless interface on the system.
+                    Hosted network status  : Not available"
+                so you need to set more than 108 charactors.
+            /*/
+            {
+                string APs = s.Substring(s.IndexOf("SSID"));
+                APs = APs.Substring(APs.IndexOf(":"));
+                APs = APs.Substring(2, APs.IndexOf("\n")).Trim();
+
+                WiFiMode(APs);
+
+            }
+            else
+            {
+                NoWifiMode();
+            }
+        }
+
+
+        private void WiFiMode(string APName)
+        {
+
+
+            var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            var filePath = System.IO.Path.Combine(roamingDirectory, "IBSbW\\data.txt");
+            //ファイルを読み込みで開く
+            System.IO.StreamReader sr = new System.IO.StreamReader(filePath);
+            
+
+            //内容を一行ずつ読み込む
+            while (sr.Peek() > -1)
+            {
+                //一行読み込む
+                string line = sr.ReadLine();
+                string temp1 = line.Substring(0, line.IndexOf(","));
+                string temp2 = line.Substring(line.IndexOf(",")+1);
+
+                if (temp1 == APName)
+                {
+                    // Process オブジェクトを生成
+                    System.Diagnostics.Process p = new System.Diagnostics.Process();
+                    //ComSpec(cmd.exe)のパスを取得して、FileNameプロパティに指定
+                    p.StartInfo.FileName = System.Environment.GetEnvironmentVariable("ComSpec");
+                    //ウィンドウを表示しないようにする
+                    p.StartInfo.CreateNoWindow = true;
+                    string cmd = " powercfg /setdcvalueindex SCHEME_CURRENT SUB_ENERGYSAVER ESBATTTHRESHOLD" + temp2 + "&& powercfg /setactive scheme_current";
+                    p.StartInfo.Arguments = @"/c " + cmd;
+                    //起動
+                    p.Start();
+                    break;
+                }
+
+            }
+            //閉じる
+            sr.Close();
+
+
+            
+        }
+
+        private void NoWifiMode() { }
     }
 }
