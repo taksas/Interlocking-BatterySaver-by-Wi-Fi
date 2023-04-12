@@ -25,6 +25,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         private MainWindow _win = null;  //２重起動防止用
 
         bool shutdown = false;
+        bool APDetectGate = true;
 
         /// <summary>
         /// 常駐開始時の初期化処理
@@ -72,11 +73,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 fileInfo.Create().Close();
             }
 
-            //NetworkAvailabilityChangedイベントハンドラを追加
-            System.Net.NetworkInformation.NetworkChange.NetworkAvailabilityChanged +=
-                new System.Net.NetworkInformation.NetworkAvailabilityChangedEventHandler(
-                NetworkChange_NetworkAvailabilityChanged);
-
+                
+            NetworkChange.NetworkAddressChanged += (s, e) => NetworkChange_NetworkAvailabilityChanged(s, e) ;
 
             //アイコンがクリックされたら設定画面を表示
             _notifyIcon.MouseClick += (s, er) =>
@@ -195,16 +193,21 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         //ネットワーク接続状況が変化した
         private void NetworkChange_NetworkAvailabilityChanged(
-            object sender, System.Net.NetworkInformation.NetworkAvailabilityEventArgs e)
+            object sender, EventArgs e)
         {
+            if (!APDetectGate) return;
+            APDetectGateFunc();
+            Debug.Print("ネットワーク接続が有効になりました。");
             
-
-            if (e.IsAvailable)
-                Debug.Print("ネットワーク接続が有効になりました。");
-            else
-                Debug.Print("ネットワーク接続が無効になりました。");
         }
 
+
+        private async void APDetectGateFunc()
+        {
+            APDetectGate = false;
+            await Task.Delay(1000);
+            APDetectGate = true;
+        }
 
     }
 }
