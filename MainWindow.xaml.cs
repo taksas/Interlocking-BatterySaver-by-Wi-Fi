@@ -43,9 +43,14 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         }
 
 
+        string[] UpdateWaiting = new string[1];
+        
+
 
         public MainWindow()
         {
+            UpdateWaiting[0] = "INIT";
+
             InitializeComponent();
             RescanAPList();
 
@@ -110,6 +115,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         {
             APList.Items.Clear();
 
+            UpdateWaiting = new string[1];
+            UpdateWaiting[0] = "INIT";
 
             Dictionary<string, string> PercentageToIndex = new Dictionary<string, string>()
             {
@@ -190,9 +197,12 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             // selected and committed using the SelectionLength property.
             if (senderComboBox != null)
             {
-                Debug.Print(senderComboBox.SelectedItem.ToString());
-                UpdateB.IsEnabled = true;
+                string temp = senderComboBox.SelectedItem.ToString();
+                temp = temp.Substring(0, temp.IndexOf(",")).Substring(1);
+                Array.Resize(ref UpdateWaiting, UpdateWaiting.Length + 1);
+                UpdateWaiting[UpdateWaiting.Length - 1] = temp;
             }
+            for(int i = 0; i < UpdateWaiting.Length; i++) Debug.Print(UpdateWaiting[i]);
         }
 
 
