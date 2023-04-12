@@ -20,6 +20,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace Interlocking_BatterySaver_by_Wi_Fi_
 {
@@ -28,6 +29,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
     /// </summary>
     public partial class MainWindow : System.Windows.Window
     {
+
+
 
         public class AP
         {
@@ -55,11 +58,15 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             RescanAPList();
         }
 
+
+
         private void Delete_Button_Click(object sender, RoutedEventArgs e)
         {
             int id = APList.SelectedIndex;
             if (id < 0) return;
 
+            DeleteB.IsEnabled = false;
+            UpdateB.IsEnabled = false;
 
 
             var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -89,8 +96,13 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             System.IO.File.Copy(tmpPath, filePath, true);
             System.IO.File.Delete(tmpPath);
 
+            
+
             RescanAPList();
+
         }
+
+
 
         private void RescanAPList()
         {
@@ -156,11 +168,14 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             // selected and committed using the SelectionLength property.
             if (senderComboBox != null)
             {
-                Debug.Print(senderComboBox.SelectedItem.ToString());
+                
+                UpdateB.IsEnabled = true;
             }
         }
 
-
-
+        private void APList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (APList.SelectedIndex >= 0) DeleteB.IsEnabled = true;
+        }
     }
 }
