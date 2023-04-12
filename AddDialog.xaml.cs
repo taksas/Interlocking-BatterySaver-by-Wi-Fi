@@ -41,7 +41,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
             PercentageDic = new Dictionary<string, string>()
             {
-                { "100", "100%" },
+                { "100", "Always" },
                 { "90", "90%" },
                 { "80", "80%" },
                 { "70", "70%" },
@@ -51,7 +51,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 { "30", "30%" },
                 { "20", "20%" },
                 { "10", "10%" },
-                { "0", "0%" },
+                { "0", "None" },
             };
 
             InitializeComponent();

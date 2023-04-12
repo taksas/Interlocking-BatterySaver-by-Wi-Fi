@@ -99,6 +99,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 string line = sr.ReadLine();
                 string APName = line.Remove(line.IndexOf(","));
                 string Battery = line.Remove(0, line.IndexOf(",") + 1);
+                if (Battery == "100") Battery = "Always";
+                else if (Battery == "0") Battery = "None";
                 APList.Items.Add(new AP { AP_Name = APName, Battery = Battery });
             }
             sr.Close();
