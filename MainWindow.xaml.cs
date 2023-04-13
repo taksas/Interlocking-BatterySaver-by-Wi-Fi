@@ -30,7 +30,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
     /// </summary>
     public partial class MainWindow : System.Windows.Window
     {
-
+        public Dictionary<string, string> PercentageDic { get; set; }
 
 
         public class AP
@@ -51,8 +51,24 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         {
             UpdateWaiting[0] = "INIT";
 
+            PercentageDic = new Dictionary<string, string>()
+            {
+                { "100", "Always" },
+                { "90", "90%" },
+                { "80", "80%" },
+                { "70", "70%" },
+                { "60", "60%" },
+                { "50", "50%" },
+                { "40", "40%" },
+                { "30", "30%" },
+                { "20", "20%" },
+                { "10", "10%" },
+                { "0", "None" },
+            };
+
             InitializeComponent();
             RescanAPList();
+            DataContext = this;
 
         }
 
@@ -215,7 +231,6 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 { index.ToString() + ".10", "10%" },
                 { index.ToString() + ".0", "None" },
             };
-
 
                 APList.Items.Add(new AP { CBIndex=index.ToString(), AP_Name = APName, Battery = PercentageAndIndex, SelectedIndex = PercentageToIndex[Battery] });
                 index++;
