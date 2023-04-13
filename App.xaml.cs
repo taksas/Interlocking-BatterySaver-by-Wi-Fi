@@ -192,8 +192,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         private ContextMenuStrip CreateMenu()
         {
             var menu = new System.Windows.Forms.ContextMenuStrip();
-            menu.Items.Add("Settings", null, (s, e) => { ShowMainWindow(); });
-            menu.Items.Add("Exit", null, (s, e) => {
+            menu.Items.Add(Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.Settings, null, (s, e) => { ShowMainWindow(); });
+            menu.Items.Add(Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.Exit, null, (s, e) => {
                 shutdown = true;
                 Shutdown();
             });

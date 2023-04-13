@@ -126,7 +126,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             }
             else
             {
-                Reconfirm_tb.Text = "Invalid AP name is set. Please reconfirm.";
+                Reconfirm_tb.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.Invalid_AP_name_is_set___;
             }
         }
     }
