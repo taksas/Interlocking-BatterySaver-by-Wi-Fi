@@ -115,10 +115,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 }
             });
 
-
-
-            //別タスクで監視処理を実行
-            // Task.Run(() => /*～～監視処理～～*/); 
+            ExecuteMainFunc();
         }
 
         /// <summary>
