@@ -380,7 +380,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
             // WSHファイル作成
             using (StreamWriter w = new StreamWriter(
-                    lnkFile, false, System.Text.Encoding.UTF8))
+                    lnkFile, false, System.Text.Encoding.ASCII))
                 {
                     w.WriteLine("powershell " + filePath);
                 }
