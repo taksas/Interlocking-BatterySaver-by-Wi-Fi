@@ -157,7 +157,7 @@
     <value>Settings</value>
   </data>
   <data name="StartupReg" xml:space="preserve">
-    <value>The initial startup process is complete. Please click on the yellow and green icons on the status bar in the lower right corner to begin configuration.</value>
+    <value>The initial startup process will begin. After pressing "OK," click on the icon in the lower right status bar to begin the setup.</value>
   </data>
   <data name="Turn_battery_saver_on_AM_at__" xml:space="preserve">
     <value>Turn battery saver on automatically at :</value>

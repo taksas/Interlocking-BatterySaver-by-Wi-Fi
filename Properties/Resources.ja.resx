@@ -157,7 +157,7 @@
     <value>設定</value>
   </data>
   <data name="StartupReg" xml:space="preserve">
-    <value>初回起動処理が完了しました。右下のステータスバーにある黄色と緑のアイコンをクリックして、設定を始めてください。</value>
+    <value>初回起動処理を開始します。「OK」を押した後、右下のステータスバーにあるアイコンをクリックして設定を始めてください。</value>
   </data>
   <data name="Turn_battery_saver_on_AM_at__" xml:space="preserve">
     <value>次の値になったら自動で省電力モードにする :</value>

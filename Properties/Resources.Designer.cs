@@ -187,7 +187,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
-        ///   The initial startup process is complete. Please click on the yellow and green icons on the status bar in the lower right corner to begin configuration. に類似しているローカライズされた文字列を検索します。
+        ///   The initial startup process will begin. After pressing &quot;OK,&quot; click on the icon in the lower right status bar to begin the setup. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string StartupReg {
             get {
