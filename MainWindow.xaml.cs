@@ -287,10 +287,23 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         private void cmb1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-        }
+            System.Windows.Controls.ComboBox senderComboBox = (System.Windows.Controls.ComboBox)sender;
+            if (senderComboBox != null)
+            {
+                Properties.Settings.Default.NotConnected = senderComboBox.SelectedIndex;
+                Properties.Settings.Default.Save();
+            }
+            }
 
-        private void cmb2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+            private void cmb2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-        }
+            System.Windows.Controls.ComboBox senderComboBox = (System.Windows.Controls.ComboBox)sender;
+            if (senderComboBox != null)
+            {
+                Properties.Settings.Default.OtherConnected = senderComboBox.SelectedIndex;
+                Properties.Settings.Default.Save();
+            }
+
+            }
     }
 }
