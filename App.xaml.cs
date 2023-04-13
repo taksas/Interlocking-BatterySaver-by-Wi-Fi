@@ -356,23 +356,12 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 string jsFile = null;   // スクリプトファイル名
                 string lnkFile = null;  // リンク名
 
-                // プロジェクト＞プロパティ＞アセンブリ情報　で指定した「タイトル」を取得
-                var assembly = Assembly.GetExecutingAssembly();
-                var attribute = Attribute.GetCustomAttribute(
-                  assembly,
-                  typeof(AssemblyTitleAttribute)
-                ) as AssemblyTitleAttribute;
-                aplTitle = attribute.Title;
-
-                // 自身のexeファイル名を取得
-                exeFile = Path.GetFileName(System.Windows.Forms.Application.ExecutablePath);
-
                 // WSHスクリプト名
-                jsFile = Directory.GetParent(System.Windows.Forms.Application.ExecutablePath) + "\\addStartup.js";
+                jsFile = Directory.GetParent(System.Windows.Forms.Application.ExecutablePath) + "\\InterlockingBatterySaverbyWi-Fi_StartUP.ps1";
 
                 // ショートカットのリンク名
                 String sMnu = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
-                lnkFile = sMnu + "\\" + aplTitle + ".lnk";
+                lnkFile = sMnu + "\\InterlockingBatterySaverbyWi-Fi_StartUP.ps1";
 
 
             if (File.Exists(lnkFile))
@@ -393,25 +382,17 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             using (StreamWriter w = new StreamWriter(
                     jsFile, false, System.Text.Encoding.GetEncoding("Unicode")))
                 {
-                    w.WriteLine("ws = WScript.CreateObject('WScript.Shell');");
-                    w.WriteLine("ln = ws.SpecialFolders('Startup') + '\\\\' + '" + aplTitle + ".lnk';");
-                    w.WriteLine("sc = ws.CreateShortcut(ln);");
-                    w.WriteLine("sc.TargetPath = ws.CurrentDirectory + '\\\\" + exeFile + "';");
-                    w.WriteLine("sc.Save();");
+                    w.WriteLine("$app = Get-AppxPackage -Name *InterlockingBatterySaverbyWi-Fi*");
+                    w.WriteLine("$appname = $app.PackageFamilyName");
+                    w.WriteLine("$package = $app | Get-AppxPackageManifest");
+                    w.WriteLine("$id = $package.Package.Applications.Application.Id");
+                    w.WriteLine("Start-Process shell:AppsFolder\\$appname!$id");
                 }
 
                 // addStartup.jsを実行し、スタートアップにショートカット作成
                 if (File.Exists(jsFile))
                 {
-                    ProcessStartInfo psi = (new ProcessStartInfo());
-                    psi.FileName = "cscript";
-                    psi.Arguments = @"//e:jscript " + jsFile;
-                    psi.WindowStyle = ProcessWindowStyle.Hidden;
-                    psi.CreateNoWindow = true; // コンソール・ウィンドウを開かない
-                Process p = Process.Start(psi);
-
-                    p.WaitForExit(10000); // 終了まで待つ(最大10秒)
-                    // File.Delete(jsFile);
+                File.Copy(jsFile, lnkFile);
                 Debug.Print("StartUP Reg ShellScript Runned");
             } else
             {
