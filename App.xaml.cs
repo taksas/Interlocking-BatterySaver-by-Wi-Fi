@@ -356,12 +356,12 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 string jsFile = null;   // スクリプトファイル名
                 string lnkFile = null;  // リンク名
 
-                // WSHスクリプト名
-                jsFile = Directory.GetParent(System.Windows.Forms.Application.ExecutablePath) + "\\InterlockingBatterySaverbyWi-Fi_StartUP.ps1";
-
                 // ショートカットのリンク名
                 String sMnu = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
-                lnkFile = sMnu + "\\InterlockingBatterySaverbyWi-Fi_StartUP.ps1";
+                lnkFile = sMnu + "\\InterlockingBatterySaverbyWi-Fi_StartUP.bat";
+
+            var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            var filePath = System.IO.Path.Combine(roamingDirectory, "IBSbW\\InterlockingBatterySaverbyWi-Fi_StartUP.ps1");
 
 
             if (File.Exists(lnkFile))
@@ -380,26 +380,31 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
             // WSHファイル作成
             using (StreamWriter w = new StreamWriter(
-                    jsFile, false, System.Text.Encoding.GetEncoding("Unicode")))
+                    lnkFile, false, System.Text.Encoding.GetEncoding("Unicode")))
                 {
-                    w.WriteLine("$app = Get-AppxPackage -Name *InterlockingBatterySaverbyWi-Fi*");
-                    w.WriteLine("$appname = $app.PackageFamilyName");
-                    w.WriteLine("$package = $app | Get-AppxPackageManifest");
-                    w.WriteLine("$id = $package.Package.Applications.Application.Id");
-                    w.WriteLine("Start-Process shell:AppsFolder\\$appname!$id");
+                    w.WriteLine("powershell " + filePath);
                 }
 
-                // addStartup.jsを実行し、スタートアップにショートカット作成
-                if (File.Exists(jsFile))
+            using (StreamWriter w = new StreamWriter(
+                    filePath, false, System.Text.Encoding.GetEncoding("Unicode")))
+            {
+                w.WriteLine("$app = Get-AppxPackage -Name *InterlockingBatterySaverbyWi-Fi*");
+                w.WriteLine("$appname = $app.PackageFamilyName");
+                w.WriteLine("$package = $app | Get-AppxPackageManifest");
+                w.WriteLine("$id = $package.Package.Applications.Application.Id");
+                w.WriteLine("Start-Process shell:AppsFolder\\$appname!$id");
+            }
+
+            // addStartup.jsを実行し、スタートアップにショートカット作成
+            if (File.Exists(filePath))
                 {
-                File.Copy(jsFile, lnkFile);
                 Debug.Print("StartUP Reg ShellScript Runned");
             } else
             {
                 Debug.Print("StartUP Reg ShellScript Creation Failed");
             }
                 // スタートアップフォルダに登録されたか確認
-                if (File.Exists(lnkFile))
+                if (File.Exists(filePath))
                 {
                     Debug.Print("StartUP Registered");
                 }
