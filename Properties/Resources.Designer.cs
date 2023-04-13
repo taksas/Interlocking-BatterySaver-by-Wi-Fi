@@ -88,6 +88,15 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
+        ///   Always に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Always {
+            get {
+                return ResourceManager.GetString("Always", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   AP Name に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string AP_Name {
@@ -160,11 +169,29 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
+        ///   None に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string None {
+            get {
+                return ResourceManager.GetString("None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Settings に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   The initial startup process is complete. Please click on the yellow and green icons on the status bar in the lower right corner to begin configuration. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string StartupReg {
+            get {
+                return ResourceManager.GetString("StartupReg", resourceCulture);
             }
         }
         

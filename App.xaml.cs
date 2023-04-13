@@ -11,6 +11,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Net.NetworkInformation;
 using System.Xml.Serialization;
+using System.Reflection;
 
 namespace Interlocking_BatterySaver_by_Wi_Fi_
 {
@@ -45,6 +46,9 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         {
             //継承元のOnStartupを呼び出す
             base.OnStartup(e);
+
+
+            RegisterStartup();
 
             //アイコンの取得
             var icon = GetResourceStream(new Uri("leaf_20579.ico", UriKind.Relative)).Stream;
@@ -335,6 +339,98 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             p.StartInfo.Arguments = @"/c " + cmd;
             //起動
             p.Start();
+        }
+
+
+
+
+
+
+        private void RegisterStartup()
+        {
+            // スタートアップフォルダにショートカット作成
+            //try
+            //{
+                string aplTitle = null; // アプリ名
+                string exeFile = null;  // exeファイル名
+                string jsFile = null;   // スクリプトファイル名
+                string lnkFile = null;  // リンク名
+
+                // プロジェクト＞プロパティ＞アセンブリ情報　で指定した「タイトル」を取得
+                var assembly = Assembly.GetExecutingAssembly();
+                var attribute = Attribute.GetCustomAttribute(
+                  assembly,
+                  typeof(AssemblyTitleAttribute)
+                ) as AssemblyTitleAttribute;
+                aplTitle = attribute.Title;
+
+                // 自身のexeファイル名を取得
+                exeFile = Path.GetFileName(System.Windows.Forms.Application.ExecutablePath);
+
+                // WSHスクリプト名
+                jsFile = Directory.GetParent(System.Windows.Forms.Application.ExecutablePath) + "\\addStartup.js";
+
+                // ショートカットのリンク名
+                String sMnu = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+                lnkFile = sMnu + "\\" + aplTitle + ".lnk";
+
+
+            if (File.Exists(lnkFile))
+            {
+                Debug.Print("StartUP Already Registered");
+                return;
+            } else
+            {
+                System.Windows.Forms.MessageBox.Show(
+                    Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.StartupReg,
+                    aplTitle,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+
+
+            // WSHファイル作成
+            using (StreamWriter w = new StreamWriter(
+                    jsFile, false, System.Text.Encoding.GetEncoding("Unicode")))
+                {
+                    w.WriteLine("ws = WScript.CreateObject('WScript.Shell');");
+                    w.WriteLine("ln = ws.SpecialFolders('Startup') + '\\\\' + '" + aplTitle + ".lnk';");
+                    w.WriteLine("sc = ws.CreateShortcut(ln);");
+                    w.WriteLine("sc.TargetPath = ws.CurrentDirectory + '\\\\" + exeFile + "';");
+                    w.WriteLine("sc.Save();");
+                }
+
+                // addStartup.jsを実行し、スタートアップにショートカット作成
+                if (File.Exists(jsFile))
+                {
+                    ProcessStartInfo psi = (new ProcessStartInfo());
+                    psi.FileName = "cscript";
+                    psi.Arguments = @"//e:jscript " + jsFile;
+                    psi.WindowStyle = ProcessWindowStyle.Hidden;
+                    psi.CreateNoWindow = true; // コンソール・ウィンドウを開かない
+                Process p = Process.Start(psi);
+
+                    p.WaitForExit(10000); // 終了まで待つ(最大10秒)
+                    // File.Delete(jsFile);
+                Debug.Print("StartUP Reg ShellScript Runned");
+            } else
+            {
+                Debug.Print("StartUP Reg ShellScript Creation Failed");
+            }
+                // スタートアップフォルダに登録されたか確認
+                if (File.Exists(lnkFile))
+                {
+                    Debug.Print("StartUP Registered");
+                }
+                else
+                {
+                    Debug.Print("StartUP Not Registered");
+                }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Debug.Print("StartUP Register Failed");
+            //}
         }
     }
 }

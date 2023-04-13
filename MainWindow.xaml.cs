@@ -53,7 +53,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
             PercentageDic = new Dictionary<string, string>()
             {
-                { "100", "Always" },
+                { "100", Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.Always },
                 { "90", "90%" },
                 { "80", "80%" },
                 { "70", "70%" },
@@ -63,7 +63,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 { "30", "30%" },
                 { "20", "20%" },
                 { "10", "10%" },
-                { "0", "None" },
+                { "0", Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.None },
             };
 
             InitializeComponent();
@@ -202,8 +202,6 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 { "0", "10" },
             };
 
-            string[] PercentageStringDic =
-                new string[] { "Always", "90%", "80%", "70%", "60%", "50%", "40%", "30%", "20%", "10%", "None" };
 
             var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             var filePath = System.IO.Path.Combine(roamingDirectory, "IBSbW\\data.txt");
@@ -219,7 +217,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
                 Dictionary<string, string> PercentageAndIndex = new Dictionary<string, string>()
             {
-                { index.ToString() + ".100", "Always" },
+                { index.ToString() + ".100", Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.Always },
                 { index.ToString() + ".90", "90%" },
                 { index.ToString() + ".80", "80%" },
                 { index.ToString() + ".70", "70%" },
@@ -229,7 +227,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 { index.ToString() + ".30", "30%" },
                 { index.ToString() + ".20", "20%" },
                 { index.ToString() + ".10", "10%" },
-                { index.ToString() + ".0", "None" },
+                { index.ToString() + ".0", Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.None },
             };
 
                 APList.Items.Add(new AP { CBIndex=index.ToString(), AP_Name = APName, Battery = PercentageAndIndex, SelectedIndex = PercentageToIndex[Battery] });
@@ -245,7 +243,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         private void Help_Button_Click(object sender, RoutedEventArgs e)
         {
-            OpenUrl("https://taksas.net");
+            OpenUrl("https://taksas.net/interlocking-batterysaver-by-wi-fi");
         }
 
         private Process OpenUrl(string url)

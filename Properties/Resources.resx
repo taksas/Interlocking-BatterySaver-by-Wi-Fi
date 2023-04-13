@@ -123,6 +123,9 @@
   <data name="Add_AP" xml:space="preserve">
     <value>Add AP</value>
   </data>
+  <data name="Always" xml:space="preserve">
+    <value>Always</value>
+  </data>
   <data name="AP_Name" xml:space="preserve">
     <value>AP Name</value>
   </data>
@@ -147,8 +150,14 @@
   <data name="Invalid_AP_name_is_set___" xml:space="preserve">
     <value>Invalid AP name is set. Please reconfirm.</value>
   </data>
+  <data name="None" xml:space="preserve">
+    <value>None</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="StartupReg" xml:space="preserve">
+    <value>The initial startup process is complete. Please click on the yellow and green icons on the status bar in the lower right corner to begin configuration.</value>
   </data>
   <data name="Turn_battery_saver_on_AM_at__" xml:space="preserve">
     <value>Turn battery saver on automatically at :</value>
