@@ -22,5 +22,29 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int NotConnected {
+            get {
+                return ((int)(this["NotConnected"]));
+            }
+            set {
+                this["NotConnected"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int OtherConnected {
+            get {
+                return ((int)(this["OtherConnected"]));
+            }
+            set {
+                this["OtherConnected"] = value;
+            }
+        }
     }
 }

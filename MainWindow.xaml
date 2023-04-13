@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:Interlocking_BatterySaver_by_Wi_Fi_"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.modernwpf.com/2019"
+    xmlns:prop ="clr-namespace:Interlocking_BatterySaver_by_Wi_Fi_.Properties"
     Title="Interlocking BatterySaver by Wi-Fi"
     Width="350"
     Height="600"
@@ -31,9 +32,9 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="When not connected to Wi-Fi : " VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="16"/>
-            <ComboBox Grid.Row="0"  Name="cmb1" IsEditable="False"  Width="90" ItemsSource="{Binding PercentageDic}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedIndex="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" />
+            <ComboBox Grid.Row="0"  Name="cmb1" IsEditable="False"  Width="90" ItemsSource="{Binding PercentageDic}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedIndex="{Binding Path=NotConnected, Source={x:Static prop:Settings.Default}}" SelectionChanged="cmb1_SelectionChanged" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" />
             <TextBlock Grid.Row="1" Text="When connected to other Wi-Fi : " VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="16"/>
-            <ComboBox Grid.Row="1" Name="cmb2" IsEditable="False"  Width="90" ItemsSource="{Binding PercentageDic}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedIndex="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" />
+            <ComboBox Grid.Row="1" Name="cmb2" IsEditable="False"  Width="90" ItemsSource="{Binding PercentageDic}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedIndex="{Binding Path=OtherConnected, Source={x:Static prop:Settings.Default}}" SelectionChanged="cmb2_SelectionChanged" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" />
         </Grid>
 
         <Grid Grid.Row="1" >

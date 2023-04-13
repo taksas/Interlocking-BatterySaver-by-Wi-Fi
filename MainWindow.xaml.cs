@@ -284,5 +284,13 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         {
             if (APList.SelectedIndex >= 0) DeleteB.IsEnabled = true;
         }
+
+        private void cmb1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+        }
+
+        private void cmb2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+        }
     }
 }
