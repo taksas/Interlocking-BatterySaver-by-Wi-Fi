@@ -28,6 +28,15 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         bool shutdown = false;
         bool APDetectGate = true;
 
+
+
+        string[] Percentage = {"100", "90", "80", "70", "60", "50", "40", "30", "20", "10", "0"};
+
+
+
+
+
+
         /// <summary>
         /// 常駐開始時の初期化処理
         /// </summary>
@@ -262,8 +271,9 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             var filePath = System.IO.Path.Combine(roamingDirectory, "IBSbW\\data.txt");
             //ファイルを読み込みで開く
             System.IO.StreamReader sr = new System.IO.StreamReader(filePath);
-            
 
+
+            bool otherwifi = true;
             //内容を一行ずつ読み込む
             while (sr.Peek() > -1)
             {
@@ -284,11 +294,13 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                     p.StartInfo.Arguments = @"/c " + cmd;
                     //起動
                     p.Start();
-                    Debug.Print(cmd);
+                    Debug.Print("WiFiMode");
+                    otherwifi = false;
                     break;
                 }
 
             }
+            if (otherwifi) OtherWifiMode();
             //閉じる
             sr.Close();
 
@@ -296,6 +308,33 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             
         }
 
-        private void NoWifiMode() { }
+        private void NoWifiMode() {
+            Debug.Print("NoWiFiMode");
+
+            // Process オブジェクトを生成
+            System.Diagnostics.Process p = new System.Diagnostics.Process();
+            //ComSpec(cmd.exe)のパスを取得して、FileNameプロパティに指定
+            p.StartInfo.FileName = System.Environment.GetEnvironmentVariable("ComSpec");
+            //ウィンドウを表示しないようにする
+            p.StartInfo.CreateNoWindow = true;
+            string cmd = " powercfg /setdcvalueindex SCHEME_CURRENT SUB_ENERGYSAVER ESBATTTHRESHOLD " + Percentage[Interlocking_BatterySaver_by_Wi_Fi_.Properties.Settings.Default.NotConnected] + " && powercfg /setactive scheme_current";
+            p.StartInfo.Arguments = @"/c " + cmd;
+            //起動
+            p.Start();
+        }
+        private void OtherWifiMode() {
+            Debug.Print("OtherWiFiMode");
+
+            // Process オブジェクトを生成
+            System.Diagnostics.Process p = new System.Diagnostics.Process();
+            //ComSpec(cmd.exe)のパスを取得して、FileNameプロパティに指定
+            p.StartInfo.FileName = System.Environment.GetEnvironmentVariable("ComSpec");
+            //ウィンドウを表示しないようにする
+            p.StartInfo.CreateNoWindow = true;
+            string cmd = " powercfg /setdcvalueindex SCHEME_CURRENT SUB_ENERGYSAVER ESBATTTHRESHOLD " + Percentage[Interlocking_BatterySaver_by_Wi_Fi_.Properties.Settings.Default.OtherConnected] + " && powercfg /setactive scheme_current";
+            p.StartInfo.Arguments = @"/c " + cmd;
+            //起動
+            p.Start();
+        }
     }
 }
