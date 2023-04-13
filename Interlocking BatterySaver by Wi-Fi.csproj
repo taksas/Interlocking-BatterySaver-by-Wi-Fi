@@ -9,6 +9,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>leaf_20579.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <VersionPrefix>1.1.0</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
