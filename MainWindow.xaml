@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.modernwpf.com/2019"
     xmlns:prop ="clr-namespace:Interlocking_BatterySaver_by_Wi_Fi_.Properties"
-    Title="Interlocking BatterySaver by Wi-Fi    Ver1.1.17"
+    Title="Interlocking BatterySaver by Wi-Fi    Ver1.1.19"
     Width="350"
     Height="400"
     ui:WindowHelper.UseModernWindowStyle="True" 

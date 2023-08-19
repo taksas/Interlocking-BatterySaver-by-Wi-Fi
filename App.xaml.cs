@@ -356,7 +356,6 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 if (File.Exists(lnkFile))
                 {
                     Debug.Print("StartUP Already Registered");
-                    return;
                 } else
                 {
                     System.Windows.Forms.MessageBox.Show(

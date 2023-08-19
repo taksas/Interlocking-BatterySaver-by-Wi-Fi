@@ -96,7 +96,14 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             }
             AP_Name.Text = APs[1];
 
-            p.WaitForExit();
+            // 起動した子プロセスの終了を待機する
+            // (1秒=1000ミリ秒でタイムアウトする)
+            if (!p.WaitForExit(5000))
+            {
+                // 待機がタイムアウトした
+                p.Kill();
+                APs[1] = "ERROR!";
+            }
         }
 
 
