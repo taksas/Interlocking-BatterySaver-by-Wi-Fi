@@ -24,7 +24,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         //常駐終了時に開放するために保存しておく
         private System.Windows.Forms.ContextMenuStrip _menu;
         private System.Windows.Forms.NotifyIcon _notifyIcon;
-        private MainWindow _win = null;  //２重起動防止用
+
 
         bool shutdown = false;
         bool APDetectGate = true;
@@ -47,28 +47,6 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             //継承元のOnStartupを呼び出す
             base.OnStartup(e);
 
-
-            RegisterStartup();
-
-            //アイコンの取得
-            var icon = GetResourceStream(new Uri("leaf_20579.ico", UriKind.Relative)).Stream;
-
-            // コンテキストメニューを作成
-            _menu = CreateMenu();
-
-            //通知領域にアイコンを表示
-            _notifyIcon = new System.Windows.Forms.NotifyIcon
-            {
-                Visible = true,
-                Icon = new System.Drawing.Icon(icon),
-                Text = "Minimal BS",
-                ContextMenuStrip = _menu
-            };
-
-
-
-
-
             var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             var filePath = System.IO.Path.Combine(roamingDirectory, "IBSbW\\data.txt");
 
@@ -87,6 +65,30 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 fileInfo.Create().Close();
             }
 
+
+            RegisterStartup();
+
+            //アイコンの取得
+            var icon = GetResourceStream(new Uri("leaf_20579.ico", UriKind.Relative)).Stream;
+
+            // コンテキストメニューを作成
+            _menu = CreateMenu();
+
+            //通知領域にアイコンを表示
+            _notifyIcon = new System.Windows.Forms.NotifyIcon
+            {
+                Visible = true,
+                Icon = new System.Drawing.Icon(icon),
+                Text = "Interlocking BatterySaver by Wi-Fi",
+                ContextMenuStrip = _menu
+            };
+
+
+
+
+
+            
+
                 
             NetworkChange.NetworkAddressChanged += (s, e) => NetworkChange_NetworkAvailabilityChanged(s, e) ;
 
@@ -99,7 +101,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                     System.Drawing.Point p = System.Windows.Forms.Cursor.Position;
 
                     //指定した画面上の座標位置にコンテキストメニューを表示する
-                    _notifyIcon.ContextMenuStrip.Show(p);
+                    if(_notifyIcon.ContextMenuStrip != null) _notifyIcon.ContextMenuStrip.Show(p);
 
                     // ShowMainWindow();
                 }
@@ -139,9 +141,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         /// </summary>
         private void ShowMainWindow()
         {
-            if (_win == null)
-            {
-                _win = new MainWindow();
+
+                MainWindow _win = new MainWindow();
 
 
                 /*
@@ -177,12 +178,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 };
                 */
                 
-            }
-            else
-            {
-                //Windowsを表示する
-                _win.Show();
-            }
+            
         }
 
 
@@ -348,72 +344,39 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             // スタートアップフォルダにショートカット作成
             //try
             //{
-                string aplTitle = null; // アプリ名
-                string exeFile = null;  // exeファイル名
-                string jsFile = null;   // スクリプトファイル名
-                string lnkFile = null;  // リンク名
-
+                string aplTitle = "Interlocking BatterySaver by Wi-Fi"; // アプリ名
                 // ショートカットのリンク名
                 String sMnu = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
-                lnkFile = sMnu + "\\InterlockingBatterySaverbyWi-Fi_StartUP.bat";
+                string lnkFile = sMnu + "\\InterlockingBatterySaverbyWi-Fi_StartUP.bat";
 
-            var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            var filePath = System.IO.Path.Combine(roamingDirectory, "IBSbW\\InterlockingBatterySaverbyWi-Fi_StartUP.ps1");
+                var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
 
-            if (File.Exists(lnkFile))
-            {
-                Debug.Print("StartUP Already Registered");
-                return;
-            } else
-            {
-                System.Windows.Forms.MessageBox.Show(
-                    Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.StartupReg,
-                    aplTitle,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-            }
+
+                if (File.Exists(lnkFile))
+                {
+                    Debug.Print("StartUP Already Registered");
+                    return;
+                } else
+                {
+                    System.Windows.Forms.MessageBox.Show(
+                        Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.StartupReg,
+                        aplTitle,
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
 
 
             // WSHファイル作成
-            using (StreamWriter w = new StreamWriter(
-                    lnkFile, false, System.Text.Encoding.ASCII))
-                {
-                    w.WriteLine("powershell " + filePath);
-                }
+                using (StreamWriter w = new StreamWriter(
+                        lnkFile, false, System.Text.Encoding.ASCII))
+                    {
+                        w.WriteLine("cd /d %~dp0 && powershell \"$app = Get-AppxPackage -Name *InterlockingBatterySaverbyWi-Fi* ; if($app -eq $null) { Remove-item .\\InterlockingBatterySaverbyWi-Fi_StartUP.bat } Else { $appname = $app.PackageFamilyName ; $package = $app | Get-AppxPackageManifest ; $id = $package.Package.Applications.Application.Id ; Start-Process shell:AppsFolder\\$appname!$id }\"");
+                    }
 
-            using (StreamWriter w = new StreamWriter(
-                    filePath, false, System.Text.Encoding.GetEncoding("Unicode")))
-            {
-                w.WriteLine("$app = Get-AppxPackage -Name *InterlockingBatterySaverbyWi-Fi*");
-                w.WriteLine("$appname = $app.PackageFamilyName");
-                w.WriteLine("$package = $app | Get-AppxPackageManifest");
-                w.WriteLine("$id = $package.Package.Applications.Application.Id");
-                w.WriteLine("Start-Process shell:AppsFolder\\$appname!$id");
-            }
+            
 
-            // addStartup.jsを実行し、スタートアップにショートカット作成
-            if (File.Exists(filePath))
-                {
-                Debug.Print("StartUP Reg ShellScript Runned");
-            } else
-            {
-                Debug.Print("StartUP Reg ShellScript Creation Failed");
-            }
-                // スタートアップフォルダに登録されたか確認
-                if (File.Exists(filePath))
-                {
-                    Debug.Print("StartUP Registered");
-                }
-                else
-                {
-                    Debug.Print("StartUP Not Registered");
-                }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Debug.Print("StartUP Register Failed");
-            //}
+
         }
     }
 }
