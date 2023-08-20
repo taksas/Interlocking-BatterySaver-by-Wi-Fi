@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.Net.NetworkInformation;
 using System.Xml.Serialization;
 using System.Reflection;
+using System.Buffers.Text;
 
 namespace Interlocking_BatterySaver_by_Wi_Fi_
 {
@@ -27,6 +28,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
 
         bool shutdown = false;
+        bool isCreatingMainWindow = false;
         bool APDetectGate = true;
 
 
@@ -101,7 +103,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                     System.Drawing.Point p = System.Windows.Forms.Cursor.Position;
 
                     //指定した画面上の座標位置にコンテキストメニューを表示する
-                    if(_notifyIcon.ContextMenuStrip != null) _notifyIcon.ContextMenuStrip.Show(p);
+                    if(_notifyIcon != null) _notifyIcon.ContextMenuStrip.Show(p);
 
                     // ShowMainWindow();
                 }
@@ -110,10 +112,10 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
 
             Deactivated += ((obj, ev) => {
-                if (!shutdown)
+                if (!shutdown && !isCreatingMainWindow)
                 {
-                    System.Windows.Application.Current.Shutdown();
                     System.Windows.Forms.Application.Restart();
+                    System.Windows.Application.Current.Shutdown();
                 }
             });
 
@@ -141,7 +143,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         /// </summary>
         private void ShowMainWindow()
         {
-
+            isCreatingMainWindow = true;
+            Debug.Print("SHOWING MAIN WINDOW...");
                 MainWindow _win = new MainWindow();
 
 
@@ -167,18 +170,20 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 //Windowsを表示する
                 _win.Show();
 
-                /*
-                //閉じるボタンが押された時のイベント処理を登録
-                _win.Closing += (s, e) =>
-                {
-                    System.Windows.Application.Current.Shutdown();
-                    System.Windows.Forms.Application.Restart();
-                    //_win.Hide();        //非表示にする
-                    //e.Cancel = true;    //閉じるをキャンセルする
-                };
-                */
-                
-            
+            /*
+            //閉じるボタンが押された時のイベント処理を登録
+            _win.Closing += (s, e) =>
+            {
+                System.Windows.Application.Current.Shutdown();
+                System.Windows.Forms.Application.Restart();
+                //_win.Hide();        //非表示にする
+                //e.Cancel = true;    //閉じるをキャンセルする
+            };
+            */
+            Debug.Print("FINISHED SHOWING MAIN WINDOW...");
+            isCreatingMainWindow = false;
+
+
         }
 
 
@@ -192,7 +197,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             menu.Items.Add(Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.Settings, null, (s, e) => { ShowMainWindow(); });
             menu.Items.Add(Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.Exit, null, (s, e) => {
                 shutdown = true;
-                Shutdown();
+                System.Windows.Application.Current.Shutdown();
             });
             return menu;
         }
