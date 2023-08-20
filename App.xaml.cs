@@ -13,6 +13,7 @@ using System.Net.NetworkInformation;
 using System.Xml.Serialization;
 using System.Reflection;
 using System.Buffers.Text;
+using System.Windows.Controls;
 
 namespace Interlocking_BatterySaver_by_Wi_Fi_
 {
@@ -23,7 +24,6 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
     {
 
         //常駐終了時に開放するために保存しておく
-        private System.Windows.Forms.ContextMenuStrip _menu;
         private System.Windows.Forms.NotifyIcon _notifyIcon;
 
 
@@ -49,6 +49,52 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             //継承元のOnStartupを呼び出す
             base.OnStartup(e);
 
+
+            Deactivated += ((obj, ev) => {
+                if (!shutdown && !isCreatingMainWindow)
+                {
+                    System.Windows.Forms.Application.Restart();
+                    System.Windows.Application.Current.Shutdown();
+                }
+            });
+
+
+            //アイコンの取得
+            var icon = GetResourceStream(new Uri("leaf_20579.ico", UriKind.Relative)).Stream;
+            var waiting_menu = new System.Windows.Forms.ContextMenuStrip();
+            waiting_menu.Items.Add(Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.Loading, null, null);
+            //通知領域にアイコンを表示
+            _notifyIcon = new System.Windows.Forms.NotifyIcon
+            {
+                Visible = true,
+                Icon = new System.Drawing.Icon(icon),
+                Text = "Interlocking BatterySaver by Wi-Fi"
+            };
+
+            //アイコンがクリックされたら設定画面を表示
+            _notifyIcon.MouseClick += (s, er) =>
+            {
+                if (er.Button == System.Windows.Forms.MouseButtons.Left)
+                {
+                    //コンテキストメニューを表示する座標
+                    System.Drawing.Point p = System.Windows.Forms.Cursor.Position;
+
+                    //指定した画面上の座標位置にコンテキストメニューを表示する
+                    if (_notifyIcon != null && _notifyIcon.ContextMenuStrip != null)
+                    {
+                        _notifyIcon.ContextMenuStrip.Show(p);
+                    }
+
+                    // ShowMainWindow();
+                }
+            };
+
+
+
+            
+
+
+
             var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             var filePath = System.IO.Path.Combine(roamingDirectory, "IBSbW\\data.txt");
 
@@ -70,56 +116,22 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
             RegisterStartup();
 
-            //アイコンの取得
-            var icon = GetResourceStream(new Uri("leaf_20579.ico", UriKind.Relative)).Stream;
-
-            // コンテキストメニューを作成
-            _menu = CreateMenu();
-
-            //通知領域にアイコンを表示
-            _notifyIcon = new System.Windows.Forms.NotifyIcon
-            {
-                Visible = true,
-                Icon = new System.Drawing.Icon(icon),
-                Text = "Interlocking BatterySaver by Wi-Fi",
-                ContextMenuStrip = _menu
-            };
+            
 
 
-
-
+            
 
             
 
                 
             NetworkChange.NetworkAddressChanged += (s, e) => NetworkChange_NetworkAvailabilityChanged(s, e) ;
 
-            //アイコンがクリックされたら設定画面を表示
-            _notifyIcon.MouseClick += (s, er) =>
-            {
-                if (er.Button == System.Windows.Forms.MouseButtons.Left)
-                {
-                    //コンテキストメニューを表示する座標
-                    System.Drawing.Point p = System.Windows.Forms.Cursor.Position;
-
-                    //指定した画面上の座標位置にコンテキストメニューを表示する
-                    if(_notifyIcon != null) _notifyIcon.ContextMenuStrip.Show(p);
-
-                    // ShowMainWindow();
-                }
-            };
-
-
-
-            Deactivated += ((obj, ev) => {
-                if (!shutdown && !isCreatingMainWindow)
-                {
-                    System.Windows.Forms.Application.Restart();
-                    System.Windows.Application.Current.Shutdown();
-                }
-            });
+            
 
             ExecuteMainFunc();
+
+            //通知領域にアイコンを表示
+            _notifyIcon.ContextMenuStrip = CreateMenu();
         }
 
         /// <summary>

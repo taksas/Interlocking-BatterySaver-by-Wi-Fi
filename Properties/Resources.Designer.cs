@@ -169,6 +169,15 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
+        ///   Loading... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Loading {
+            get {
+                return ResourceManager.GetString("Loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   None に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string None {

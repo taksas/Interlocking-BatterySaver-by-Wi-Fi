@@ -150,6 +150,9 @@
   <data name="Invalid_AP_name_is_set___" xml:space="preserve">
     <value>正しくないAP名が指定されています。再確認してください。</value>
   </data>
+  <data name="Loading" xml:space="preserve">
+    <value>読み込み中...</value>
+  </data>
   <data name="None" xml:space="preserve">
     <value>なし</value>
   </data>
