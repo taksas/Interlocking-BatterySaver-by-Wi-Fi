@@ -179,9 +179,9 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 _win.Left = SystemParameters.WorkArea.Width - _win.Width;
 
 
-
-                //Windowsを表示する
-                _win.Show();
+            isCreatingMainWindow = false;
+            //Windowsを表示する
+            _win.Show();
 
             /*
             //閉じるボタンが押された時のイベント処理を登録
@@ -194,7 +194,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             };
             */
             Debug.Print("FINISHED SHOWING MAIN WINDOW...");
-            isCreatingMainWindow = false;
+            
 
 
         }

@@ -169,7 +169,7 @@
     <value>The initial startup process will begin. After pressing "OK," click on the icon in the lower right status bar to begin the setup.</value>
   </data>
   <data name="SYSTEM_APP_TITLE" xml:space="preserve">
-    <value>Interlocking BatterySaver by Wi-Fi    Ver1.2.1</value>
+    <value>Interlocking BatterySaver by Wi-Fi    Ver1.2.2</value>
   </data>
   <data name="Turn_battery_saver_on_AM_at__" xml:space="preserve">
     <value>Turn battery saver on automatically at :</value>

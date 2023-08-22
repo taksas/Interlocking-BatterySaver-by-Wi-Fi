@@ -12,6 +12,7 @@
     mc:Ignorable="d"
     ResizeMode="NoResize"
     WindowStyle="ToolWindow"
+    Topmost="True"
     xmlns:prop1 ="clr-namespace:Interlocking_BatterySaver_by_Wi_Fi_.Properties"
     Title="{x:Static prop1:Resources.AddWifiAPDialogTitleName}">
     <Grid  Margin="12">

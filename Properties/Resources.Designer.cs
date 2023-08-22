@@ -223,7 +223,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
-        ///   Interlocking BatterySaver by Wi-Fi    Ver1.2.1 に類似しているローカライズされた文字列を検索します。
+        ///   Interlocking BatterySaver by Wi-Fi    Ver1.2.2 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string SYSTEM_APP_TITLE {
             get {
