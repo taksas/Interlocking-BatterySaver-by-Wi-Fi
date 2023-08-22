@@ -14,6 +14,7 @@ using System.Xml.Serialization;
 using System.Reflection;
 using System.Buffers.Text;
 using System.Windows.Controls;
+using System.Threading;
 
 namespace Interlocking_BatterySaver_by_Wi_Fi_
 {
@@ -22,6 +23,10 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
     /// </summary>
     public partial class App : System.Windows.Application
     {
+
+        
+
+
 
         //常駐終了時に開放するために保存しておく
         private System.Windows.Forms.NotifyIcon _notifyIcon;
@@ -50,19 +55,14 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             base.OnStartup(e);
 
 
-            Deactivated += ((obj, ev) => {
-                if (!shutdown && !isCreatingMainWindow)
-                {
-                    System.Windows.Forms.Application.Restart();
-                    System.Windows.Application.Current.Shutdown();
-                }
-            });
+            
 
 
             //アイコンの取得
             var icon = GetResourceStream(new Uri("leaf_20579.ico", UriKind.Relative)).Stream;
-            var waiting_menu = new System.Windows.Forms.ContextMenuStrip();
-            waiting_menu.Items.Add(Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.Loading, null, null);
+
+
+
             //通知領域にアイコンを表示
             _notifyIcon = new System.Windows.Forms.NotifyIcon
             {
@@ -74,19 +74,9 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             //アイコンがクリックされたら設定画面を表示
             _notifyIcon.MouseClick += (s, er) =>
             {
-                if (er.Button == System.Windows.Forms.MouseButtons.Left)
-                {
-                    //コンテキストメニューを表示する座標
-                    System.Drawing.Point p = System.Windows.Forms.Cursor.Position;
-
-                    //指定した画面上の座標位置にコンテキストメニューを表示する
-                    if (_notifyIcon != null && _notifyIcon.ContextMenuStrip != null)
-                    {
-                        _notifyIcon.ContextMenuStrip.Show(p);
-                    }
-
-                    // ShowMainWindow();
-                }
+                
+                    ShowMainWindow();
+                
             };
 
 
@@ -130,8 +120,14 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
             ExecuteMainFunc();
 
-            //通知領域にアイコンを表示
-            _notifyIcon.ContextMenuStrip = CreateMenu();
+            Deactivated += ((obj, ev) => {
+                if (!shutdown && !isCreatingMainWindow)
+                {
+                    System.Windows.Forms.Application.Restart();
+                    System.Windows.Application.Current.Shutdown();
+                }
+            });
+
         }
 
         /// <summary>
@@ -146,6 +142,11 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             base.OnExit(e);
         }
 
+        public void AppExitFunc()
+        {
+            shutdown = true;
+            System.Windows.Application.Current.Shutdown();
+        }
 
 
 
@@ -157,7 +158,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         {
             isCreatingMainWindow = true;
             Debug.Print("SHOWING MAIN WINDOW...");
-                MainWindow _win = new MainWindow();
+                MainWindow _win = new MainWindow(this);
 
 
                 /*
@@ -198,21 +199,6 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         }
 
-
-        /// <summary>
-        /// コンテキストメニューの表示
-        /// </summary>
-        /// <returns></returns>
-        private ContextMenuStrip CreateMenu()
-        {
-            var menu = new System.Windows.Forms.ContextMenuStrip();
-            menu.Items.Add(Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.Settings, null, (s, e) => { ShowMainWindow(); });
-            menu.Items.Add(Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.Exit, null, (s, e) => {
-                shutdown = true;
-                System.Windows.Application.Current.Shutdown();
-            });
-            return menu;
-        }
 
 
         //ネットワーク接続状況が変化した

@@ -31,7 +31,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
     public partial class MainWindow : System.Windows.Window
     {
         public Dictionary<string, string> PercentageDic { get; set; }
-
+        App app_origin;
 
         public class AP
         {
@@ -47,8 +47,9 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         
 
 
-        public MainWindow()
+        public MainWindow(App app_origin_imported)
         {
+            app_origin = app_origin_imported;
             UpdateWaiting[0] = "INIT";
 
             PercentageDic = new Dictionary<string, string>()
@@ -70,9 +71,14 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             RescanAPList();
             DataContext = this;
 
+            
+
         }
 
-
+        private void ExitApp_Button_Click(object sender, RoutedEventArgs e)
+        {
+            app_origin.AppExitFunc();
+        }
 
 
         private void AddAP_Button_Click(object sender, RoutedEventArgs e)
@@ -180,7 +186,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         }
 
 
-        private void RescanAPList()
+        public void RescanAPList()
         {
             APList.Items.Clear();
 

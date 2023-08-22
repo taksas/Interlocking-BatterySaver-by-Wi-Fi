@@ -79,11 +79,20 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
-        ///   Add AP に類似しているローカライズされた文字列を検索します。
+        ///   Add Wi-Fi Access Point に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Add_AP {
             get {
                 return ResourceManager.GetString("Add_AP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Add Wi-Fi Access Point (AP) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AddWifiAPDialogTitleName {
+            get {
+                return ResourceManager.GetString("AddWifiAPDialogTitleName", resourceCulture);
             }
         }
         
@@ -151,6 +160,15 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
+        ///   Terminate App に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ExitApp {
+            get {
+                return ResourceManager.GetString("ExitApp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Help に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Help {
@@ -201,6 +219,15 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         public static string StartupReg {
             get {
                 return ResourceManager.GetString("StartupReg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Interlocking BatterySaver by Wi-Fi    Ver1.2.1 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SYSTEM_APP_TITLE {
+            get {
+                return ResourceManager.GetString("SYSTEM_APP_TITLE", resourceCulture);
             }
         }
         

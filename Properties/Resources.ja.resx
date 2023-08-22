@@ -120,8 +120,11 @@
   <data name="Add" xml:space="preserve">
     <value>追加</value>
   </data>
+  <data name="AddWifiAPDialogTitleName" xml:space="preserve">
+    <value>Wi-Fiアクセスポイント (AP) を追加</value>
+  </data>
   <data name="Add_AP" xml:space="preserve">
-    <value>APを追加</value>
+    <value>Wi-Fiアクセスポイントを追加</value>
   </data>
   <data name="Always" xml:space="preserve">
     <value>常時</value>
@@ -143,6 +146,9 @@
   </data>
   <data name="Exit" xml:space="preserve">
     <value>終了</value>
+  </data>
+  <data name="ExitApp" xml:space="preserve">
+    <value>監視を終了</value>
   </data>
   <data name="Help" xml:space="preserve">
     <value>ヘルプ</value>

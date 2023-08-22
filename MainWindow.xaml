@@ -7,23 +7,25 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.modernwpf.com/2019"
     xmlns:prop ="clr-namespace:Interlocking_BatterySaver_by_Wi_Fi_.Properties"
-    Title="Interlocking BatterySaver by Wi-Fi    Ver1.1.20"
+    
     Width="350"
-    Height="400"
+    Height="450"
     ui:WindowHelper.UseModernWindowStyle="True" 
     mc:Ignorable="d"
     ResizeMode="NoResize"
     WindowStyle="ToolWindow"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    xmlns:prop1 ="clr-namespace:Interlocking_BatterySaver_by_Wi_Fi_.Properties">
+    xmlns:prop1 ="clr-namespace:Interlocking_BatterySaver_by_Wi_Fi_.Properties"
+    Title="{x:Static prop1:Resources.SYSTEM_APP_TITLE}">
 
 
 
 
     <Grid Margin="12,12,12,12">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.7*"/>
             <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.4*"/>
             <RowDefinition Height="0.4*"/>
         </Grid.RowDefinitions>
 
@@ -60,7 +62,7 @@
                                     <ComboBox Name="comboBox" Width="90" ItemsSource="{Binding Battery}" DisplayMemberPath="Value" SelectedIndex="{Binding SelectedIndex}"  SelectionChanged="comboBox_SelectionChanged">
                                     </ComboBox>
                                 </DataTemplate>
-                                
+
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                     </GridView>
@@ -70,13 +72,24 @@
 
         <Grid Grid.Row="2" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.4*"/>
+                <ColumnDefinition Width="0.65*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0"  Name="DeleteB" Content="{x:Static prop1:Resources.Delete}" Click="Delete_Button_Click"  Background ="Red" VerticalAlignment="Stretch" IsEnabled="False" />
-            <Button Grid.Column="0" Name="UpdateB" Content="{x:Static prop1:Resources.Update}" Click="Update_Button_Click" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Stretch" IsEnabled="False"  />
-            <Button Grid.Column="1" Content="{x:Static prop1:Resources.Help}" Click="Help_Button_Click" HorizontalAlignment="Left" VerticalAlignment="Stretch" />
+            <Grid Grid.Column="0" HorizontalAlignment="Left">
+                <Button x:Name="DeleteB" Content="{x:Static prop1:Resources.Delete}" Click="Delete_Button_Click"  Background ="Red" VerticalAlignment="Stretch" IsEnabled="False" />
+                <Button x:Name="UpdateB" Content="{x:Static prop1:Resources.Update}" Click="Update_Button_Click" Style="{StaticResource AccentButtonStyle}" VerticalAlignment="Stretch" IsEnabled="False"  Margin="60,0,0,0" />
+            </Grid>
             <Button Grid.Column="1" Content="{x:Static prop1:Resources.Add_AP}" Click="AddAP_Button_Click" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
+        </Grid>
+
+        <Grid Grid.Row="3" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="{x:Static prop1:Resources.ExitApp}" Click="ExitApp_Button_Click"  Background ="Red" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Left" VerticalAlignment="Stretch" />
+            <Button Grid.Column="1" Content="{x:Static prop1:Resources.Help}" Click="Help_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
+
         </Grid>
     </Grid>
 
