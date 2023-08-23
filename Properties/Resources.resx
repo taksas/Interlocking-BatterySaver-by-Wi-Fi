@@ -169,7 +169,7 @@
     <value>The initial startup process will begin. After pressing "OK," click on the icon in the lower right status bar to begin the setup.</value>
   </data>
   <data name="SYSTEM_APP_TITLE" xml:space="preserve">
-    <value>Interlocking BatterySaver by Wi-Fi    Ver1.2.5</value>
+    <value>Interlocking BatterySaver by Wi-Fi    Ver1.2.7</value>
   </data>
   <data name="TOOLTIP_AddAccessPoint" xml:space="preserve">
     <value>Add a new access point to the list.</value>
@@ -195,6 +195,9 @@
   <data name="TOOLTIP_ListUpdate" xml:space="preserve">
     <value>Change the threshold of the power saving mode rule to the selected value.</value>
   </data>
+  <data name="Triggered_Wifi_Title" xml:space="preserve">
+    <value>Currently applied settings</value>
+  </data>
   <data name="Turn_battery_saver_on_AM_at__" xml:space="preserve">
     <value>Turn battery saver on automatically at :</value>
   </data>
@@ -202,10 +205,10 @@
     <value>Apply</value>
   </data>
   <data name="When_connected_to_other_WiFi" xml:space="preserve">
-    <value>When connected to other Wi-Fi :</value>
+    <value>When connected to other Wi-Fi</value>
   </data>
   <data name="When_not_connected_to_WiFi" xml:space="preserve">
-    <value>When not connected to Wi-Fi :</value>
+    <value>When not connected to Wi-Fi</value>
   </data>
   <data name="Wi-Fi_AP_" xml:space="preserve">
     <value>Wi-Fi AP :</value>

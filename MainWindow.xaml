@@ -32,18 +32,11 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Margin="0,0,0,0" >
-            <Border CornerRadius="7" Background="{DynamicResource SystemControlBackgroundBaseLowBrush}">
+            <Border CornerRadius="7" Padding="10,6,10,10" Background="{DynamicResource SystemControlBackgroundBaseLowBrush}">
                 <StackPanel>
-                    <RadioButton
-                            x:Name="RunningRB"
-                            GroupName="ProgressState"
-                            Content="Running"
-                            IsChecked="True" />
-                    <RadioButton
-                            x:Name="PausedRB"
-                            GroupName="ProgressState"
-                            Content="Paused" />
-
+                    <TextBlock Text="{x:Static prop1:Resources.Triggered_Wifi_Title}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="TriggeredInfo_textBlock" Text="Loading..." VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="17"/>
+                    <TextBlock x:Name="TriggeredInfo_Percentage_textBlock" Text="Loading..." VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="17"/>
                 </StackPanel>
             </Border>
         </Grid>

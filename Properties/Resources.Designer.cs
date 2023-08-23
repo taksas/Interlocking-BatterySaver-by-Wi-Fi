@@ -223,7 +223,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
-        ///   Interlocking BatterySaver by Wi-Fi    Ver1.2.4 に類似しているローカライズされた文字列を検索します。
+        ///   Interlocking BatterySaver by Wi-Fi    Ver1.2.7 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string SYSTEM_APP_TITLE {
             get {
@@ -304,6 +304,15 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
+        ///   Currently applied settings に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Triggered_Wifi_Title {
+            get {
+                return ResourceManager.GetString("Triggered_Wifi_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Turn battery saver on automatically at : に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Turn_battery_saver_on_AM_at__ {
@@ -322,7 +331,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
-        ///   When connected to other Wi-Fi : に類似しているローカライズされた文字列を検索します。
+        ///   When connected to other Wi-Fi に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string When_connected_to_other_WiFi {
             get {
@@ -331,7 +340,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
-        ///   When not connected to Wi-Fi : に類似しているローカライズされた文字列を検索します。
+        ///   When not connected to Wi-Fi に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string When_not_connected_to_WiFi {
             get {

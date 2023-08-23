@@ -42,7 +42,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
 
 
-
+        MainWindow _win = null;
 
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         {
             isCreatingMainWindow = true;
             Debug.Print("SHOWING MAIN WINDOW...");
-                MainWindow _win = new MainWindow(this);
+                _win = new MainWindow(this);
 
 
                 /*
@@ -182,7 +182,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             isCreatingMainWindow = false;
             //Windowsを表示する
             _win.Show();
-
+            ExecuteMainFunc();
             /*
             //閉じるボタンが押された時のイベント処理を登録
             _win.Closing += (s, e) =>
@@ -221,7 +221,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
 
 
-        private void ExecuteMainFunc()
+        public void ExecuteMainFunc()
         {
             System.Diagnostics.Process p = new System.Diagnostics.Process();
             //ComSpec(cmd.exe)のパスを取得して、FileNameプロパティに指定
@@ -295,10 +295,10 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                     //起動
                     p.Start();
                     Debug.Print("WiFiMode");
+                    TriggeredInfoChange(temp1, temp2);
                     otherwifi = false;
                     break;
                 }
-
             }
             if (otherwifi) OtherWifiMode();
             //閉じる
@@ -310,7 +310,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         private void NoWifiMode() {
             Debug.Print("NoWiFiMode");
-
+            TriggeredInfoChange(Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.When_not_connected_to_WiFi, Percentage[Interlocking_BatterySaver_by_Wi_Fi_.Properties.Settings.Default.NotConnected]);
             // Process オブジェクトを生成
             System.Diagnostics.Process p = new System.Diagnostics.Process();
             //ComSpec(cmd.exe)のパスを取得して、FileNameプロパティに指定
@@ -324,7 +324,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         }
         private void OtherWifiMode() {
             Debug.Print("OtherWiFiMode");
-
+            TriggeredInfoChange(Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.When_connected_to_other_WiFi, Percentage[Interlocking_BatterySaver_by_Wi_Fi_.Properties.Settings.Default.OtherConnected]);
             // Process オブジェクトを生成
             System.Diagnostics.Process p = new System.Diagnostics.Process();
             //ComSpec(cmd.exe)のパスを取得して、FileNameプロパティに指定
@@ -379,6 +379,16 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             
 
 
+        }
+
+
+        private void TriggeredInfoChange(string AP, string PercentageStr)
+        { 
+            if (_win == null) return;
+            _win.Dispatcher.Invoke(() => {
+                _win.TriggeredInfo_textBlock.Text = AP;
+                _win.TriggeredInfo_Percentage_textBlock.Text = _win.PercentageDic[PercentageStr];
+            } );
         }
     }
 }

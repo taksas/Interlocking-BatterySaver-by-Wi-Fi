@@ -31,7 +31,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
     public partial class MainWindow : System.Windows.Window
     {
         public Dictionary<string, string> PercentageDic { get; set; }
-        App app_origin;
+        App app_origin = null;
 
         public class AP
         {
@@ -188,6 +188,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         public void RescanAPList()
         {
+            if(app_origin != null)  app_origin.ExecuteMainFunc();
             APList.Items.Clear();
 
             UpdateWaiting = new string[1];
@@ -296,6 +297,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             {
                 Properties.Settings.Default.NotConnected = senderComboBox.SelectedIndex;
                 Properties.Settings.Default.Save();
+                if (app_origin != null) app_origin.ExecuteMainFunc();
             }
             }
 
@@ -306,6 +308,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             {
                 Properties.Settings.Default.OtherConnected = senderComboBox.SelectedIndex;
                 Properties.Settings.Default.Save();
+                if (app_origin != null) app_origin.ExecuteMainFunc();
             }
 
             }
