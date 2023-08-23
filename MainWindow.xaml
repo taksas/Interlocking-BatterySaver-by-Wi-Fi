@@ -9,7 +9,7 @@
     xmlns:prop ="clr-namespace:Interlocking_BatterySaver_by_Wi_Fi_.Properties"
     
     Width="350"
-    Height="450"
+    Height="530"
     ui:WindowHelper.UseModernWindowStyle="True" 
     mc:Ignorable="d"
     ResizeMode="NoResize"
@@ -22,15 +22,32 @@
 
 
 
-    <Grid Margin="12,12,12,12">
+    <Grid Margin="12,6,12,12">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="0.8*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="0.4*"/>
             <RowDefinition Height="0.4*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Margin="0,0,0,10" >
+        <Grid Grid.Row="0" Margin="0,0,0,0" >
+            <Border CornerRadius="7" Background="{DynamicResource SystemControlBackgroundBaseLowBrush}">
+                <StackPanel>
+                    <RadioButton
+                            x:Name="RunningRB"
+                            GroupName="ProgressState"
+                            Content="Running"
+                            IsChecked="True" />
+                    <RadioButton
+                            x:Name="PausedRB"
+                            GroupName="ProgressState"
+                            Content="Paused" />
+
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="1" Margin="0,5,0,10" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
@@ -41,7 +58,7 @@
             <ComboBox Grid.Row="1" Name="cmb2" IsEditable="False"  Width="90" ItemsSource="{Binding PercentageDic}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedIndex="{Binding Path=OtherConnected, Source={x:Static prop:Settings.Default}}" SelectionChanged="cmb2_SelectionChanged" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" />
         </Grid>
 
-        <Grid Grid.Row="1" >
+        <Grid Grid.Row="2" >
             <ListView Name="APList" SelectionMode="Single" VerticalAlignment="Top" SelectionChanged="APList_SelectionChanged"  >
                 <ListView.View>
                     <GridView>
@@ -71,7 +88,7 @@
             </ListView>
         </Grid>
 
-        <Grid Grid.Row="2" VerticalAlignment="Center">
+        <Grid Grid.Row="3" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.65*"/>
                 <ColumnDefinition Width="1*"/>
@@ -83,7 +100,7 @@
             <Button Grid.Column="1" Content="{x:Static prop1:Resources.Add_AP}" ToolTip="{x:Static prop1:Resources.TOOLTIP_AddAccessPoint}" ToolTipService.InitialShowDelay="300" Click="AddAP_Button_Click" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
         </Grid>
 
-        <Grid Grid.Row="3" VerticalAlignment="Center">
+        <Grid Grid.Row="4" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
