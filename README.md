@@ -14,6 +14,8 @@
 
 <a href='https://apps.microsoft.com/store/detail/interlocking-batterysaver-by-wifi/9NZV3DKCLW2P?launch=true&mode=mini'><img width="200px" alt='Microsoftから入手' src='https://get.microsoft.com/images/ja-JP%20dark.svg'/></a>
 
+**詳しい使い方と最新情報は[こちら](https://taksas.net/interlocking-batterysaver-by-wi-fi)**
+
 ![](https://taksas.net/wp-content/uploads/2023/04/image-11.png)
 
 ![](https://taksas.net/wp-content/uploads/2023/04/image-11.png)
