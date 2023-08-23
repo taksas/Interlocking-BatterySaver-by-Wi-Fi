@@ -169,13 +169,37 @@
     <value>The initial startup process will begin. After pressing "OK," click on the icon in the lower right status bar to begin the setup.</value>
   </data>
   <data name="SYSTEM_APP_TITLE" xml:space="preserve">
-    <value>Interlocking BatterySaver by Wi-Fi    Ver1.2.2</value>
+    <value>Interlocking BatterySaver by Wi-Fi    Ver1.2.4</value>
+  </data>
+  <data name="TOOLTIP_AddAccessPoint" xml:space="preserve">
+    <value>Add a new access point to the list.</value>
+  </data>
+  <data name="TOOLTIP_AddAP_Add" xml:space="preserve">
+    <value>Add access points with the above conditions.</value>
+  </data>
+  <data name="TOOLTIP_AddAP_Cancel" xml:space="preserve">
+    <value>Cancels the addition of the access point.</value>
+  </data>
+  <data name="TOOLTIP_AddAP_CurrentAP" xml:space="preserve">
+    <value>Retrieves the current access point from the system; may take up to 5 seconds.</value>
+  </data>
+  <data name="TOOLTIP_AppExit" xml:space="preserve">
+    <value>Exit the application and deactivate the resident status. If you want to keep the application resident without closing it, click the cross mark in the upper right corner.</value>
+  </data>
+  <data name="TOOLTIP_HelpWebSite" xml:space="preserve">
+    <value>The help site will open in your browser.</value>
+  </data>
+  <data name="TOOLTIP_ListDelete" xml:space="preserve">
+    <value>Deletes the selected battery saver rule.</value>
+  </data>
+  <data name="TOOLTIP_ListUpdate" xml:space="preserve">
+    <value>Change the threshold of the power saving mode rule to the selected value.</value>
   </data>
   <data name="Turn_battery_saver_on_AM_at__" xml:space="preserve">
     <value>Turn battery saver on automatically at :</value>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>Update</value>
+    <value>Apply</value>
   </data>
   <data name="When_connected_to_other_WiFi" xml:space="preserve">
     <value>When connected to other Wi-Fi :</value>

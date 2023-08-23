@@ -168,11 +168,35 @@
   <data name="StartupReg" xml:space="preserve">
     <value>初回起動処理を開始します。「OK」を押した後、右下のステータスバーにあるアイコンをクリックして設定を始めてください。</value>
   </data>
+  <data name="TOOLTIP_AddAccessPoint" xml:space="preserve">
+    <value>アクセスポイントを新しく一覧に追加します。</value>
+  </data>
+  <data name="TOOLTIP_AddAP_Add" xml:space="preserve">
+    <value>上の条件でアクセスポイントを追加します。</value>
+  </data>
+  <data name="TOOLTIP_AddAP_Cancel" xml:space="preserve">
+    <value>アクセスポイントの追加をキャンセルします。</value>
+  </data>
+  <data name="TOOLTIP_AddAP_CurrentAP" xml:space="preserve">
+    <value>現在のアクセスポイントをシステムから取得します。5秒ほどかかる場合があります。</value>
+  </data>
+  <data name="TOOLTIP_AppExit" xml:space="preserve">
+    <value>アプリを終了し常駐を解除します。アプリを終了させず、常駐させたい場合は右上のバツマークをクリックしてください。</value>
+  </data>
+  <data name="TOOLTIP_HelpWebSite" xml:space="preserve">
+    <value>ヘルプサイトがブラウザで開きます。</value>
+  </data>
+  <data name="TOOLTIP_ListDelete" xml:space="preserve">
+    <value>選択した省電力モードルールを削除します。</value>
+  </data>
+  <data name="TOOLTIP_ListUpdate" xml:space="preserve">
+    <value>省電力モードルールのしきい値を、選択した値に変更します。</value>
+  </data>
   <data name="Turn_battery_saver_on_AM_at__" xml:space="preserve">
     <value>次の値になったら自動で省電力モードにする :</value>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>更新</value>
+    <value>適用</value>
   </data>
   <data name="When_connected_to_other_WiFi" xml:space="preserve">
     <value>他のWi-Fiに接続されているとき :</value>

@@ -77,10 +77,10 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" HorizontalAlignment="Left">
-                <Button x:Name="DeleteB" Content="{x:Static prop1:Resources.Delete}" Click="Delete_Button_Click"  Background ="Red" VerticalAlignment="Stretch" IsEnabled="False" />
-                <Button x:Name="UpdateB" Content="{x:Static prop1:Resources.Update}" Click="Update_Button_Click" Style="{StaticResource AccentButtonStyle}" VerticalAlignment="Stretch" IsEnabled="False"  Margin="60,0,0,0" />
+                <Button x:Name="DeleteB" Content="{x:Static prop1:Resources.Delete}" ToolTip="{x:Static prop1:Resources.TOOLTIP_ListDelete}" ToolTipService.InitialShowDelay="300" Click="Delete_Button_Click"  Background ="Red" VerticalAlignment="Stretch" IsEnabled="False" />
+                <Button x:Name="UpdateB" Content="{x:Static prop1:Resources.Update}" ToolTip="{x:Static prop1:Resources.TOOLTIP_ListUpdate}" ToolTipService.InitialShowDelay="300" Click="Update_Button_Click" Style="{StaticResource AccentButtonStyle}" VerticalAlignment="Stretch" IsEnabled="False"  Margin="60,0,0,0" />
             </Grid>
-            <Button Grid.Column="1" Content="{x:Static prop1:Resources.Add_AP}" Click="AddAP_Button_Click" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
+            <Button Grid.Column="1" Content="{x:Static prop1:Resources.Add_AP}" ToolTip="{x:Static prop1:Resources.TOOLTIP_AddAccessPoint}" ToolTipService.InitialShowDelay="300" Click="AddAP_Button_Click" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
         </Grid>
 
         <Grid Grid.Row="3" VerticalAlignment="Center">
@@ -88,8 +88,8 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="{x:Static prop1:Resources.ExitApp}" Click="ExitApp_Button_Click"  Background ="Red" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Left" VerticalAlignment="Stretch" />
-            <Button Grid.Column="1" Content="{x:Static prop1:Resources.Help}" Click="Help_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
+            <Button Grid.Column="0" Content="{x:Static prop1:Resources.ExitApp}" ToolTip="{x:Static prop1:Resources.TOOLTIP_AppExit}" ToolTipService.InitialShowDelay="300" Click="ExitApp_Button_Click"  Background ="Red" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Left" VerticalAlignment="Stretch" />
+            <Button Grid.Column="1" Content="{x:Static prop1:Resources.Help}" ToolTip="{x:Static prop1:Resources.TOOLTIP_HelpWebSite}" ToolTipService.InitialShowDelay="300" Click="Help_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
 
         </Grid>
     </Grid>

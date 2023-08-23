@@ -223,11 +223,83 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
-        ///   Interlocking BatterySaver by Wi-Fi    Ver1.2.2 に類似しているローカライズされた文字列を検索します。
+        ///   Interlocking BatterySaver by Wi-Fi    Ver1.2.4 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string SYSTEM_APP_TITLE {
             get {
                 return ResourceManager.GetString("SYSTEM_APP_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Add a new access point to the list. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TOOLTIP_AddAccessPoint {
+            get {
+                return ResourceManager.GetString("TOOLTIP_AddAccessPoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Add access points with the above conditions. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TOOLTIP_AddAP_Add {
+            get {
+                return ResourceManager.GetString("TOOLTIP_AddAP_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cancels the addition of the access point. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TOOLTIP_AddAP_Cancel {
+            get {
+                return ResourceManager.GetString("TOOLTIP_AddAP_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Retrieves the current access point from the system; may take up to 5 seconds. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TOOLTIP_AddAP_CurrentAP {
+            get {
+                return ResourceManager.GetString("TOOLTIP_AddAP_CurrentAP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Exit the application and deactivate the resident status. If you want to keep the application resident without closing it, click the cross mark in the upper right corner. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TOOLTIP_AppExit {
+            get {
+                return ResourceManager.GetString("TOOLTIP_AppExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   The help site will open in your browser. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TOOLTIP_HelpWebSite {
+            get {
+                return ResourceManager.GetString("TOOLTIP_HelpWebSite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Deletes the selected battery saver rule. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TOOLTIP_ListDelete {
+            get {
+                return ResourceManager.GetString("TOOLTIP_ListDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Change the threshold of the power saving mode rule to the selected value. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TOOLTIP_ListUpdate {
+            get {
+                return ResourceManager.GetString("TOOLTIP_ListUpdate", resourceCulture);
             }
         }
         
@@ -241,7 +313,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
-        ///   Update に類似しているローカライズされた文字列を検索します。
+        ///   Apply に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Update {
             get {
