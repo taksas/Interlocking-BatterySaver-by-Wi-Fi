@@ -5,17 +5,17 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Interlocking_BatterySaver_by_Wi_Fi_"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ui="http://schemas.modernwpf.com/2019"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     xmlns:prop ="clr-namespace:Interlocking_BatterySaver_by_Wi_Fi_.Properties"
-    
     Width="350"
     Height="530"
-    ui:WindowHelper.UseModernWindowStyle="True" 
     mc:Ignorable="d"
     ResizeMode="NoResize"
     WindowStyle="ToolWindow"
     Topmost="True"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    Background="{DynamicResource ApplicationBackgroundBrush}"
+    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     xmlns:prop1 ="clr-namespace:Interlocking_BatterySaver_by_Wi_Fi_.Properties"
     Title="{x:Static prop1:Resources.SYSTEM_APP_TITLE}">
 
@@ -32,11 +32,11 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Margin="0,0,0,0" >
-            <Border CornerRadius="7" Padding="10,6,10,10" Background="{DynamicResource SystemControlBackgroundBaseLowBrush}">
+            <Border CornerRadius="7" Padding="10,6,10,10" Background="{DynamicResource SystemFillColorNeutralBackgroundBrush }">
                 <StackPanel>
-                    <TextBlock Text="{x:Static prop1:Resources.Triggered_Wifi_Title}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="TriggeredInfo_textBlock" Text="Loading..." VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="17"/>
-                    <TextBlock x:Name="TriggeredInfo_Percentage_textBlock" Text="Loading..." VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="17"/>
+                    <TextBlock Text="{x:Static prop1:Resources.Triggered_Wifi_Title}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="TriggeredInfo_textBlock" Text="Loading..." Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="17"/>
+                    <TextBlock x:Name="TriggeredInfo_Percentage_textBlock" Text="Loading..." Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="17"/>
                 </StackPanel>
             </Border>
         </Grid>
@@ -45,9 +45,9 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="{x:Static prop1:Resources.When_not_connected_to_WiFi}" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="16"/>
+            <TextBlock Grid.Row="0" Text="{x:Static prop1:Resources.When_not_connected_to_WiFi}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="16"/>
             <ComboBox Grid.Row="0"  Name="cmb1" IsEditable="False"  Width="90" ItemsSource="{Binding PercentageDic}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedIndex="{Binding Path=NotConnected, Source={x:Static prop:Settings.Default}}" SelectionChanged="cmb1_SelectionChanged" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" />
-            <TextBlock Grid.Row="1" Text="{x:Static prop1:Resources.When_connected_to_other_WiFi}" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="16"/>
+            <TextBlock Grid.Row="1" Text="{x:Static prop1:Resources.When_connected_to_other_WiFi}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="16"/>
             <ComboBox Grid.Row="1" Name="cmb2" IsEditable="False"  Width="90" ItemsSource="{Binding PercentageDic}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedIndex="{Binding Path=OtherConnected, Source={x:Static prop:Settings.Default}}" SelectionChanged="cmb2_SelectionChanged" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" />
         </Grid>
 
@@ -88,9 +88,9 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" HorizontalAlignment="Left">
                 <Button x:Name="DeleteB" Content="{x:Static prop1:Resources.Delete}" ToolTip="{x:Static prop1:Resources.TOOLTIP_ListDelete}" ToolTipService.InitialShowDelay="300" Click="Delete_Button_Click"  Background ="Red" VerticalAlignment="Stretch" IsEnabled="False" />
-                <Button x:Name="UpdateB" Content="{x:Static prop1:Resources.Update}" ToolTip="{x:Static prop1:Resources.TOOLTIP_ListUpdate}" ToolTipService.InitialShowDelay="300" Click="Update_Button_Click" Style="{StaticResource AccentButtonStyle}" VerticalAlignment="Stretch" IsEnabled="False"  Margin="60,0,0,0" />
+                <ui:Button x:Name="UpdateB" Content="{x:Static prop1:Resources.Update}" ToolTip="{x:Static prop1:Resources.TOOLTIP_ListUpdate}" ToolTipService.InitialShowDelay="300" Click="Update_Button_Click" Appearance="Primary"  VerticalAlignment="Stretch" IsEnabled="False"  Margin="60,0,0,0" />
             </Grid>
-            <Button Grid.Column="1" Content="{x:Static prop1:Resources.Add_AP}" ToolTip="{x:Static prop1:Resources.TOOLTIP_AddAccessPoint}" ToolTipService.InitialShowDelay="300" Click="AddAP_Button_Click" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
+            <ui:Button Grid.Column="1" Content="{x:Static prop1:Resources.Add_AP}" ToolTip="{x:Static prop1:Resources.TOOLTIP_AddAccessPoint}" ToolTipService.InitialShowDelay="300" Click="AddAP_Button_Click" Appearance="Primary" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
         </Grid>
 
         <Grid Grid.Row="4" VerticalAlignment="Center">
@@ -98,7 +98,7 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="{x:Static prop1:Resources.ExitApp}" ToolTip="{x:Static prop1:Resources.TOOLTIP_AppExit}" ToolTipService.InitialShowDelay="300" Click="ExitApp_Button_Click"  Background ="Red" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Left" VerticalAlignment="Stretch" />
+            <ui:Button Grid.Column="0" Content="{x:Static prop1:Resources.ExitApp}" ToolTip="{x:Static prop1:Resources.TOOLTIP_AppExit}" ToolTipService.InitialShowDelay="300" Click="ExitApp_Button_Click"  Background="{DynamicResource SystemFillColorCriticalBrush    }" HorizontalAlignment="Left" VerticalAlignment="Stretch" />
             <Button Grid.Column="1" Content="{x:Static prop1:Resources.Help}" ToolTip="{x:Static prop1:Resources.TOOLTIP_HelpWebSite}" ToolTipService.InitialShowDelay="300" Click="Help_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
 
         </Grid>

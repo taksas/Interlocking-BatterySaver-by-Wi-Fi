@@ -67,7 +67,21 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 { "0", Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.None },
             };
 
+
+
             InitializeComponent();
+            Wpf.Ui.Appearance.Accent.ApplySystemAccent();
+
+            Loaded += (sender, args) =>
+            {
+                Wpf.Ui.Appearance.Watcher.Watch(
+                    this,                                  // Window class
+                    Wpf.Ui.Appearance.BackgroundType.Acrylic, // Background type
+                    true                                   // Whether to change accents automatically
+                );
+            };
+
+
             RescanAPList();
             DataContext = this;
 
@@ -311,6 +325,12 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 if (app_origin != null) app_origin.ExecuteMainFunc();
             }
 
-            }
+        }
+
+
+        
+
+
+
     }
 }

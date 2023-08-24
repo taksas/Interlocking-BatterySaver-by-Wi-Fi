@@ -104,7 +104,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             }
 
 
-            RegisterStartup();
+            
 
             
 
@@ -127,6 +127,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                     System.Windows.Application.Current.Shutdown();
                 }
             });
+
+            RegisterStartup();
 
         }
 
@@ -361,12 +363,13 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                     Debug.Print("StartUP Already Registered");
                 } else
                 {
-                    System.Windows.Forms.MessageBox.Show(
-                        Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.StartupReg,
-                        aplTitle,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                }
+                InitialRegisterWindow TempBW = new InitialRegisterWindow();
+                TempBW.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                TempBW.ShowDialog();
+
+
+            }
+
 
 
             // WSHファイル作成
@@ -390,5 +393,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 _win.TriggeredInfo_Percentage_textBlock.Text = _win.PercentageDic[PercentageStr];
             } );
         }
+
+        
     }
 }

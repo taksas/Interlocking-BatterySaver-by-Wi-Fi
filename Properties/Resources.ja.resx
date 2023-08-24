@@ -162,6 +162,9 @@
   <data name="None" xml:space="preserve">
     <value>なし</value>
   </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>設定</value>
   </data>
