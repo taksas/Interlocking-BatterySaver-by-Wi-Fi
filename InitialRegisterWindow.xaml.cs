@@ -30,7 +30,16 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             
 
             InitializeComponent();
-            
+            Wpf.Ui.Appearance.Accent.ApplySystemAccent();
+
+            Loaded += (sender, args) =>
+            {
+                Wpf.Ui.Appearance.Watcher.Watch(
+                    this,                                  // Window class
+                    Wpf.Ui.Appearance.BackgroundType.Acrylic, // Background type
+                    true                                   // Whether to change accents automatically
+                );
+            };
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
