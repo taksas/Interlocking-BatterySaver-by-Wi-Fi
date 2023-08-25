@@ -112,6 +112,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         private void AddAP_Button_Click(object sender, RoutedEventArgs e)
         {
+            APList_Controllers_Enable(false);
             new AddDialog(this).ShowDialog();
             RescanAPList();
 
@@ -121,12 +122,15 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 SymbolRegular.CheckmarkCircle24,
                 Wpf.Ui.Common.ControlAppearance.Secondary
             );
+            APList_Controllers_Enable(true);
         }
 
 
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)
         {
+            APList_Controllers_Enable(false);
+
             int id = APList.SelectedIndex;
             if (id < 0) return;
 
@@ -172,6 +176,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 Wpf.Ui.Common.ControlAppearance.Secondary
             );
 
+            APList_Controllers_Enable(true);
+
         }
 
 
@@ -200,6 +206,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         private void APList_Update_Func(string update_target)
         {
 
+            APList_Controllers_Enable(false);
+
             // 重複時ファイル書き込みしない
             string update_target_index = update_target.Substring(0, update_target.IndexOf("."));
             int update_target_value = Int32.Parse(update_target.Substring(update_target.IndexOf(".") + 1));
@@ -207,6 +215,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             {
                 if (DoINeedUpdateAPList[update_target_index] == update_target_value)
                 {
+                    APList_Controllers_Enable(true);
                     return;
                 }
                 else
@@ -217,6 +226,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             else
             {
                 DoINeedUpdateAPList.Add(update_target_index, update_target_value);
+                APList_Controllers_Enable(true);
                 return;
             }
 
@@ -264,19 +274,17 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
             RescanAPList();
             Snackbar_UpdateSuccess_Show();
-            
+            APList_Controllers_Enable(true);
         }
 
 
         public void RescanAPList()
         {
-            DeleteB.IsEnabled = false;
-            AddAP_B.IsEnabled = false;
-            APList_Blind.Visibility = Visibility.Visible;
 
+            if (APList.Height < 0) return;
             if (app_origin != null)  app_origin.ExecuteMainFunc();
             APList.Items.Clear();
-
+            
 
             Dictionary<string, string> PercentageToIndex = new Dictionary<string, string>()
             {
@@ -327,8 +335,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             sr.Close();
 
 
-            AddAP_B.IsEnabled = true;
-            APList_Blind.Visibility = Visibility.Hidden;
+            
         }
 
 
@@ -352,26 +359,6 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             return Process.Start(pi);
         }
 
-
-
-        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-
-            
-            System.Windows.Controls.ComboBox senderComboBox = (System.Windows.Controls.ComboBox)sender;
-
-
-            if ( senderComboBox != null && senderComboBox.SelectedItem != null)
-            {
-                string temp = senderComboBox.SelectedItem.ToString();
-                temp = temp.Substring(0, temp.IndexOf(",")).Substring(1);
-
-
-                APList_Update_Func(temp);
-            }
-
-        }
 
 
 
@@ -419,7 +406,33 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             );
         }
 
+        private void APList_Controllers_Enable(bool IsEnabled)
+        {
+            if(IsEnabled)
+            {
+                AddAP_B.IsEnabled = true;
+                APList_Blind.Visibility = Visibility.Hidden;
+            } else
+            {
+                DeleteB.IsEnabled = false;
+                AddAP_B.IsEnabled = false;
+                //APList_Blind.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void comboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            System.Windows.Controls.ComboBox senderComboBox = (System.Windows.Controls.ComboBox)sender;
 
 
+            if (senderComboBox != null && senderComboBox.SelectedItem != null)
+            {
+                string temp = senderComboBox.SelectedItem.ToString();
+                temp = temp.Substring(0, temp.IndexOf(",")).Substring(1);
+
+
+                APList_Update_Func(temp);
+            }
+        }
     }
 }

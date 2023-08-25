@@ -117,7 +117,7 @@
                                                 <ColumnDefinition Width="0.35*"/>
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0" Text="{Binding AP_Name}" FontSize="16" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="6,0,0,3" />
-                                            <ComboBox Grid.Column="1" Name="comboBox" ItemsSource="{Binding Battery}" DisplayMemberPath="Value" SelectedIndex="{Binding SelectedIndex}"  SelectionChanged="comboBox_SelectionChanged" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="0,1,0,1" />
+                                            <ComboBox Grid.Column="1" Name="comboBox" ItemsSource="{Binding Battery}" DisplayMemberPath="Value" SelectedIndex="{Binding SelectedIndex}"    DropDownClosed="comboBox_DropDownClosed"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="0,1,0,1" />
                                         </Grid>
                                     </DataTemplate>
 
