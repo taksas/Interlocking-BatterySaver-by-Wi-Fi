@@ -119,7 +119,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             
 
             ExecuteMainFunc();
-
+            /*
             Deactivated += ((obj, ev) => {
                 if (!shutdown && !isCreatingMainWindow)
                 {
@@ -127,7 +127,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                     System.Windows.Application.Current.Shutdown();
                 }
             });
-
+            */
             RegisterStartup();
 
         }

@@ -282,6 +282,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Debug.Print("WHAT IS SENDED: " + sender);
             System.Windows.Controls.ComboBox senderComboBox = (System.Windows.Controls.ComboBox)sender;
 
             // Change the length of the text box depending on what the user has 
@@ -289,6 +290,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             if (senderComboBox != null)
             {
                 string temp = senderComboBox.SelectedItem.ToString();
+                Debug.Print("TEMP IS: " + temp);
                 temp = temp.Substring(0, temp.IndexOf(",")).Substring(1);
                 Array.Resize(ref UpdateWaiting, UpdateWaiting.Length + 1);
                 UpdateWaiting[UpdateWaiting.Length - 1] = temp;

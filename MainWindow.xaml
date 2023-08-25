@@ -71,31 +71,16 @@
 
             <Grid Grid.Row="2" >
                 <ListView Name="APList" SelectionMode="Single" VerticalAlignment="Top" SelectionChanged="APList_SelectionChanged"  >
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn
-                        Width="190"
-                        Header="{x:Static prop1:Resources.AP_Name}" >
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate DataType="wpf:Entry">
-                                        <TextBlock Text="{Binding AP_Name}" VerticalAlignment="Center" Margin="0,6,0,0">
-                                        </TextBlock>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                            <GridViewColumn
-                        Width="110"
-                        Header="{x:Static prop1:Resources.Battery__}" >
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate DataType="wpf:Entry">
-                                        <ComboBox Name="comboBox" Width="90" ItemsSource="{Binding Battery}" DisplayMemberPath="Value" SelectedIndex="{Binding SelectedIndex}"  SelectionChanged="comboBox_SelectionChanged">
-                                        </ComboBox>
-                                    </DataTemplate>
+                    <ListView.ItemTemplate>
 
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                        </GridView>
-                    </ListView.View>
+                        <DataTemplate DataType="wpf:Entry">
+                            <Grid>
+                                <TextBlock Text="{Binding AP_Name}" VerticalAlignment="Center" Margin="0,6,0,0" />
+                                <ComboBox Name="comboBox" Width="90" ItemsSource="{Binding Battery}" DisplayMemberPath="Value" SelectedIndex="{Binding SelectedIndex}"  SelectionChanged="comboBox_SelectionChanged" />
+                            </Grid>
+                        </DataTemplate>
+
+                    </ListView.ItemTemplate>
                 </ListView>
             </Grid>
 
