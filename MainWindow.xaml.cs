@@ -260,7 +260,6 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             System.IO.File.Delete(tmpPath);
 
 
-            DoINeedUpdateAPList.Add(update_target, 1);
 
 
             RescanAPList();
@@ -271,7 +270,9 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         public void RescanAPList()
         {
-
+            DeleteB.IsEnabled = false;
+            AddAP_B.IsEnabled = false;
+            APList_Blind.Visibility = Visibility.Visible;
 
             if (app_origin != null)  app_origin.ExecuteMainFunc();
             APList.Items.Clear();
@@ -326,6 +327,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             sr.Close();
 
 
+            AddAP_B.IsEnabled = true;
+            APList_Blind.Visibility = Visibility.Hidden;
         }
 
 

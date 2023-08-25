@@ -124,7 +124,7 @@
                                 </ListView.ItemTemplate>
                             </ListView>
                         </Border>
-                        
+                        <Border x:Name="APList_Blind" CornerRadius="7"  Padding="5,5,5,5" Background="Black"  Opacity="0.75" Visibility="Hidden"/>
                     </Grid>
                 </Border>
                 <ui:Snackbar x:Name="MW_APList_Snackbar"/>
@@ -138,7 +138,7 @@
                 <Grid Grid.Column="0" HorizontalAlignment="Left">
                     <ui:Button x:Name="DeleteB" Content="{x:Static prop1:Resources.Delete}" ToolTip="{x:Static prop1:Resources.TOOLTIP_ListDelete}" ToolTipService.InitialShowDelay="300" Click="Delete_Button_Click"  Appearance="Caution" VerticalAlignment="Stretch" IsEnabled="False" />
                 </Grid>
-                <ui:Button Grid.Column="1" Content="{x:Static prop1:Resources.Add_AP}" ToolTip="{x:Static prop1:Resources.TOOLTIP_AddAccessPoint}" ToolTipService.InitialShowDelay="300" Click="AddAP_Button_Click" Appearance="Primary" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
+                <ui:Button Grid.Column="1"  x:Name="AddAP_B" Content="{x:Static prop1:Resources.Add_AP}" ToolTip="{x:Static prop1:Resources.TOOLTIP_AddAccessPoint}" ToolTipService.InitialShowDelay="300" Click="AddAP_Button_Click" Appearance="Primary" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
             </Grid>
 
 
