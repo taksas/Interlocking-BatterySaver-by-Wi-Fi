@@ -200,7 +200,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
             // 重複時ファイル書き込みしない
             string update_target_index = update_target.Substring(0, update_target.IndexOf("."));
-            int update_target_value = Int32.Parse(update_target.Substring(update_target.IndexOf(".") + 1, update_target.Length-2));
+            int update_target_value = Int32.Parse(update_target.Substring(update_target.IndexOf(".") + 1));
             if (DoINeedUpdateAPList.ContainsKey(update_target_index))
             {
                 if (DoINeedUpdateAPList[update_target_index] == update_target_value)
