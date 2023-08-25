@@ -185,6 +185,11 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             //Windowsを表示する
             _win.Show();
             ExecuteMainFunc();
+
+            _win.UpdateWaiting = new string[1];
+            _win.UpdateWaiting[0] = "INIT";
+            _win.DeleteB.IsEnabled = false;
+            _win.UpdateB.IsEnabled = false;
             /*
             //閉じるボタンが押された時のイベント処理を登録
             _win.Closing += (s, e) =>
@@ -195,6 +200,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 //e.Cancel = true;    //閉じるをキャンセルする
             };
             */
+
             Debug.Print("FINISHED SHOWING MAIN WINDOW...");
             
 

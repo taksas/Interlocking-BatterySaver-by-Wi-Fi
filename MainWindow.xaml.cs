@@ -20,6 +20,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Windows.Forms.LinkLabel;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
@@ -43,7 +44,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         }
 
 
-        string[] UpdateWaiting = new string[1];
+        public string[] UpdateWaiting = new string[1];
         
 
 
@@ -85,7 +86,6 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             RescanAPList();
             DataContext = this;
 
-            
 
         }
 
@@ -154,6 +154,22 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             UpdateB.IsEnabled = false;
 
 
+
+            // UpdateWaitingの重複除去
+            Dictionary<string, int> UpdateWaiting_Index = new Dictionary<string, int>();
+            for (int i = UpdateWaiting.Length-1; i >= 1; i--)
+            {
+                //ターゲットの行でなければ、飛ばさずWriteLineする
+                if (UpdateWaiting_Index.ContainsKey(UpdateWaiting[i].Substring(0, UpdateWaiting[i].IndexOf("."))))
+                {
+                    UpdateWaiting[i] = "-1.-1"; // 存在しえないIndex
+                } else
+                {
+                    UpdateWaiting_Index.Add(UpdateWaiting[i].Substring(0, UpdateWaiting[i].IndexOf(".")), 1);
+                }
+            }
+
+
             var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             var filePath = System.IO.Path.Combine(roamingDirectory, "IBSbW\\data.txt");
             //ファイルを読み込みで開く
@@ -162,6 +178,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             string tmpPath = System.IO.Path.GetTempFileName();
             //一時ファイルを書き込みで開く
             System.IO.StreamWriter sw = new System.IO.StreamWriter(tmpPath);
+
+
 
             int n = 0;
             //内容を一行ずつ読み込む
@@ -202,7 +220,9 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         public void RescanAPList()
         {
-            if(app_origin != null)  app_origin.ExecuteMainFunc();
+
+
+            if (app_origin != null)  app_origin.ExecuteMainFunc();
             APList.Items.Clear();
 
             UpdateWaiting = new string[1];
@@ -255,6 +275,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 index++;
             }
             sr.Close();
+
+
         }
 
 
@@ -282,7 +304,9 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Debug.Print("WHAT IS SENDED: " + sender);
+            
+
+            Debug.Print("WHAT IS SENDED (ARGS): " + e);
             System.Windows.Controls.ComboBox senderComboBox = (System.Windows.Controls.ComboBox)sender;
 
             // Change the length of the text box depending on what the user has 
@@ -329,8 +353,10 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         }
 
-
         
+
+
+
 
 
 
