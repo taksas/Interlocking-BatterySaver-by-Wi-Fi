@@ -106,22 +106,26 @@
 
             <Grid Grid.Row="3" >
                 <Border CornerRadius="7"  Padding="10,10,10,10" Margin="0,4,0,4" Background="{DynamicResource SystemFillColorNeutralBackgroundBrush }">
-                    <ListView Name="APList" SelectionMode="Single" VerticalAlignment="Top"  HorizontalAlignment="Stretch" SelectionChanged="APList_SelectionChanged"  >
-                        <ListView.ItemTemplate>
+                    <Grid >
+                        <Border CornerRadius="7"  Padding="5,5,5,5" Background="{DynamicResource SystemFillColorNeutralBackgroundBrush }" >
+                            <ListView Name="APList" SelectionMode="Single" VerticalAlignment="Top"  HorizontalAlignment="Stretch" SelectionChanged="APList_SelectionChanged"  >
+                                <ListView.ItemTemplate>
+                                    <DataTemplate DataType="wpf:Entry">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="0.35*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding AP_Name}" FontSize="16" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="6,0,0,3" />
+                                            <ComboBox Grid.Column="1" Name="comboBox" ItemsSource="{Binding Battery}" DisplayMemberPath="Value" SelectedIndex="{Binding SelectedIndex}"  SelectionChanged="comboBox_SelectionChanged" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="0,1,0,1" />
+                                        </Grid>
+                                    </DataTemplate>
 
-                            <DataTemplate DataType="wpf:Entry">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="0.35*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="{Binding AP_Name}" FontSize="16" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="6,0,0,3" />
-                                    <ComboBox Grid.Column="1" Name="comboBox" ItemsSource="{Binding Battery}" DisplayMemberPath="Value" SelectedIndex="{Binding SelectedIndex}"  SelectionChanged="comboBox_SelectionChanged" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="0,1,0,1" />
-                                </Grid>
-                            </DataTemplate>
-
-                        </ListView.ItemTemplate>
-                    </ListView>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Border>
+                        
+                    </Grid>
                 </Border>
                 <ui:Snackbar x:Name="MW_APList_Snackbar"/>
             </Grid>

@@ -147,6 +147,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         public void AppExitFunc()
         {
             shutdown = true;
+            tw.Close();
             System.Windows.Application.Current.Shutdown();
         }
 

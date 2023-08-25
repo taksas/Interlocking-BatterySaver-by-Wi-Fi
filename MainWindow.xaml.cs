@@ -57,6 +57,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         public MainWindow(App app_origin_imported)
         {
+            
             app_origin = app_origin_imported;
 
 
@@ -74,6 +75,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 { "10", "10%" },
                 { "0", Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.None },
             };
+
 
             Initialize_DoINeedUpdateAPList();
 
