@@ -44,14 +44,18 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         }
 
 
-        public string[] UpdateWaiting = new string[1];
-        
+        Dictionary<string, int> DoINeedUpdateAPList = new Dictionary<string, int>();
+
+
+
+        public bool IsMainWindowLoaded = false;
+
 
 
         public MainWindow(App app_origin_imported)
         {
             app_origin = app_origin_imported;
-            UpdateWaiting[0] = "INIT";
+
 
             PercentageDic = new Dictionary<string, string>()
             {
@@ -109,7 +113,6 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             if (id < 0) return;
 
             DeleteB.IsEnabled = false;
-            UpdateB.IsEnabled = false;
 
 
             var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -139,35 +142,36 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             System.IO.File.Copy(tmpPath, filePath, true);
             System.IO.File.Delete(tmpPath);
 
-            
+
 
             RescanAPList();
 
         }
 
 
-        private void Update_Button_Click(object sender, RoutedEventArgs e)
+        private void APList_Update_Func(string update_target)
         {
 
-
-            DeleteB.IsEnabled = false;
-            UpdateB.IsEnabled = false;
-
-
-
-            // UpdateWaitingの重複除去
-            Dictionary<string, int> UpdateWaiting_Index = new Dictionary<string, int>();
-            for (int i = UpdateWaiting.Length-1; i >= 1; i--)
+            // 重複時ファイル書き込みしない
+            string update_target_index = update_target.Substring(0, update_target.IndexOf("."));
+            int update_target_value = Int32.Parse(update_target.Substring(update_target.IndexOf(".") + 1, update_target.Length-2));
+            if (DoINeedUpdateAPList.ContainsKey(update_target_index))
             {
-                //ターゲットの行でなければ、飛ばさずWriteLineする
-                if (UpdateWaiting_Index.ContainsKey(UpdateWaiting[i].Substring(0, UpdateWaiting[i].IndexOf("."))))
+                if (DoINeedUpdateAPList[update_target_index] == update_target_value)
                 {
-                    UpdateWaiting[i] = "-1.-1"; // 存在しえないIndex
-                } else
+                    return;
+                }
+                else
                 {
-                    UpdateWaiting_Index.Add(UpdateWaiting[i].Substring(0, UpdateWaiting[i].IndexOf(".")), 1);
+                    DoINeedUpdateAPList[update_target_index] = update_target_value;
                 }
             }
+            else
+            {
+                DoINeedUpdateAPList.Add(update_target_index, update_target_value);
+            }
+
+
 
 
             var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -187,20 +191,13 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             {
                 //一行読み込む
                 string line = sr.ReadLine();
-                bool isChanged = false;
-                for (int i = 1; i < UpdateWaiting.Length; i++)
+                //ターゲットの行でなければ、飛ばさずWriteLineする
+                if (n.ToString() == update_target.Substring(0, update_target.IndexOf(".")))
                 {
-                    //ターゲットの行でなければ、飛ばさずWriteLineする
-                    if (n.ToString() == UpdateWaiting[i].Substring(0, UpdateWaiting[i].IndexOf(".")))
-                    {
-                        
-                        sw.WriteLine(line.Substring(0, line.IndexOf(",")) + "," + UpdateWaiting[i].Substring(UpdateWaiting[i].IndexOf(".") + 1));
-                        Debug.Print(line.Substring(0, line.IndexOf(",")) + "," + UpdateWaiting[i].Substring(UpdateWaiting[i].IndexOf(".") + 1));
-                        isChanged = true;
-                        break;
-                    }
-                }
-                if(!isChanged) sw.WriteLine(line);
+                    sw.WriteLine(line.Substring(0, line.IndexOf(",")) + "," + update_target.Substring(update_target.IndexOf(".") + 1));
+                    // Debug.Print(line.Substring(0, line.IndexOf(",")) + "," + update_target.Substring(update_target.IndexOf(".") + 1));
+                    break;
+                } else sw.WriteLine(line);
                 n++;
 
             }
@@ -212,6 +209,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             System.IO.File.Copy(tmpPath, filePath, true);
             System.IO.File.Delete(tmpPath);
 
+
+            DoINeedUpdateAPList.Add(update_target, 1);
 
 
             RescanAPList();
@@ -225,8 +224,6 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             if (app_origin != null)  app_origin.ExecuteMainFunc();
             APList.Items.Clear();
 
-            UpdateWaiting = new string[1];
-            UpdateWaiting[0] = "INIT";
 
             Dictionary<string, string> PercentageToIndex = new Dictionary<string, string>()
             {
@@ -306,21 +303,23 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         {
             
 
-            Debug.Print("WHAT IS SENDED (ARGS): " + e);
+            
             System.Windows.Controls.ComboBox senderComboBox = (System.Windows.Controls.ComboBox)sender;
 
-            // Change the length of the text box depending on what the user has 
-            // selected and committed using the SelectionLength property.
-            if (senderComboBox != null)
+
+            if ( senderComboBox != null && senderComboBox.SelectedItem == null)
             {
                 string temp = senderComboBox.SelectedItem.ToString();
-                Debug.Print("TEMP IS: " + temp);
                 temp = temp.Substring(0, temp.IndexOf(",")).Substring(1);
-                Array.Resize(ref UpdateWaiting, UpdateWaiting.Length + 1);
-                UpdateWaiting[UpdateWaiting.Length - 1] = temp;
+
+                if (!IsMainWindowLoaded)
+                {
+                    DoINeedUpdateAPList.Add(temp.Substring(0, temp.IndexOf(".")), Int32.Parse(temp.Substring(temp.IndexOf(".") + 1, temp.Length-2)));
+                    return;
+                }
+                APList_Update_Func(temp);
             }
-            for(int i = 0; i < UpdateWaiting.Length; i++) Debug.Print(UpdateWaiting[i]);
-            UpdateB.IsEnabled = true;
+
         }
 
 
@@ -344,6 +343,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             private void cmb2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             System.Windows.Controls.ComboBox senderComboBox = (System.Windows.Controls.ComboBox)sender;
+            
             if (senderComboBox != null)
             {
                 Properties.Settings.Default.OtherConnected = senderComboBox.SelectedIndex;

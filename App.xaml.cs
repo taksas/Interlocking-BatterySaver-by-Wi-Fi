@@ -119,7 +119,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             
 
             ExecuteMainFunc();
-            /*
+            
             Deactivated += ((obj, ev) => {
                 if (!shutdown && !isCreatingMainWindow)
                 {
@@ -127,7 +127,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                     System.Windows.Application.Current.Shutdown();
                 }
             });
-            */
+            
             RegisterStartup();
 
         }
@@ -185,11 +185,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             //Windowsを表示する
             _win.Show();
             ExecuteMainFunc();
-
-            _win.UpdateWaiting = new string[1];
-            _win.UpdateWaiting[0] = "INIT";
-            _win.DeleteB.IsEnabled = false;
-            _win.UpdateB.IsEnabled = false;
+            _win.IsMainWindowLoaded = true;
             /*
             //閉じるボタンが押された時のイベント処理を登録
             _win.Closing += (s, e) =>

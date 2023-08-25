@@ -91,8 +91,7 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0" HorizontalAlignment="Left">
                     <Button x:Name="DeleteB" Content="{x:Static prop1:Resources.Delete}" ToolTip="{x:Static prop1:Resources.TOOLTIP_ListDelete}" ToolTipService.InitialShowDelay="300" Click="Delete_Button_Click"  Background ="Red" VerticalAlignment="Stretch" IsEnabled="False" />
-                    <ui:Button x:Name="UpdateB" Content="{x:Static prop1:Resources.Update}" ToolTip="{x:Static prop1:Resources.TOOLTIP_ListUpdate}" ToolTipService.InitialShowDelay="300" Click="Update_Button_Click" Appearance="Primary"  VerticalAlignment="Stretch" IsEnabled="False"  Margin="60,0,0,0" />
-                </Grid>
+                                   </Grid>
                 <ui:Button Grid.Column="1" Content="{x:Static prop1:Resources.Add_AP}" ToolTip="{x:Static prop1:Resources.TOOLTIP_AddAccessPoint}" ToolTipService.InitialShowDelay="300" Click="AddAP_Button_Click" Appearance="Primary" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
             </Grid>
 
