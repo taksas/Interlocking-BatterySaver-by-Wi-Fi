@@ -132,6 +132,9 @@
   <data name="AP_Name" xml:space="preserve">
     <value>APの名前</value>
   </data>
+  <data name="AP_name_duplicated" xml:space="preserve">
+    <value>アクセスポイント名が重複しています。</value>
+  </data>
   <data name="Battery__" xml:space="preserve">
     <value>バッテリー (%)</value>
   </data>
@@ -146,12 +149,6 @@
   </data>
   <data name="Exit" xml:space="preserve">
     <value>終了</value>
-  </data>
-  <data name="ExitApp" xml:space="preserve">
-    <value>監視を終了</value>
-  </data>
-  <data name="Help" xml:space="preserve">
-    <value>ヘルプ</value>
   </data>
   <data name="Invalid_AP_name_is_set___" xml:space="preserve">
     <value>正しくないAP名が指定されています。再確認してください。</value>

@@ -132,6 +132,9 @@
   <data name="AP_Name" xml:space="preserve">
     <value>AP Name</value>
   </data>
+  <data name="AP_name_duplicated" xml:space="preserve">
+    <value>Duplicate access point name.</value>
+  </data>
   <data name="Battery__" xml:space="preserve">
     <value>Battery (%)</value>
   </data>
@@ -146,12 +149,6 @@
   </data>
   <data name="Exit" xml:space="preserve">
     <value>Exit</value>
-  </data>
-  <data name="ExitApp" xml:space="preserve">
-    <value>Terminate App</value>
-  </data>
-  <data name="Help" xml:space="preserve">
-    <value>Help</value>
   </data>
   <data name="Invalid_AP_name_is_set___" xml:space="preserve">
     <value>Invalid AP name is set. Please reconfirm.</value>
@@ -172,7 +169,7 @@
     <value>The initial startup process will begin. After pressing "OK," click on the icon in the lower right status bar to begin the setup.</value>
   </data>
   <data name="SYSTEM_APP_TITLE" xml:space="preserve">
-    <value>Interlocking BatterySaver by Wi-Fi    Ver1.2.7</value>
+    <value>Interlocking BatterySaver by Wi-Fi  v1.2.8</value>
   </data>
   <data name="TOOLTIP_AddAccessPoint" xml:space="preserve">
     <value>Add a new access point to the list.</value>

@@ -33,17 +33,17 @@
             <BeginStoryboard Storyboard="{StaticResource WindowOn}"/>
         </EventTrigger>
     </Window.Triggers>
-    <Border Background="{DynamicResource ApplicationBackgroundBrush}" CornerRadius="10" BorderThickness="1" BorderBrush="DarkGray" Opacity="1">
+    <Border Background="{DynamicResource ApplicationBackgroundBrush}" CornerRadius="7" BorderThickness="1" BorderBrush="DarkGray" Opacity="1">
     
         
         
         
-    <Grid  Margin="12">
+    <Grid  Margin="16">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.7*"/>
-            <RowDefinition Height="1.3*"/>
-            <RowDefinition Height="0.6*"/>
-            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="1.4*"/>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.7*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -72,7 +72,7 @@
         </Grid>
 
         <Grid Grid.Row="2" VerticalAlignment="Center">
-            <TextBlock x:Name="Reconfirm_tb" Foreground ="Red" HorizontalAlignment="Center" FontSize="18" />
+            <TextBlock x:Name="Reconfirm_tb" Foreground ="Red" HorizontalAlignment="Center" FontSize="15" />
         </Grid>
 
         <Grid Grid.Row="3" VerticalAlignment="Center">

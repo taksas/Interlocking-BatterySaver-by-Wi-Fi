@@ -115,6 +115,15 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
+        ///   Duplicate access point name. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AP_name_duplicated {
+            get {
+                return ResourceManager.GetString("AP_name_duplicated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Battery (%) に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Battery__ {
@@ -156,24 +165,6 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         public static string Exit {
             get {
                 return ResourceManager.GetString("Exit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Terminate App に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        public static string ExitApp {
-            get {
-                return ResourceManager.GetString("ExitApp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Help に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        public static string Help {
-            get {
-                return ResourceManager.GetString("Help", resourceCulture);
             }
         }
         
@@ -232,7 +223,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
-        ///   Interlocking BatterySaver by Wi-Fi    Ver1.2.7 に類似しているローカライズされた文字列を検索します。
+        ///   Interlocking BatterySaver by Wi-Fi  v1.2.8 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string SYSTEM_APP_TITLE {
             get {

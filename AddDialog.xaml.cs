@@ -128,6 +128,12 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             APs[1] = AP_Name.Text;
             if (APs[1] != "" && APs[1] != "Could not find AP!")
             {
+
+                if (APName_Duplication(APs[1]))
+                {
+                    Reconfirm_tb.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.AP_name_duplicated;
+                    return;
+                }
                 Reconfirm_tb.Text = "";
                 APs[0] = "1";
                 APs[2] = cmb.SelectedValue.ToString();
@@ -146,6 +152,37 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             {
                 Reconfirm_tb.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.Invalid_AP_name_is_set___;
             }
+        }
+
+        private bool APName_Duplication(string ap_name)
+        {
+            var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            var filePath = System.IO.Path.Combine(roamingDirectory, "IBSbW\\data.txt");
+            //ファイルを読み込みで開く
+            System.IO.StreamReader sr = new System.IO.StreamReader(filePath);
+
+
+
+
+            bool duplicate = false;
+            //内容を一行ずつ読み込む
+            while (sr.Peek() > -1)
+            {
+                //一行読み込む
+                string line = sr.ReadLine();
+                //ターゲットの行でなければ、飛ばさずWriteLineする
+                if (line.Substring(0, line.IndexOf(",")) == ap_name)
+                {
+                    duplicate = true;
+                    break;
+                }
+                
+
+            }
+
+            sr.Close();
+
+            return duplicate;
         }
     }
 }

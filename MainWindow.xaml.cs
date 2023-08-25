@@ -196,7 +196,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 {
                     sw.WriteLine(line.Substring(0, line.IndexOf(",")) + "," + update_target.Substring(update_target.IndexOf(".") + 1));
                     // Debug.Print(line.Substring(0, line.IndexOf(",")) + "," + update_target.Substring(update_target.IndexOf(".") + 1));
-                    break;
+
+
                 } else sw.WriteLine(line);
                 n++;
 
@@ -307,7 +308,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             System.Windows.Controls.ComboBox senderComboBox = (System.Windows.Controls.ComboBox)sender;
 
 
-            if ( senderComboBox != null && senderComboBox.SelectedItem == null)
+            if ( senderComboBox != null && senderComboBox.SelectedItem != null)
             {
                 string temp = senderComboBox.SelectedItem.ToString();
                 temp = temp.Substring(0, temp.IndexOf(",")).Substring(1);
