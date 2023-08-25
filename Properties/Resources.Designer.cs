@@ -214,6 +214,60 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
+        ///   Access point added to list. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SNACKBAR_AddCompleted {
+            get {
+                return ResourceManager.GetString("SNACKBAR_AddCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Addition Complete に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SNACKBAR_AddCompletedTitle {
+            get {
+                return ResourceManager.GetString("SNACKBAR_AddCompletedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Access point removed from list. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SNACKBAR_DeleteCompleted {
+            get {
+                return ResourceManager.GetString("SNACKBAR_DeleteCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Deletion complete に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SNACKBAR_DeleteCompletedTitle {
+            get {
+                return ResourceManager.GetString("SNACKBAR_DeleteCompletedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Updated access point settings. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SNACKBAR_UpdateCompleted {
+            get {
+                return ResourceManager.GetString("SNACKBAR_UpdateCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Update completed に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SNACKBAR_UpdateCompletedTitle {
+            get {
+                return ResourceManager.GetString("SNACKBAR_UpdateCompletedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   The initial startup process will begin. After pressing &quot;OK,&quot; click on the icon in the lower right status bar to begin the setup. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string StartupReg {
@@ -268,7 +322,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
-        ///   Exit the application and deactivate the resident status. If you want to keep the application resident without closing it, click the cross mark in the upper right corner. に類似しているローカライズされた文字列を検索します。
+        ///   Exit the application and deactivate the resident application. If you want to keep the application resident without closing it, tap anywhere other than the application window. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string TOOLTIP_AppExit {
             get {

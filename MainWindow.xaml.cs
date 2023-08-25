@@ -20,6 +20,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
+using Wpf.Ui.Mvvm.Contracts;
 using static System.Windows.Forms.LinkLabel;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
@@ -72,7 +75,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 { "0", Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.None },
             };
 
-
+            Initialize_DoINeedUpdateAPList();
 
             InitializeComponent();
             Wpf.Ui.Appearance.Accent.ApplySystemAccent();
@@ -93,9 +96,15 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         }
 
-        private void ExitApp_Button_Click(object sender, RoutedEventArgs e)
+        private void Exit_Button_Click(object sender, RoutedEventArgs e)
         {
             app_origin.AppExitFunc();
+        }
+
+
+        private void ExitApp_Button_Click(object sender, RoutedEventArgs e)
+        {
+            ExitFlyout.Show();
         }
 
 
@@ -103,6 +112,13 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         {
             new AddDialog(this).ShowDialog();
             RescanAPList();
+
+            MW_APList_Snackbar.Show(
+                Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.SNACKBAR_AddCompletedTitle,
+                Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.SNACKBAR_AddCompleted,
+                SymbolRegular.CheckmarkCircle24,
+                Wpf.Ui.Common.ControlAppearance.Secondary
+            );
         }
 
 
@@ -146,6 +162,36 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
             RescanAPList();
 
+
+            MW_APList_Snackbar.Show(
+                Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.SNACKBAR_DeleteCompletedTitle,
+                Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.SNACKBAR_DeleteCompleted,
+                SymbolRegular.Delete24,
+                Wpf.Ui.Common.ControlAppearance.Secondary
+            );
+
+        }
+
+
+        private void Initialize_DoINeedUpdateAPList()
+        {
+            var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            var filePath = System.IO.Path.Combine(roamingDirectory, "IBSbW\\data.txt");
+            //ファイルを読み込みで開く
+            System.IO.StreamReader sr = new System.IO.StreamReader(filePath);
+
+
+            int n = 0;
+            //内容を一行ずつ読み込む
+            while (sr.Peek() > -1)
+            {
+                //一行読み込む
+                string line = sr.ReadLine();
+                DoINeedUpdateAPList.Add((n++).ToString(), Int32.Parse(line.Substring(line.IndexOf(",") + 1)));
+
+            }
+
+            sr.Close();
         }
 
 
@@ -169,6 +215,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             else
             {
                 DoINeedUpdateAPList.Add(update_target_index, update_target_value);
+                return;
             }
 
 
@@ -215,6 +262,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
 
             RescanAPList();
+            Snackbar_UpdateSuccess_Show();
+            
         }
 
 
@@ -313,11 +362,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 string temp = senderComboBox.SelectedItem.ToString();
                 temp = temp.Substring(0, temp.IndexOf(",")).Substring(1);
 
-                if (!IsMainWindowLoaded)
-                {
-                    DoINeedUpdateAPList.Add(temp.Substring(0, temp.IndexOf(".")), Int32.Parse(temp.Substring(temp.IndexOf(".") + 1, temp.Length-2)));
-                    return;
-                }
+
                 APList_Update_Func(temp);
             }
 
@@ -338,6 +383,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 Properties.Settings.Default.NotConnected = senderComboBox.SelectedIndex;
                 Properties.Settings.Default.Save();
                 if (app_origin != null) app_origin.ExecuteMainFunc();
+                Snackbar_UpdateSuccess_Show();
             }
             }
 
@@ -350,14 +396,23 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 Properties.Settings.Default.OtherConnected = senderComboBox.SelectedIndex;
                 Properties.Settings.Default.Save();
                 if (app_origin != null) app_origin.ExecuteMainFunc();
+                Snackbar_UpdateSuccess_Show();
             }
 
         }
 
         
+        private void Snackbar_UpdateSuccess_Show()
+        {
+            if (!IsMainWindowLoaded) return;
 
-
-
+                MW_APList_Snackbar.Show(
+                Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.SNACKBAR_UpdateCompletedTitle,
+                Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.SNACKBAR_UpdateCompleted,
+                SymbolRegular.ArrowSyncCheckmark24,
+                Wpf.Ui.Common.ControlAppearance.Secondary
+            );
+        }
 
 
 

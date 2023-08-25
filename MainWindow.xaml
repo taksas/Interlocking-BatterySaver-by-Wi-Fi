@@ -54,6 +54,18 @@
 
             <Grid Grid.Row="0" VerticalAlignment="Center">
 
+                <ui:Flyout x:Name="ExitFlyout">
+                    <StackPanel>
+                        <TextBlock
+                        Width="280"
+                        HorizontalAlignment="Left"
+                        Text="{x:Static prop1:Resources.TOOLTIP_AppExit}"
+                        TextWrapping="WrapWithOverflow"
+                        Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                        <Button Margin="0,8,0,0" Content="{x:Static prop1:Resources.Exit}" Click="Exit_Button_Click"/>
+                    </StackPanel>
+                </ui:Flyout>
+                
                 <ui:Button  Icon="Power24" ToolTip="{x:Static prop1:Resources.TOOLTIP_AppExit}" ToolTipService.InitialShowDelay="300" Click="ExitApp_Button_Click" Appearance="Danger" HorizontalAlignment="Left" VerticalAlignment="Center" />
                 <TextBlock Text="{x:Static prop1:Resources.SYSTEM_APP_TITLE}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="17"/>
                 <ui:Button Icon="ChatHelp24" ToolTip="{x:Static prop1:Resources.TOOLTIP_HelpWebSite}" Appearance="Primary" ToolTipService.InitialShowDelay="300" Click="Help_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" />
@@ -111,6 +123,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </Border>
+                <ui:Snackbar x:Name="MW_APList_Snackbar"/>
             </Grid>
 
             <Grid Grid.Row="4" VerticalAlignment="Center">
@@ -120,11 +133,14 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0" HorizontalAlignment="Left">
                     <ui:Button x:Name="DeleteB" Content="{x:Static prop1:Resources.Delete}" ToolTip="{x:Static prop1:Resources.TOOLTIP_ListDelete}" ToolTipService.InitialShowDelay="300" Click="Delete_Button_Click"  Appearance="Caution" VerticalAlignment="Stretch" IsEnabled="False" />
-                                   </Grid>
+                </Grid>
                 <ui:Button Grid.Column="1" Content="{x:Static prop1:Resources.Add_AP}" ToolTip="{x:Static prop1:Resources.TOOLTIP_AddAccessPoint}" ToolTipService.InitialShowDelay="300" Click="AddAP_Button_Click" Appearance="Primary" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
             </Grid>
 
 
+            
+
         </Grid>
+        
     </Border>
 </Window>

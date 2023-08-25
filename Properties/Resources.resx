@@ -165,6 +165,24 @@
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="SNACKBAR_AddCompleted" xml:space="preserve">
+    <value>Access point added to list.</value>
+  </data>
+  <data name="SNACKBAR_AddCompletedTitle" xml:space="preserve">
+    <value>Addition Complete</value>
+  </data>
+  <data name="SNACKBAR_DeleteCompleted" xml:space="preserve">
+    <value>Access point removed from list.</value>
+  </data>
+  <data name="SNACKBAR_DeleteCompletedTitle" xml:space="preserve">
+    <value>Deletion complete</value>
+  </data>
+  <data name="SNACKBAR_UpdateCompleted" xml:space="preserve">
+    <value>Updated access point settings.</value>
+  </data>
+  <data name="SNACKBAR_UpdateCompletedTitle" xml:space="preserve">
+    <value>Update completed</value>
+  </data>
   <data name="StartupReg" xml:space="preserve">
     <value>The initial startup process will begin. After pressing "OK," click on the icon in the lower right status bar to begin the setup.</value>
   </data>
@@ -184,7 +202,7 @@
     <value>Retrieves the current access point from the system; may take up to 5 seconds.</value>
   </data>
   <data name="TOOLTIP_AppExit" xml:space="preserve">
-    <value>Exit the application and deactivate the resident status. If you want to keep the application resident without closing it, click the cross mark in the upper right corner.</value>
+    <value>Exit the application and deactivate the resident application. If you want to keep the application resident without closing it, tap anywhere other than the application window.</value>
   </data>
   <data name="TOOLTIP_HelpWebSite" xml:space="preserve">
     <value>The help site will open in your browser.</value>
