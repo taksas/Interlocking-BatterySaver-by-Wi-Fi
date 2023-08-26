@@ -187,7 +187,7 @@
     <value>The initial startup process will begin. After pressing "OK," click on the icon in the lower right status bar to begin the setup.</value>
   </data>
   <data name="SYSTEM_APP_TITLE" xml:space="preserve">
-    <value>Interlocking BatterySaver by Wi-Fi  v2.0.1</value>
+    <value>Interlocking BatterySaver by Wi-Fi  v2.0.5</value>
   </data>
   <data name="TOOLTIP_AddAccessPoint" xml:space="preserve">
     <value>Add a new access point to the list.</value>

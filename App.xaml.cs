@@ -104,16 +104,16 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             }
 
 
-            
+
+
 
             
 
 
-            
 
-            
 
-                
+
+
             NetworkChange.NetworkAddressChanged += (s, e) => NetworkChange_NetworkAvailabilityChanged(s, e) ;
 
             
@@ -127,7 +127,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                     System.Windows.Application.Current.Shutdown();
                 }
             });
-            
+
             RegisterStartup();
 
         }
