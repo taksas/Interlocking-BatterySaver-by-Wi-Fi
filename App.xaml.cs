@@ -104,22 +104,22 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             }
 
 
-            RegisterStartup();
+
+
 
             
 
 
-            
 
-            
 
-                
+
+
             NetworkChange.NetworkAddressChanged += (s, e) => NetworkChange_NetworkAvailabilityChanged(s, e) ;
 
             
 
             ExecuteMainFunc();
-
+            
             Deactivated += ((obj, ev) => {
                 if (!shutdown && !isCreatingMainWindow)
                 {
@@ -127,6 +127,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                     System.Windows.Application.Current.Shutdown();
                 }
             });
+            
+            RegisterStartup();
 
         }
 
@@ -183,6 +185,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             //Windowsを表示する
             _win.Show();
             ExecuteMainFunc();
+            _win.IsMainWindowLoaded = true;
             /*
             //閉じるボタンが押された時のイベント処理を登録
             _win.Closing += (s, e) =>
@@ -193,6 +196,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 //e.Cancel = true;    //閉じるをキャンセルする
             };
             */
+
             Debug.Print("FINISHED SHOWING MAIN WINDOW...");
             
 
@@ -361,12 +365,13 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                     Debug.Print("StartUP Already Registered");
                 } else
                 {
-                    System.Windows.Forms.MessageBox.Show(
-                        Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.StartupReg,
-                        aplTitle,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                }
+                InitialRegisterWindow TempBW = new InitialRegisterWindow();
+                TempBW.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                TempBW.ShowDialog();
+
+
+            }
+
 
 
             // WSHファイル作成
@@ -384,11 +389,14 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         private void TriggeredInfoChange(string AP, string PercentageStr)
         { 
+
             if (_win == null) return;
             _win.Dispatcher.Invoke(() => {
                 _win.TriggeredInfo_textBlock.Text = AP;
                 _win.TriggeredInfo_Percentage_textBlock.Text = _win.PercentageDic[PercentageStr];
             } );
         }
+
+        
     }
 }

@@ -132,6 +132,9 @@
   <data name="AP_Name" xml:space="preserve">
     <value>APの名前</value>
   </data>
+  <data name="AP_name_duplicated" xml:space="preserve">
+    <value>アクセスポイント名が重複しています。</value>
+  </data>
   <data name="Battery__" xml:space="preserve">
     <value>バッテリー (%)</value>
   </data>
@@ -147,12 +150,6 @@
   <data name="Exit" xml:space="preserve">
     <value>終了</value>
   </data>
-  <data name="ExitApp" xml:space="preserve">
-    <value>監視を終了</value>
-  </data>
-  <data name="Help" xml:space="preserve">
-    <value>ヘルプ</value>
-  </data>
   <data name="Invalid_AP_name_is_set___" xml:space="preserve">
     <value>正しくないAP名が指定されています。再確認してください。</value>
   </data>
@@ -162,8 +159,29 @@
   <data name="None" xml:space="preserve">
     <value>なし</value>
   </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>設定</value>
+  </data>
+  <data name="SNACKBAR_AddCompleted" xml:space="preserve">
+    <value>リストへアクセスポイントを追加しました。</value>
+  </data>
+  <data name="SNACKBAR_AddCompletedTitle" xml:space="preserve">
+    <value>追加完了</value>
+  </data>
+  <data name="SNACKBAR_DeleteCompleted" xml:space="preserve">
+    <value>リストからアクセスポイントを削除しました。</value>
+  </data>
+  <data name="SNACKBAR_DeleteCompletedTitle" xml:space="preserve">
+    <value>削除完了</value>
+  </data>
+  <data name="SNACKBAR_UpdateCompleted" xml:space="preserve">
+    <value>アクセスポイントの設定を更新しました。</value>
+  </data>
+  <data name="SNACKBAR_UpdateCompletedTitle" xml:space="preserve">
+    <value>更新完了</value>
   </data>
   <data name="StartupReg" xml:space="preserve">
     <value>初回起動処理を開始します。「OK」を押した後、右下のステータスバーにあるアイコンをクリックして設定を始めてください。</value>
@@ -181,7 +199,7 @@
     <value>現在のアクセスポイントをシステムから取得します。5秒ほどかかる場合があります。</value>
   </data>
   <data name="TOOLTIP_AppExit" xml:space="preserve">
-    <value>アプリを終了し常駐を解除します。アプリを終了させず、常駐させたい場合は右上のバツマークをクリックしてください。</value>
+    <value>アプリを終了し常駐を解除します。アプリを終了させず、常駐させたい場合はアプリのウインドウ以外の場所をタップしてください。</value>
   </data>
   <data name="TOOLTIP_HelpWebSite" xml:space="preserve">
     <value>ヘルプサイトがブラウザで開きます。</value>

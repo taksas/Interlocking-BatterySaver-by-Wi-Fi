@@ -20,6 +20,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
+using Wpf.Ui.Mvvm.Contracts;
+using static System.Windows.Forms.LinkLabel;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
@@ -43,14 +47,19 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         }
 
 
-        string[] UpdateWaiting = new string[1];
-        
+        Dictionary<string, int> DoINeedUpdateAPList = new Dictionary<string, int>();
+
+
+
+        public bool IsMainWindowLoaded = false;
+
 
 
         public MainWindow(App app_origin_imported)
         {
+            InitializeComponent();
             app_origin = app_origin_imported;
-            UpdateWaiting[0] = "INIT";
+
 
             PercentageDic = new Dictionary<string, string>()
             {
@@ -67,35 +76,65 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 { "0", Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.None },
             };
 
-            InitializeComponent();
+
+            Initialize_DoINeedUpdateAPList();
+
+            
+            Wpf.Ui.Appearance.Accent.ApplySystemAccent();
+
+            Loaded += (sender, args) =>
+            {
+                Wpf.Ui.Appearance.Watcher.Watch(
+                    this,                                  // Window class
+                    Wpf.Ui.Appearance.BackgroundType.Acrylic, // Background type
+                    true                                   // Whether to change accents automatically
+                );
+            };
+
+
             RescanAPList();
             DataContext = this;
 
-            
 
         }
 
-        private void ExitApp_Button_Click(object sender, RoutedEventArgs e)
+        private void Exit_Button_Click(object sender, RoutedEventArgs e)
         {
             app_origin.AppExitFunc();
         }
 
 
+        private void ExitApp_Button_Click(object sender, RoutedEventArgs e)
+        {
+            ExitFlyout.Show();
+        }
+
+
         private void AddAP_Button_Click(object sender, RoutedEventArgs e)
         {
+            APList_Controllers_Enable(false);
             new AddDialog(this).ShowDialog();
             RescanAPList();
+
+            MW_APList_Snackbar.Show(
+                Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.SNACKBAR_AddCompletedTitle,
+                Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.SNACKBAR_AddCompleted,
+                SymbolRegular.CheckmarkCircle24,
+                Wpf.Ui.Common.ControlAppearance.Secondary
+            );
+            APList_Controllers_Enable(true);
         }
 
 
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)
         {
+            APList_Controllers_Enable(false);
+
             int id = APList.SelectedIndex;
             if (id < 0) return;
 
             DeleteB.IsEnabled = false;
-            UpdateB.IsEnabled = false;
 
 
             var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -125,19 +164,73 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             System.IO.File.Copy(tmpPath, filePath, true);
             System.IO.File.Delete(tmpPath);
 
-            
+
 
             RescanAPList();
+
+
+            MW_APList_Snackbar.Show(
+                Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.SNACKBAR_DeleteCompletedTitle,
+                Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.SNACKBAR_DeleteCompleted,
+                SymbolRegular.Delete24,
+                Wpf.Ui.Common.ControlAppearance.Secondary
+            );
+
+            APList_Controllers_Enable(true);
 
         }
 
 
-        private void Update_Button_Click(object sender, RoutedEventArgs e)
+        private void Initialize_DoINeedUpdateAPList()
+        {
+            var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            var filePath = System.IO.Path.Combine(roamingDirectory, "IBSbW\\data.txt");
+            //ファイルを読み込みで開く
+            System.IO.StreamReader sr = new System.IO.StreamReader(filePath);
+
+
+            int n = 0;
+            //内容を一行ずつ読み込む
+            while (sr.Peek() > -1)
+            {
+                //一行読み込む
+                string line = sr.ReadLine();
+                DoINeedUpdateAPList.Add((n++).ToString(), Int32.Parse(line.Substring(line.IndexOf(",") + 1)));
+
+            }
+
+            sr.Close();
+        }
+
+
+        private void APList_Update_Func(string update_target)
         {
 
+            APList_Controllers_Enable(false);
 
-            DeleteB.IsEnabled = false;
-            UpdateB.IsEnabled = false;
+            // 重複時ファイル書き込みしない
+            string update_target_index = update_target.Substring(0, update_target.IndexOf("."));
+            int update_target_value = Int32.Parse(update_target.Substring(update_target.IndexOf(".") + 1));
+            if (DoINeedUpdateAPList.ContainsKey(update_target_index))
+            {
+                if (DoINeedUpdateAPList[update_target_index] == update_target_value)
+                {
+                    APList_Controllers_Enable(true);
+                    return;
+                }
+                else
+                {
+                    DoINeedUpdateAPList[update_target_index] = update_target_value;
+                }
+            }
+            else
+            {
+                DoINeedUpdateAPList.Add(update_target_index, update_target_value);
+                APList_Controllers_Enable(true);
+                return;
+            }
+
+
 
 
             var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -149,26 +242,22 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             //一時ファイルを書き込みで開く
             System.IO.StreamWriter sw = new System.IO.StreamWriter(tmpPath);
 
+
+
             int n = 0;
             //内容を一行ずつ読み込む
             while (sr.Peek() > -1)
             {
                 //一行読み込む
                 string line = sr.ReadLine();
-                bool isChanged = false;
-                for (int i = 1; i < UpdateWaiting.Length; i++)
+                //ターゲットの行でなければ、飛ばさずWriteLineする
+                if (n.ToString() == update_target.Substring(0, update_target.IndexOf(".")))
                 {
-                    //ターゲットの行でなければ、飛ばさずWriteLineする
-                    if (n.ToString() == UpdateWaiting[i].Substring(0, UpdateWaiting[i].IndexOf(".")))
-                    {
-                        
-                        sw.WriteLine(line.Substring(0, line.IndexOf(",")) + "," + UpdateWaiting[i].Substring(UpdateWaiting[i].IndexOf(".") + 1));
-                        Debug.Print(line.Substring(0, line.IndexOf(",")) + "," + UpdateWaiting[i].Substring(UpdateWaiting[i].IndexOf(".") + 1));
-                        isChanged = true;
-                        break;
-                    }
-                }
-                if(!isChanged) sw.WriteLine(line);
+                    sw.WriteLine(line.Substring(0, line.IndexOf(",")) + "," + update_target.Substring(update_target.IndexOf(".") + 1));
+                    // Debug.Print(line.Substring(0, line.IndexOf(",")) + "," + update_target.Substring(update_target.IndexOf(".") + 1));
+
+
+                } else sw.WriteLine(line);
                 n++;
 
             }
@@ -182,17 +271,20 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
 
 
+
             RescanAPList();
+            Snackbar_UpdateSuccess_Show();
+            APList_Controllers_Enable(true);
         }
 
 
         public void RescanAPList()
         {
-            if(app_origin != null)  app_origin.ExecuteMainFunc();
-            APList.Items.Clear();
 
-            UpdateWaiting = new string[1];
-            UpdateWaiting[0] = "INIT";
+            if (APList.Height < 0) return;
+            if (app_origin != null)  app_origin.ExecuteMainFunc();
+            APList.Items.Clear();
+            
 
             Dictionary<string, string> PercentageToIndex = new Dictionary<string, string>()
             {
@@ -241,6 +333,9 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 index++;
             }
             sr.Close();
+
+
+            
         }
 
 
@@ -266,24 +361,6 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
 
 
-        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            System.Windows.Controls.ComboBox senderComboBox = (System.Windows.Controls.ComboBox)sender;
-
-            // Change the length of the text box depending on what the user has 
-            // selected and committed using the SelectionLength property.
-            if (senderComboBox != null)
-            {
-                string temp = senderComboBox.SelectedItem.ToString();
-                temp = temp.Substring(0, temp.IndexOf(",")).Substring(1);
-                Array.Resize(ref UpdateWaiting, UpdateWaiting.Length + 1);
-                UpdateWaiting[UpdateWaiting.Length - 1] = temp;
-            }
-            for(int i = 0; i < UpdateWaiting.Length; i++) Debug.Print(UpdateWaiting[i]);
-            UpdateB.IsEnabled = true;
-        }
-
-
 
         private void APList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -298,19 +375,64 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 Properties.Settings.Default.NotConnected = senderComboBox.SelectedIndex;
                 Properties.Settings.Default.Save();
                 if (app_origin != null) app_origin.ExecuteMainFunc();
+                Snackbar_UpdateSuccess_Show();
             }
             }
 
             private void cmb2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             System.Windows.Controls.ComboBox senderComboBox = (System.Windows.Controls.ComboBox)sender;
+            
             if (senderComboBox != null)
             {
                 Properties.Settings.Default.OtherConnected = senderComboBox.SelectedIndex;
                 Properties.Settings.Default.Save();
                 if (app_origin != null) app_origin.ExecuteMainFunc();
+                Snackbar_UpdateSuccess_Show();
             }
 
+        }
+
+        
+        private void Snackbar_UpdateSuccess_Show()
+        {
+            if (!IsMainWindowLoaded) return;
+
+                MW_APList_Snackbar.Show(
+                Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.SNACKBAR_UpdateCompletedTitle,
+                Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.SNACKBAR_UpdateCompleted,
+                SymbolRegular.ArrowSyncCheckmark24,
+                Wpf.Ui.Common.ControlAppearance.Secondary
+            );
+        }
+
+        private void APList_Controllers_Enable(bool IsEnabled)
+        {
+            if(IsEnabled)
+            {
+                AddAP_B.IsEnabled = true;
+                APList_Blind.Visibility = Visibility.Hidden;
+            } else
+            {
+                DeleteB.IsEnabled = false;
+                AddAP_B.IsEnabled = false;
+                //APList_Blind.Visibility = Visibility.Visible;
             }
+        }
+
+        private void comboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            System.Windows.Controls.ComboBox senderComboBox = (System.Windows.Controls.ComboBox)sender;
+
+
+            if (senderComboBox != null && senderComboBox.SelectedItem != null)
+            {
+                string temp = senderComboBox.SelectedItem.ToString();
+                temp = temp.Substring(0, temp.IndexOf(",")).Substring(1);
+
+
+                APList_Update_Func(temp);
+            }
+        }
     }
 }

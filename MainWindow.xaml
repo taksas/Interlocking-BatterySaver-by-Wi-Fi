@@ -5,103 +5,146 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Interlocking_BatterySaver_by_Wi_Fi_"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ui="http://schemas.modernwpf.com/2019"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     xmlns:prop ="clr-namespace:Interlocking_BatterySaver_by_Wi_Fi_.Properties"
-    
-    Width="350"
-    Height="530"
-    ui:WindowHelper.UseModernWindowStyle="True" 
+    Width="450"
+    Height="600"
     mc:Ignorable="d"
     ResizeMode="NoResize"
-    WindowStyle="ToolWindow"
+    WindowStyle="None"
     Topmost="True"
+    Background="Transparent"
+	AllowsTransparency="True"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:prop1 ="clr-namespace:Interlocking_BatterySaver_by_Wi_Fi_.Properties"
     Title="{x:Static prop1:Resources.SYSTEM_APP_TITLE}">
+    <Window.Resources>
+        <Storyboard x:Key="WindowOn">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.3"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.0300000" Value="0.5"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.0500000" Value="0.7"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.0800000" Value="0.8"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0.9"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.1300000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource WindowOn}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Border Background="{DynamicResource ApplicationBackgroundBrush}" CornerRadius="10" BorderThickness="1" BorderBrush="DarkGray" Opacity="1">
 
 
 
 
-    <Grid Margin="12,6,12,12">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.7*"/>
-            <RowDefinition Height="0.8*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="0.4*"/>
-            <RowDefinition Height="0.4*"/>
-        </Grid.RowDefinitions>
-
-        <Grid Grid.Row="0" Margin="0,0,0,0" >
-            <Border CornerRadius="7" Padding="10,6,10,10" Background="{DynamicResource SystemControlBackgroundBaseLowBrush}">
-                <StackPanel>
-                    <TextBlock Text="{x:Static prop1:Resources.Triggered_Wifi_Title}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="TriggeredInfo_textBlock" Text="Loading..." VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="17"/>
-                    <TextBlock x:Name="TriggeredInfo_Percentage_textBlock" Text="Loading..." VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="17"/>
-                </StackPanel>
-            </Border>
-        </Grid>
-        <Grid Grid.Row="1" Margin="0,5,0,10" >
+        <Grid Margin="12,0,12,12">
             <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="0.7*"/>
                 <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2.1*"/>
+                <RowDefinition Height="0.4*"/>
+
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="{x:Static prop1:Resources.When_not_connected_to_WiFi}" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="16"/>
-            <ComboBox Grid.Row="0"  Name="cmb1" IsEditable="False"  Width="90" ItemsSource="{Binding PercentageDic}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedIndex="{Binding Path=NotConnected, Source={x:Static prop:Settings.Default}}" SelectionChanged="cmb1_SelectionChanged" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" />
-            <TextBlock Grid.Row="1" Text="{x:Static prop1:Resources.When_connected_to_other_WiFi}" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="16"/>
-            <ComboBox Grid.Row="1" Name="cmb2" IsEditable="False"  Width="90" ItemsSource="{Binding PercentageDic}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedIndex="{Binding Path=OtherConnected, Source={x:Static prop:Settings.Default}}" SelectionChanged="cmb2_SelectionChanged" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" />
-        </Grid>
 
-        <Grid Grid.Row="2" >
-            <ListView Name="APList" SelectionMode="Single" VerticalAlignment="Top" SelectionChanged="APList_SelectionChanged"  >
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn
-                        Width="190"
-                        Header="{x:Static prop1:Resources.AP_Name}" >
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate DataType="wpf:Entry">
-                                    <TextBlock Text="{Binding AP_Name}" VerticalAlignment="Center" Margin="0,6,0,0">
-                                    </TextBlock>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn
-                        Width="110"
-                        Header="{x:Static prop1:Resources.Battery__}" >
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate DataType="wpf:Entry">
-                                    <ComboBox Name="comboBox" Width="90" ItemsSource="{Binding Battery}" DisplayMemberPath="Value" SelectedIndex="{Binding SelectedIndex}"  SelectionChanged="comboBox_SelectionChanged">
-                                    </ComboBox>
-                                </DataTemplate>
 
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </Grid>
 
-        <Grid Grid.Row="3" VerticalAlignment="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.65*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" HorizontalAlignment="Left">
-                <Button x:Name="DeleteB" Content="{x:Static prop1:Resources.Delete}" ToolTip="{x:Static prop1:Resources.TOOLTIP_ListDelete}" ToolTipService.InitialShowDelay="300" Click="Delete_Button_Click"  Background ="Red" VerticalAlignment="Stretch" IsEnabled="False" />
-                <Button x:Name="UpdateB" Content="{x:Static prop1:Resources.Update}" ToolTip="{x:Static prop1:Resources.TOOLTIP_ListUpdate}" ToolTipService.InitialShowDelay="300" Click="Update_Button_Click" Style="{StaticResource AccentButtonStyle}" VerticalAlignment="Stretch" IsEnabled="False"  Margin="60,0,0,0" />
+            <Grid Grid.Row="0" VerticalAlignment="Center">
+
+                <ui:Flyout x:Name="ExitFlyout">
+                    <StackPanel>
+                        <TextBlock
+                        Width="280"
+                        HorizontalAlignment="Left"
+                        Text="{x:Static prop1:Resources.TOOLTIP_AppExit}"
+                        TextWrapping="WrapWithOverflow"
+                        Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                        <Button Margin="0,8,0,0" Content="{x:Static prop1:Resources.Exit}" Click="Exit_Button_Click"/>
+                    </StackPanel>
+                </ui:Flyout>
+                
+                <ui:Button  Icon="Power24" ToolTip="{x:Static prop1:Resources.TOOLTIP_AppExit}" ToolTipService.InitialShowDelay="300" Click="ExitApp_Button_Click" Appearance="Danger" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                <TextBlock Text="{x:Static prop1:Resources.SYSTEM_APP_TITLE}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="17"/>
+                <ui:Button Icon="ChatHelp24" ToolTip="{x:Static prop1:Resources.TOOLTIP_HelpWebSite}" Appearance="Primary" ToolTipService.InitialShowDelay="300" Click="Help_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" />
+
             </Grid>
-            <Button Grid.Column="1" Content="{x:Static prop1:Resources.Add_AP}" ToolTip="{x:Static prop1:Resources.TOOLTIP_AddAccessPoint}" ToolTipService.InitialShowDelay="300" Click="AddAP_Button_Click" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
+            
+            
+            
+            
+            <Grid Grid.Row="1" Margin="0,0,0,0" >
+                <Border CornerRadius="7" Padding="10,10,10,10" Margin="0,0,0,4" Background="{DynamicResource SystemFillColorNeutralBackgroundBrush }">
+                    <StackPanel>
+                        <TextBlock Text="{x:Static prop1:Resources.Triggered_Wifi_Title}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="TriggeredInfo_textBlock" Text="Loading..." Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="19"/>
+                        <TextBlock x:Name="TriggeredInfo_Percentage_textBlock" Text="Loading..." Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="18"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <Grid Grid.Row="2" Margin="0,0,0,0" >
+
+                <Border CornerRadius="7"  Padding="10,10,10,10" Margin="0,4,0,4" Background="{DynamicResource SystemFillColorNeutralBackgroundBrush }">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="0.37*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0"  Grid.Column="0" Text="{x:Static prop1:Resources.When_not_connected_to_WiFi}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="16" Margin="6,0,0,4"/>
+                        <ComboBox Grid.Row="0"  Grid.Column="1" Name="cmb1" IsEditable="False"  ItemsSource="{Binding PercentageDic}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedIndex="{Binding Path=NotConnected, Source={x:Static prop:Settings.Default}}" SelectionChanged="cmb1_SelectionChanged" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="0,4,6,4"/>
+                        <TextBlock Grid.Row="1"  Grid.Column="0" Text="{x:Static prop1:Resources.When_connected_to_other_WiFi}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="16" Margin="6,0,0,8"/>
+                        <ComboBox Grid.Row="1"  Grid.Column="1" Name="cmb2" IsEditable="False"   ItemsSource="{Binding PercentageDic}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedIndex="{Binding Path=OtherConnected, Source={x:Static prop:Settings.Default}}" SelectionChanged="cmb2_SelectionChanged" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="0,4,6,4"/>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Grid Grid.Row="3" >
+                <Border CornerRadius="7"  Padding="10,10,10,10" Margin="0,4,0,4" Background="{DynamicResource SystemFillColorNeutralBackgroundBrush }">
+                    <Grid >
+                        <Border CornerRadius="7"  Padding="5,5,5,5" Background="{DynamicResource SystemFillColorNeutralBackgroundBrush }" >
+                            <ListView Name="APList" SelectionMode="Single" VerticalAlignment="Top"  HorizontalAlignment="Stretch" SelectionChanged="APList_SelectionChanged"  >
+                                <ListView.ItemTemplate>
+                                    <DataTemplate DataType="wpf:Entry">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="0.35*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding AP_Name}" FontSize="16" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="6,0,0,3" />
+                                            <ComboBox Grid.Column="1" Name="comboBox" ItemsSource="{Binding Battery}" DisplayMemberPath="Value" SelectedIndex="{Binding SelectedIndex}"    DropDownClosed="comboBox_DropDownClosed"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="0,1,0,1" />
+                                        </Grid>
+                                    </DataTemplate>
+
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Border>
+                        <Border x:Name="APList_Blind" CornerRadius="7"  Padding="5,5,5,5" Background="Black"  Opacity="0.75" Visibility="Hidden"/>
+                    </Grid>
+                </Border>
+                <ui:Snackbar x:Name="MW_APList_Snackbar"/>
+            </Grid>
+
+            <Grid Grid.Row="4" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.65*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" HorizontalAlignment="Left">
+                    <ui:Button x:Name="DeleteB" Content="{x:Static prop1:Resources.Delete}" ToolTip="{x:Static prop1:Resources.TOOLTIP_ListDelete}" ToolTipService.InitialShowDelay="300" Click="Delete_Button_Click"  Appearance="Danger" VerticalAlignment="Stretch" IsEnabled="False" />
+                </Grid>
+                <ui:Button Grid.Column="1"  x:Name="AddAP_B" Content="{x:Static prop1:Resources.Add_AP}" ToolTip="{x:Static prop1:Resources.TOOLTIP_AddAccessPoint}" ToolTipService.InitialShowDelay="300" Click="AddAP_Button_Click" Appearance="Primary" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
+            </Grid>
+
+
+            
+
         </Grid>
-
-        <Grid Grid.Row="4" VerticalAlignment="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="{x:Static prop1:Resources.ExitApp}" ToolTip="{x:Static prop1:Resources.TOOLTIP_AppExit}" ToolTipService.InitialShowDelay="300" Click="ExitApp_Button_Click"  Background ="Red" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Left" VerticalAlignment="Stretch" />
-            <Button Grid.Column="1" Content="{x:Static prop1:Resources.Help}" ToolTip="{x:Static prop1:Resources.TOOLTIP_HelpWebSite}" ToolTipService.InitialShowDelay="300" Click="Help_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
-
-        </Grid>
-    </Grid>
-
+        
+    </Border>
 </Window>
