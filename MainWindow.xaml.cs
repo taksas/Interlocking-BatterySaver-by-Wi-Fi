@@ -57,7 +57,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         public MainWindow(App app_origin_imported)
         {
-            
+            InitializeComponent();
             app_origin = app_origin_imported;
 
 
@@ -79,7 +79,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
             Initialize_DoINeedUpdateAPList();
 
-            InitializeComponent();
+            
             Wpf.Ui.Appearance.Accent.ApplySystemAccent();
 
             Loaded += (sender, args) =>
