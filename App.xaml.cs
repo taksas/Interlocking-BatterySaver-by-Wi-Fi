@@ -127,7 +127,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                     System.Windows.Application.Current.Shutdown();
                 }
             });
-
+            
             RegisterStartup();
 
         }
@@ -389,6 +389,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         private void TriggeredInfoChange(string AP, string PercentageStr)
         { 
+
             if (_win == null) return;
             _win.Dispatcher.Invoke(() => {
                 _win.TriggeredInfo_textBlock.Text = AP;
