@@ -16,7 +16,7 @@
 
 **詳しい使い方と最新情報は[こちら](https://taksas.net/interlocking-batterysaver-by-wi-fi)**
 
-
+![](https://taksas.net/wp-content/uploads/2023/08/Interlocking-BatterySaver-by-Wi-Fi-v2.0.20-2023_08_29-10_23_41-1.png.webp)
 
 
 接続先毎に、バッテリー残量が何パーセント以下になったら節約機能をオンにするかを設定することが可能です。
