@@ -113,15 +113,18 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         private void AddAP_Button_Click(object sender, RoutedEventArgs e)
         {
             APList_Controllers_Enable(false);
-            new AddDialog(this).ShowDialog();
+            bool? dialogResult = new AddDialog(this).ShowDialog();
             RescanAPList();
 
-            MW_APList_Snackbar.Show(
-                Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.SNACKBAR_AddCompletedTitle,
-                Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.SNACKBAR_AddCompleted,
-                SymbolRegular.CheckmarkCircle24,
-                Wpf.Ui.Common.ControlAppearance.Secondary
-            );
+            if (dialogResult.HasValue && dialogResult == true)
+            {
+                MW_APList_Snackbar.Show(
+                    Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.SNACKBAR_AddCompletedTitle,
+                    Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.SNACKBAR_AddCompleted,
+                    SymbolRegular.CheckmarkCircle24,
+                    Wpf.Ui.Common.ControlAppearance.Secondary
+                );
+            }
             APList_Controllers_Enable(true);
         }
 

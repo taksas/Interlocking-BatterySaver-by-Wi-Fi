@@ -120,6 +120,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         private void Button_Click_Cancel(object sender, RoutedEventArgs e)
         {
+            this.DialogResult = false;
             this.Close();
         }
 
@@ -145,7 +146,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
 
 
-
+                this.DialogResult = true;
                 this.Close();
             }
             else
