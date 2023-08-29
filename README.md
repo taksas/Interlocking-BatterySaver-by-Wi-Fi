@@ -16,9 +16,8 @@
 
 **詳しい使い方と最新情報は[こちら](https://taksas.net/interlocking-batterysaver-by-wi-fi)**
 
-![](https://taksas.net/wp-content/uploads/2023/04/image-11.png)
 
-![](https://taksas.net/wp-content/uploads/2023/04/image-11.png)
+
 
 接続先毎に、バッテリー残量が何パーセント以下になったら節約機能をオンにするかを設定することが可能です。
 
@@ -30,35 +29,21 @@
 
 ## 使い方
 
-![](https://taksas.net/wp-content/uploads/2023/04/image-2.png)
-
-![](https://taksas.net/wp-content/uploads/2023/04/image-2.png)
+![](https://taksas.net/wp-content/uploads/2023/08/Screenshot-2023_08_29-11_11_57.png)
 
 初回起動時に、次回以降の自動起動（PCの起動時に一緒に起動する）設定が行われます。OKを押してください。
 
 ![](https://taksas.net/wp-content/uploads/2023/04/leaf_20579.png)
 
-![](https://taksas.net/wp-content/uploads/2023/04/leaf_20579.png)
-
 右下にある葉っぱのアイコンをクリックしてください。
 
-![](https://taksas.net/wp-content/uploads/2023/04/Screenshot-2023_04_13-15_11_58.png)
+![](https://taksas.net/wp-content/uploads/2023/08/Interlocking-BatterySaver-by-Wi-Fi-v2.0.20-2023_08_29-10_42_48.png)
 
-![](https://taksas.net/wp-content/uploads/2023/04/Screenshot-2023_04_13-15_11_58.png)
-
-メニューが出てきます。設定を行う場合は「設定」を、常駐を解除してソフトを終了する場合は「終了」を選択してください。
-
-![](https://taksas.net/wp-content/uploads/2023/04/image-4.png)
-
-![](https://taksas.net/wp-content/uploads/2023/04/image-4.png)
-
-「設定」をクリックした場合、現在の設定内容が一覧表示されます。
+現在の設定内容が一覧表示されます。
 
 右下の「AP（アクセスポイント）を追加」をクリックすることで、設定を新たに追加することが出来ます。
 
-![](https://taksas.net/wp-content/uploads/2023/04/image-5.png)
-
-![](https://taksas.net/wp-content/uploads/2023/04/image-5.png)
+![](https://taksas.net/wp-content/uploads/2023/08/Wi-Fi%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88-AP-%E3%82%92%E8%BF%BD%E5%8A%A0-2023_08_29-10_42_55.png)
 
 APの名前には、設定を追加したいWi-Fiアクセスポイント名（Buffalo～やAirStation～、aterm～から始まる「Wi-Fiの名前」です）を入力してください。
 
@@ -80,6 +65,6 @@ APの名前には、設定を追加したいWi-Fiアクセスポイント名（B
 
 ## ライセンス
 
-このソフトウェアに含まれている『[ModernWpfUI](https://github.com/Kinnara/ModernWpf)』は、以下のライセンスで提供されています。
+このソフトウェアに含まれている『[WPF UI](https://wpfui.lepo.co/)』は、以下のライセンスで提供されています。
 
 [The MIT License](https://licenses.opensource.jp/MIT/MIT.html)
