@@ -38,7 +38,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         bool isCreatingMainWindow = false;
         bool APDetectGate = true;
 
-
+        bool EXCLUSION_RestartAndShutdown = false; // 排他処理用
 
         string[] Percentage = {"100", "90", "80", "70", "60", "50", "40", "30", "20", "10", "0"};
 
@@ -124,10 +124,9 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             ExecuteMainFunc();
             
             Deactivated += ((obj, ev) => {
-                if (!shutdown && !isCreatingMainWindow)
+                if (Interlocking_BatterySaver_by_Wi_Fi_.Properties.Settings.Default.DeactivatedWindowClose && !shutdown && !isCreatingMainWindow)
                 {
-                    System.Windows.Forms.Application.Restart();
-                    System.Windows.Application.Current.Shutdown();
+                    RestartAndShutdown();
                 }
             });
             
@@ -136,6 +135,16 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             if (Interlocking_BatterySaver_by_Wi_Fi_.Properties.Settings.Default.PrefetchMainWindow) _win = new MainWindow(this);
 
         }
+
+        public void RestartAndShutdown()
+        {
+            if(EXCLUSION_RestartAndShutdown == true) { return; }
+            EXCLUSION_RestartAndShutdown = true;
+            System.Windows.Forms.Application.Restart();
+            System.Windows.Application.Current.Shutdown();
+        }
+
+
 
         /// <summary>
         /// 常駐終了時の処理

@@ -124,6 +124,15 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
+        ///   Minimize app に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AppMinimize {
+            get {
+                return ResourceManager.GetString("AppMinimize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Battery (%) に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Battery__ {
@@ -232,6 +241,15 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
+        ///   Closing a window when operating another window に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Prefs_DeactivatedWindowClose {
+            get {
+                return ResourceManager.GetString("Prefs_DeactivatedWindowClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Pre-load the main window に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Prefs_MainWindowPrefetch {
@@ -322,11 +340,20 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
-        ///   Interlocking BatterySaver by Wi-Fi  v2.1.2 に類似しているローカライズされた文字列を検索します。
+        ///   Interlocking BatterySaver by Wi-Fi  v2.1.3 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string SYSTEM_APP_TITLE {
             get {
                 return ResourceManager.GetString("SYSTEM_APP_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   © 2023 taksas に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SYSTEM_DEVELOPER {
+            get {
+                return ResourceManager.GetString("SYSTEM_DEVELOPER", resourceCulture);
             }
         }
         
@@ -372,6 +399,15 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         public static string TOOLTIP_AppExit {
             get {
                 return ResourceManager.GetString("TOOLTIP_AppExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Minimizes the application and returns it to the taskbar. This button will appear if you have set the window not to close automatically from the settings. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TOOLTIP_AppMinimize {
+            get {
+                return ResourceManager.GetString("TOOLTIP_AppMinimize", resourceCulture);
             }
         }
         
@@ -426,6 +462,15 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         public static string TOOLTIP_OpenLink_Store {
             get {
                 return ResourceManager.GetString("TOOLTIP_OpenLink_Store", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Select whether or not to automatically close this app&apos;s window when you operate another app&apos;s window. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TOOLTIP_Prefs_DeactivatedWindowClose {
+            get {
+                return ResourceManager.GetString("TOOLTIP_Prefs_DeactivatedWindowClose", resourceCulture);
             }
         }
         

@@ -36,6 +36,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
     {
         public Dictionary<string, string> PercentageDic { get; set; }
         App app_origin = null;
+        
 
         public class AP
         {
@@ -95,6 +96,13 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             RescanAPList();
             DataContext = this;
 
+            if (Properties.Settings.Default.DeactivatedWindowClose)
+            {
+                Button_RestartAndShutdown.Visibility = Visibility.Hidden;
+            } else
+            {
+                Button_RestartAndShutdown.Visibility = Visibility.Visible;
+            }
 
         }
 
@@ -129,6 +137,10 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         }
 
 
+        private void AppMinimize_Button_Click(object sender, RoutedEventArgs e)
+        {
+            app_origin.RestartAndShutdown();
+        }
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -349,6 +361,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         private void Pref_Button_Click(object sender, RoutedEventArgs e)
         {
             bool? prefsResult = new Preferences(this).ShowDialog();
+            if (prefsResult != null && prefsResult == true) app_origin.RestartAndShutdown();
             //OpenUrl("https://taksas.net/interlocking-batterysaver-by-wi-fi");
         }
 

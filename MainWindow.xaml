@@ -136,8 +136,9 @@
                     <ColumnDefinition Width="0.65*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0" HorizontalAlignment="Left">
-                    <ui:Button x:Name="DeleteB" Content="{x:Static prop1:Resources.Delete}" ToolTip="{x:Static prop1:Resources.TOOLTIP_ListDelete}" ToolTipService.InitialShowDelay="300" Click="Delete_Button_Click"  Appearance="Danger" VerticalAlignment="Stretch" IsEnabled="False" />
+                <Grid Grid.Column="0">
+                    <ui:Button x:Name="DeleteB" HorizontalAlignment="Left" Content="{x:Static prop1:Resources.Delete}" ToolTip="{x:Static prop1:Resources.TOOLTIP_ListDelete}" ToolTipService.InitialShowDelay="300" Click="Delete_Button_Click"  Appearance="Danger" VerticalAlignment="Stretch" IsEnabled="False" />
+                    <ui:Button x:Name="Button_RestartAndShutdown" HorizontalAlignment="Right" Content="{x:Static prop1:Resources.AppMinimize}" ToolTip="{x:Static prop1:Resources.TOOLTIP_AppMinimize}" ToolTipService.InitialShowDelay="300" Click="AppMinimize_Button_Click"  Appearance="Secondary" VerticalAlignment="Stretch" Visibility="Hidden" />
                 </Grid>
                 <ui:Button Grid.Column="1"  x:Name="AddAP_B" Content="{x:Static prop1:Resources.Add_AP}" ToolTip="{x:Static prop1:Resources.TOOLTIP_AddAccessPoint}" ToolTipService.InitialShowDelay="300" Click="AddAP_Button_Click" Appearance="Primary" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
             </Grid>

@@ -53,17 +53,24 @@
                                 <TextBlock Text="{x:Static prop1:Resources.Settings}" />
                     </StackPanel>
                 </TabItem.Header>
-                        <Grid Margin="16">
-
-                                <Grid.ColumnDefinitions>
+                        <Grid Margin="16"  VerticalAlignment="Top">
+                            <Grid.RowDefinitions >
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="6*"/>
                                     <ColumnDefinition Width="1*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Grid.Column="0" Text="{x:Static prop1:Resources.Prefs_MainWindowPrefetch}" ToolTip="{x:Static prop1:Resources.TOOLTIP_Prefs_MainWindowPrefetch}" ToolTipService.InitialShowDelay="300" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" FontSize="18"/>
-                                <ui:ToggleSwitch x:Name="ToggleSwitch_PrefetchMainWindow" Grid.Column="1" Click="Config_MainWindowPrefetch_Changed" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Margin="0 8" Text="{x:Static prop1:Resources.Prefs_MainWindowPrefetch}" ToolTip="{x:Static prop1:Resources.TOOLTIP_Prefs_MainWindowPrefetch}" ToolTipService.InitialShowDelay="300" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" FontSize="18"/>
+                            <ui:ToggleSwitch Grid.Row="0" Grid.Column="1" Margin="0 8" x:Name="ToggleSwitch_PrefetchMainWindow" Click="Config_MainWindowPrefetch_Changed" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
-                </Grid>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Margin="0 8" Text="{x:Static prop1:Resources.Prefs_DeactivatedWindowClose}" ToolTip="{x:Static prop1:Resources.TOOLTIP_Prefs_DeactivatedWindowClose}" ToolTipService.InitialShowDelay="300" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" FontSize="18"/>
+                            <ui:ToggleSwitch Grid.Row="1" Grid.Column="1" Margin="0 8" x:Name="ToggleSwitch_DeactivatedWindowClose" Click="Config_DeactivatedWindowClose_Changed" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                            
+                        </Grid>
             </TabItem>
             <TabItem>
                 <TabItem.Header>
@@ -72,22 +79,59 @@
                                 <TextBlock Text="{x:Static prop1:Resources.Help}" />
                     </StackPanel>
                 </TabItem.Header>
-                <Grid  Margin="16">
+                        <Grid  Margin="16">
+                            <Grid.RowDefinitions >
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1.5*"/>
+                                <RowDefinition Height="0.3*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" VerticalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.3*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="leaf_20579.ico" Margin="0, 0, 5, 0"/>
+                                <TextBlock  Grid.Column="1" Text="{x:Static prop1:Resources.SYSTEM_APP_TITLE}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32" TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
+                            </Grid>
 
-
-
-                    <Grid VerticalAlignment="Center">
+                            <Grid Grid.Row="1" VerticalAlignment="Center">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <ui:Button Grid.Column="0" Content="{x:Static prop1:Resources.Help}" ToolTip="{x:Static prop1:Resources.TOOLTIP_OpenLink_Help}" ToolTipService.InitialShowDelay="300" Click="Button_Click_Help" Appearance="Primary" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10 5"/>
-                        <ui:Button Grid.Column="1" Content="{x:Static prop1:Resources.Store}" ToolTip="{x:Static prop1:Resources.TOOLTIP_OpenLink_Store}" ToolTipService.InitialShowDelay="300" Click="Button_Click_Store" Appearance="Primary" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10 5"/>
-                        <ui:Button Grid.Column="2" Content="{x:Static prop1:Resources.GitHub}" ToolTip="{x:Static prop1:Resources.TOOLTIP_OpenLink_GitHub}" ToolTipService.InitialShowDelay="300" Click="Button_Click_GitHub" Appearance="Primary" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10 5"/>
+                                <ui:Button Grid.Column="0" ToolTip="{x:Static prop1:Resources.TOOLTIP_OpenLink_Help}" ToolTipService.InitialShowDelay="300" Click="Button_Click_Help" Appearance="Primary" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10 5" Height="140">
+                                    <StackPanel Orientation="Vertical" Margin="4,2">
+                                        <TextBlock  Grid.Column="0" Text="❔" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48" TextWrapping="WrapWithOverflow" TextAlignment="Center" Margin="8"/>
+                                        <TextBlock  Grid.Column="1" Text="{x:Static prop1:Resources.Help}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
+                                        
+                                    </StackPanel>
+                                </ui:Button>
+                                <ui:Button Grid.Column="1" ToolTip="{x:Static prop1:Resources.TOOLTIP_OpenLink_Store}" ToolTipService.InitialShowDelay="300" Click="Button_Click_Store" Appearance="Primary" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10 5" Height="140" >
+                                <StackPanel Orientation="Vertical" Margin="4,2">
+                                    <TextBlock  Grid.Column="0" Text="📲" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48" TextWrapping="WrapWithOverflow" TextAlignment="Center" Margin="8"/>
+                                    <TextBlock  Grid.Column="1" Text="{x:Static prop1:Resources.Store}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
 
-                    </Grid>
-                </Grid>
+                                </StackPanel>
+                                </ui:Button>
+                                <ui:Button Grid.Column="2" ToolTip="{x:Static prop1:Resources.TOOLTIP_OpenLink_GitHub}" ToolTipService.InitialShowDelay="300" Click="Button_Click_GitHub" Appearance="Primary" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10 5" Height="140" >
+                                    <StackPanel Orientation="Vertical" Margin="4,2">
+                                        <TextBlock  Grid.Column="0" Text="🖥️" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48" TextWrapping="WrapWithOverflow" TextAlignment="Center" Margin="8"/>
+                                        <TextBlock  Grid.Column="1" Text="{x:Static prop1:Resources.GitHub}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
+
+                                    </StackPanel>
+                                </ui:Button>
+
+                            </Grid>
+
+
+
+                            <ui:Hyperlink  Grid.Row="2" Content="{x:Static prop1:Resources.SYSTEM_DEVELOPER}" NavigateUri="https://taksas.net"  Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22"/>
+
+
+
+
+                        </Grid>
             </TabItem>
         </TabControl>
             </Grid>

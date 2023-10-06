@@ -25,13 +25,14 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
     public partial class Preferences : Window
     {
 
-
+        bool boolDialogResult = false;
 
         public Preferences(Window owner)
         {
             
 
             InitializeComponent();
+            
             Wpf.Ui.Appearance.Accent.ApplySystemAccent();
 
             Loaded += (sender, args) =>
@@ -44,6 +45,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             };
 
             ToggleSwitch_PrefetchMainWindow.IsChecked = Properties.Settings.Default.PrefetchMainWindow;
+            ToggleSwitch_DeactivatedWindowClose.IsChecked = Properties.Settings.Default.DeactivatedWindowClose;
 
             this.Owner = owner; //呼び出し元のWindow
             this.WindowStartupLocation = WindowStartupLocation.CenterOwner; //起動時の表示位置を親画面の中央に合わせる
@@ -79,7 +81,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = false;
+            this.DialogResult = boolDialogResult;
             this.Close();
         }
 
@@ -97,7 +99,24 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             }
 
             Properties.Settings.Default.Save();
+            boolDialogResult = true;
+        }
 
+        private void Config_DeactivatedWindowClose_Changed(object sender, RoutedEventArgs e)
+        {
+
+
+            if ((bool)(sender as ToggleButton).IsChecked)
+            {
+                Properties.Settings.Default.DeactivatedWindowClose = true;
+            }
+            else
+            {
+                Properties.Settings.Default.DeactivatedWindowClose = false;
+            }
+
+            Properties.Settings.Default.Save();
+            boolDialogResult = true;
         }
     }
 }

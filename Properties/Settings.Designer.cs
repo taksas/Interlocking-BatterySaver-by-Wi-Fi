@@ -58,5 +58,17 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
                 this["PrefetchMainWindow"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool DeactivatedWindowClose {
+            get {
+                return ((bool)(this["DeactivatedWindowClose"]));
+            }
+            set {
+                this["DeactivatedWindowClose"] = value;
+            }
+        }
     }
 }

@@ -129,6 +129,9 @@
   <data name="Always" xml:space="preserve">
     <value>Always</value>
   </data>
+  <data name="AppMinimize" xml:space="preserve">
+    <value>Minimize app</value>
+  </data>
   <data name="AP_Name" xml:space="preserve">
     <value>AP Name</value>
   </data>
@@ -171,6 +174,9 @@
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="Prefs_DeactivatedWindowClose" xml:space="preserve">
+    <value>Closing a window when operating another window</value>
+  </data>
   <data name="Prefs_MainWindowPrefetch" xml:space="preserve">
     <value>Pre-load the main window</value>
   </data>
@@ -202,7 +208,10 @@
     <value>Microsoft Store</value>
   </data>
   <data name="SYSTEM_APP_TITLE" xml:space="preserve">
-    <value>Interlocking BatterySaver by Wi-Fi  v2.1.2</value>
+    <value>Interlocking BatterySaver by Wi-Fi  v2.1.3</value>
+  </data>
+  <data name="SYSTEM_DEVELOPER" xml:space="preserve">
+    <value>© 2023 taksas</value>
   </data>
   <data name="TOOLTIP_AddAccessPoint" xml:space="preserve">
     <value>Add a new access point to the list.</value>
@@ -218,6 +227,9 @@
   </data>
   <data name="TOOLTIP_AppExit" xml:space="preserve">
     <value>Exit the application and deactivate the resident application. If you want to keep the application resident without closing it, tap anywhere other than the application window.</value>
+  </data>
+  <data name="TOOLTIP_AppMinimize" xml:space="preserve">
+    <value>Minimizes the application and returns it to the taskbar. This button will appear if you have set the window not to close automatically from the settings.</value>
   </data>
   <data name="TOOLTIP_ListDelete" xml:space="preserve">
     <value>Deletes the selected battery saver rule.</value>
@@ -236,6 +248,9 @@
   </data>
   <data name="TOOLTIP_OpenLink_Store" xml:space="preserve">
     <value>Open Store Page</value>
+  </data>
+  <data name="TOOLTIP_Prefs_DeactivatedWindowClose" xml:space="preserve">
+    <value>Select whether or not to automatically close this app's window when you operate another app's window.</value>
   </data>
   <data name="TOOLTIP_Prefs_MainWindowPrefetch" xml:space="preserve">
     <value>The main window is preloaded to speed up startup. Memory usage will increase by 10MB or more while resident.</value>
