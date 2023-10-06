@@ -202,7 +202,7 @@
     <value>Microsoft Store</value>
   </data>
   <data name="SYSTEM_APP_TITLE" xml:space="preserve">
-    <value>Interlocking BatterySaver by Wi-Fi  v2.1.0</value>
+    <value>Interlocking BatterySaver by Wi-Fi  v2.1.1</value>
   </data>
   <data name="TOOLTIP_AddAccessPoint" xml:space="preserve">
     <value>Add a new access point to the list.</value>
@@ -238,7 +238,7 @@
     <value>Open Store Page</value>
   </data>
   <data name="TOOLTIP_Prefs_MainWindowPrefetch" xml:space="preserve">
-    <value>The main window is preloaded to speed up startup. Memory usage will increase by 100MB or more while resident.</value>
+    <value>The main window is preloaded to speed up startup. Memory usage will increase by 10MB or more while resident.</value>
   </data>
   <data name="TOOLTIP_Window_Close" xml:space="preserve">
     <value>Close the Window</value>

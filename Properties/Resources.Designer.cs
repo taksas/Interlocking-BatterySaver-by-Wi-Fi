@@ -322,7 +322,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
-        ///   Interlocking BatterySaver by Wi-Fi  v2.1.0 に類似しているローカライズされた文字列を検索します。
+        ///   Interlocking BatterySaver by Wi-Fi  v2.1.1 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string SYSTEM_APP_TITLE {
             get {
@@ -430,7 +430,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
-        ///   The main window is preloaded to speed up startup. Memory usage will increase by 100MB or more while resident. に類似しているローカライズされた文字列を検索します。
+        ///   The main window is preloaded to speed up startup. Memory usage will increase by 10MB or more while resident. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string TOOLTIP_Prefs_MainWindowPrefetch {
             get {

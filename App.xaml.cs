@@ -15,6 +15,8 @@ using System.Reflection;
 using System.Buffers.Text;
 using System.Windows.Controls;
 using System.Threading;
+using System.Diagnostics.Eventing.Reader;
+using Interlocking_BatterySaver_by_Wi_Fi_.Properties;
 
 namespace Interlocking_BatterySaver_by_Wi_Fi_
 {
@@ -43,6 +45,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
 
         MainWindow _win = null;
+        
 
 
         /// <summary>
@@ -130,6 +133,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             
             RegisterStartup();
 
+            if (Interlocking_BatterySaver_by_Wi_Fi_.Properties.Settings.Default.PrefetchMainWindow) _win = new MainWindow(this);
+
         }
 
         /// <summary>
@@ -158,9 +163,10 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         /// </summary>
         private void ShowMainWindow()
         {
+            
             isCreatingMainWindow = true;
             Debug.Print("SHOWING MAIN WINDOW...");
-                _win = new MainWindow(this);
+                if (_win == null)  _win = new MainWindow(this);
 
 
                 /*

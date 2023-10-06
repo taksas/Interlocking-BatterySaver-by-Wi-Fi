@@ -235,7 +235,7 @@
     <value>ストアページを開く</value>
   </data>
   <data name="TOOLTIP_Prefs_MainWindowPrefetch" xml:space="preserve">
-    <value>起動高速化の為にメインウインドウをあらかじめ読み込んでおきます。常駐中のメモリ使用量が100MB以上増加します。</value>
+    <value>起動高速化の為にメインウインドウをあらかじめ読み込んでおきます。常駐中のメモリ使用量が10MB以上増加します。</value>
   </data>
   <data name="TOOLTIP_Window_Close" xml:space="preserve">
     <value>ウインドウを閉じる</value>
