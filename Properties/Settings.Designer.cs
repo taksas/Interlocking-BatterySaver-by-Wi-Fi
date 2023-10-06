@@ -49,7 +49,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool PrefetchMainWindow {
             get {
                 return ((bool)(this["PrefetchMainWindow"]));
