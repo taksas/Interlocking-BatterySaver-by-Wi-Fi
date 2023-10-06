@@ -142,6 +142,15 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
+        ///   Close に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Current AP に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Current_AP {
@@ -165,6 +174,24 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         public static string Exit {
             get {
                 return ResourceManager.GetString("Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   GitHub に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string GitHub {
+            get {
+                return ResourceManager.GetString("GitHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Help に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Help {
+            get {
+                return ResourceManager.GetString("Help", resourceCulture);
             }
         }
         
@@ -201,6 +228,15 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         public static string OK {
             get {
                 return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Pre-load the main window に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Prefs_MainWindowPrefetch {
+            get {
+                return ResourceManager.GetString("Prefs_MainWindowPrefetch", resourceCulture);
             }
         }
         
@@ -277,7 +313,16 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
-        ///   Interlocking BatterySaver by Wi-Fi  v2.0.20 に類似しているローカライズされた文字列を検索します。
+        ///   Microsoft Store に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Store {
+            get {
+                return ResourceManager.GetString("Store", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Interlocking BatterySaver by Wi-Fi  v2.1.0 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string SYSTEM_APP_TITLE {
             get {
@@ -331,15 +376,6 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
-        ///   The help site will open in your browser. に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        public static string TOOLTIP_HelpWebSite {
-            get {
-                return ResourceManager.GetString("TOOLTIP_HelpWebSite", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Deletes the selected battery saver rule. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string TOOLTIP_ListDelete {
@@ -354,6 +390,60 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         public static string TOOLTIP_ListUpdate {
             get {
                 return ResourceManager.GetString("TOOLTIP_ListUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Open Menu に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TOOLTIP_More {
+            get {
+                return ResourceManager.GetString("TOOLTIP_More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Open GitHub Page に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TOOLTIP_OpenLink_GitHub {
+            get {
+                return ResourceManager.GetString("TOOLTIP_OpenLink_GitHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Open Help Page に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TOOLTIP_OpenLink_Help {
+            get {
+                return ResourceManager.GetString("TOOLTIP_OpenLink_Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Open Store Page に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TOOLTIP_OpenLink_Store {
+            get {
+                return ResourceManager.GetString("TOOLTIP_OpenLink_Store", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   The main window is preloaded to speed up startup. Memory usage will increase by 100MB or more while resident. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TOOLTIP_Prefs_MainWindowPrefetch {
+            get {
+                return ResourceManager.GetString("TOOLTIP_Prefs_MainWindowPrefetch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Close the Window に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TOOLTIP_Window_Close {
+            get {
+                return ResourceManager.GetString("TOOLTIP_Window_Close", resourceCulture);
             }
         }
         

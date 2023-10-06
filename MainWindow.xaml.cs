@@ -346,9 +346,10 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         
 
-        private void Help_Button_Click(object sender, RoutedEventArgs e)
+        private void Pref_Button_Click(object sender, RoutedEventArgs e)
         {
-            OpenUrl("https://taksas.net/interlocking-batterysaver-by-wi-fi");
+            bool? prefsResult = new Preferences(this).ShowDialog();
+            //OpenUrl("https://taksas.net/interlocking-batterysaver-by-wi-fi");
         }
 
         private Process OpenUrl(string url)

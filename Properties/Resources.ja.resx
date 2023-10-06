@@ -141,6 +141,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>キャンセル</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
   <data name="Current_AP" xml:space="preserve">
     <value>現在のAP</value>
   </data>
@@ -149,6 +152,12 @@
   </data>
   <data name="Exit" xml:space="preserve">
     <value>終了</value>
+  </data>
+  <data name="GitHub" xml:space="preserve">
+    <value>GitHub</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>ヘルプサイト</value>
   </data>
   <data name="Invalid_AP_name_is_set___" xml:space="preserve">
     <value>正しくないAP名が指定されています。再確認してください。</value>
@@ -161,6 +170,9 @@
   </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
+  </data>
+  <data name="Prefs_MainWindowPrefetch" xml:space="preserve">
+    <value>メインウインドウをあらかじめ読み込んでおく</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>設定</value>
@@ -186,6 +198,9 @@
   <data name="StartupReg" xml:space="preserve">
     <value>初回起動処理を開始します。「OK」を押した後、右下のステータスバーにあるアイコンをクリックして設定を始めてください。</value>
   </data>
+  <data name="Store" xml:space="preserve">
+    <value>Microsoft Store</value>
+  </data>
   <data name="TOOLTIP_AddAccessPoint" xml:space="preserve">
     <value>アクセスポイントを新しく一覧に追加します。</value>
   </data>
@@ -201,14 +216,29 @@
   <data name="TOOLTIP_AppExit" xml:space="preserve">
     <value>アプリを終了し常駐を解除します。アプリを終了させず、常駐させたい場合はアプリのウインドウ以外の場所をタップしてください。</value>
   </data>
-  <data name="TOOLTIP_HelpWebSite" xml:space="preserve">
-    <value>ヘルプサイトがブラウザで開きます。</value>
-  </data>
   <data name="TOOLTIP_ListDelete" xml:space="preserve">
     <value>選択した省電力モードルールを削除します。</value>
   </data>
   <data name="TOOLTIP_ListUpdate" xml:space="preserve">
     <value>省電力モードルールのしきい値を、選択した値に変更します。</value>
+  </data>
+  <data name="TOOLTIP_More" xml:space="preserve">
+    <value>メニューを開く</value>
+  </data>
+  <data name="TOOLTIP_OpenLink_GitHub" xml:space="preserve">
+    <value>GitHubでソースコードを開く</value>
+  </data>
+  <data name="TOOLTIP_OpenLink_Help" xml:space="preserve">
+    <value>ヘルプサイトを開く</value>
+  </data>
+  <data name="TOOLTIP_OpenLink_Store" xml:space="preserve">
+    <value>ストアページを開く</value>
+  </data>
+  <data name="TOOLTIP_Prefs_MainWindowPrefetch" xml:space="preserve">
+    <value>起動高速化の為にメインウインドウをあらかじめ読み込んでおきます。常駐中のメモリ使用量が100MB以上増加します。</value>
+  </data>
+  <data name="TOOLTIP_Window_Close" xml:space="preserve">
+    <value>ウインドウを閉じる</value>
   </data>
   <data name="Triggered_Wifi_Title" xml:space="preserve">
     <value>現在適用中の設定</value>
