@@ -259,6 +259,33 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
+        ///   Resource Check に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ResourceCheck {
+            get {
+                return ResourceManager.GetString("ResourceCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Application Package Identification に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ResourceCheck_AppPackage_Title {
+            get {
+                return ResourceManager.GetString("ResourceCheck_AppPackage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Loading... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ResourceCheck_Loading {
+            get {
+                return ResourceManager.GetString("ResourceCheck_Loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Settings に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Settings {
@@ -340,7 +367,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
-        ///   Interlocking BatterySaver by Wi-Fi  v2.1.4 に類似しているローカライズされた文字列を検索します。
+        ///   Interlocking BatterySaver by Wi-Fi  v2.2.2 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string SYSTEM_APP_TITLE {
             get {

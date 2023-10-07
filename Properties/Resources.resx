@@ -180,6 +180,15 @@
   <data name="Prefs_MainWindowPrefetch" xml:space="preserve">
     <value>Pre-load the main window</value>
   </data>
+  <data name="ResourceCheck" xml:space="preserve">
+    <value>Resource Check</value>
+  </data>
+  <data name="ResourceCheck_AppPackage_Title" xml:space="preserve">
+    <value>Application Package Identification</value>
+  </data>
+  <data name="ResourceCheck_Loading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
@@ -208,7 +217,7 @@
     <value>Microsoft Store</value>
   </data>
   <data name="SYSTEM_APP_TITLE" xml:space="preserve">
-    <value>Interlocking BatterySaver by Wi-Fi  v2.1.4</value>
+    <value>Interlocking BatterySaver by Wi-Fi  v2.2.2</value>
   </data>
   <data name="SYSTEM_DEVELOPER" xml:space="preserve">
     <value>© 2023 taksas</value>

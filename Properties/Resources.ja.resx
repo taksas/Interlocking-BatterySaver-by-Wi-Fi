@@ -180,6 +180,15 @@
   <data name="Prefs_MainWindowPrefetch" xml:space="preserve">
     <value>メインウインドウをあらかじめ読み込んでおく</value>
   </data>
+  <data name="ResourceCheck" xml:space="preserve">
+    <value>リソースチェック</value>
+  </data>
+  <data name="ResourceCheck_AppPackage_Title" xml:space="preserve">
+    <value>アプリケーションパッケージの特定</value>
+  </data>
+  <data name="ResourceCheck_Loading" xml:space="preserve">
+    <value>読み込み中...</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>設定</value>
   </data>
