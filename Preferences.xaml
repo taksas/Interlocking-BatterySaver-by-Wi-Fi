@@ -106,39 +106,7 @@
             </TabItem>
 
 
-                    <TabItem>
-                        <TabItem.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <ui:SymbolIcon Margin="0,0,6,0" Symbol="BoxMultipleCheckmark24" />
-                                <TextBlock Text="{x:Static prop1:Resources.ResourceCheck}" />
-                            </StackPanel>
-                        </TabItem.Header>
-                        <Grid VerticalAlignment="Stretch">
-                            <StackPanel Margin="14">
-                                <Expander Margin="5" >
-                                    <Expander.Header>
-                                        <Grid Margin="5 0">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="6*"/>
-                                                <ColumnDefinition Width="0.5*"/>
-                                                <ColumnDefinition Width="1.5*"/>
-                                            </Grid.ColumnDefinitions>
-
-                                            <TextBlock Grid.Column="0" Margin="0 8" Text="{x:Static prop1:Resources.ResourceCheck_AppPackage_Title}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" FontSize="18"/>
-                                            <ui:ProgressRing Grid.Column="1" Margin="0 8" Height="30" Width="30" x:Name="ResourceCheck_AppPackage_Ring" IsIndeterminate="True" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-                                            <TextBlock Grid.Column="2" Margin="0 8"  x:Name="ResourceCheck_AppPackage_Ring_Text" Text="{x:Static prop1:Resources.ResourceCheck_Loading}"  Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"/>
-                                        </Grid>
-                            </Expander.Header>
-                                    <StackPanel Margin="6"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                        <TextBlock Grid.Column="2" Margin="0 8" Text="アプリケーションパッケージをWindowsから特定できるかをテストします。&#xa;スタートアップ処理が正常に動作する為にはこのテスト項目をパスする必要がありますが、Microsoft Store外からアプリをダウンロードした場合はこの項目のテストにパスしない可能性があります。"  Foreground="{DynamicResource TextFillColorPrimaryBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TextWrapping="Wrap" FontSize="16"/>
-                                        <Border CornerRadius="7"  Padding="10,10,10,10" Margin="0,4,0,4" Background="{DynamicResource SystemFillColorNeutralBackgroundBrush }">
-                                            <ProgressBar x:Name="ResourceCheck_AppPackage_ProgressBar"  IsIndeterminate="True" />
-                                        </Border>
-                                    </StackPanel>
-                                </Expander>
-                            </StackPanel>
-                        </Grid>
-                    </TabItem>
+                    
                     <TabItem>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
@@ -200,7 +168,45 @@
 
                         </Grid>
             </TabItem>
-        </TabControl>
+
+
+
+                    <TabItem Visibility="Hidden">
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <ui:SymbolIcon Margin="0,0,6,0" Symbol="BoxMultipleCheckmark24" />
+                                <TextBlock Text="{x:Static prop1:Resources.ResourceCheck}" />
+                            </StackPanel>
+                        </TabItem.Header>
+                        <Grid VerticalAlignment="Stretch">
+                            <StackPanel Margin="14">
+                                <Expander Margin="5" >
+                                    <Expander.Header>
+                                        <Grid Margin="5 0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="6*"/>
+                                                <ColumnDefinition Width="0.5*"/>
+                                                <ColumnDefinition Width="1.5*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Grid.Column="0" Margin="0 8" Text="{x:Static prop1:Resources.ResourceCheck_AppPackage_Title}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" FontSize="18"/>
+                                            <ui:ProgressRing Grid.Column="1" Margin="0 8" Height="30" Width="30" x:Name="ResourceCheck_AppPackage_Ring" IsIndeterminate="True" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                            <TextBlock Grid.Column="2" Margin="0 8"  x:Name="ResourceCheck_AppPackage_Ring_Text" Text="{x:Static prop1:Resources.ResourceCheck_Loading}"  Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"/>
+                                        </Grid>
+                                    </Expander.Header>
+                                    <StackPanel Margin="6"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                        <TextBlock Grid.Column="2" Margin="0 8" Text="アプリケーションパッケージをWindowsから特定できるかをテストします。&#xa;スタートアップ処理が正常に動作する為にはこのテスト項目をパスする必要がありますが、Microsoft Store外からアプリをダウンロードした場合はこの項目のテストにパスしない可能性があります。"  Foreground="{DynamicResource TextFillColorPrimaryBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TextWrapping="Wrap" FontSize="16"/>
+                                        <Border CornerRadius="7"  Padding="10,10,10,10" Margin="0,4,0,4" Background="{DynamicResource SystemFillColorNeutralBackgroundBrush }">
+                                            <ProgressBar x:Name="ResourceCheck_AppPackage_ProgressBar"  IsIndeterminate="True" />
+                                        </Border>
+                                    </StackPanel>
+                                </Expander>
+                            </StackPanel>
+                        </Grid>
+                    </TabItem>
+                    
+                    
+                </TabControl>
             </Grid>
 
             <Grid Grid.Row="1" VerticalAlignment="Bottom">
