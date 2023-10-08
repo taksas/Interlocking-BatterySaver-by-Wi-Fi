@@ -183,11 +183,23 @@
   <data name="ResourceCheck" xml:space="preserve">
     <value>リソースチェック</value>
   </data>
+  <data name="ResourceCheck_AppPackage_Script_Target_Name_Title" xml:space="preserve">
+    <value>アプリ名称:</value>
+  </data>
+  <data name="ResourceCheck_AppPackage_Script_Ver" xml:space="preserve">
+    <value>スクリプトバージョン:</value>
+  </data>
   <data name="ResourceCheck_AppPackage_Title" xml:space="preserve">
     <value>アプリケーションパッケージの特定</value>
   </data>
+  <data name="ResourceCheck_Failed" xml:space="preserve">
+    <value>破損確認</value>
+  </data>
   <data name="ResourceCheck_Loading" xml:space="preserve">
-    <value>読み込み中...</value>
+    <value>チェック中...</value>
+  </data>
+  <data name="ResourceCheck_Success" xml:space="preserve">
+    <value>正常</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>設定</value>

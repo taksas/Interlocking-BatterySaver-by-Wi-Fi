@@ -268,6 +268,24 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
+        ///   App Name: に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ResourceCheck_AppPackage_Script_Target_Name_Title {
+            get {
+                return ResourceManager.GetString("ResourceCheck_AppPackage_Script_Target_Name_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Script Version: に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ResourceCheck_AppPackage_Script_Ver {
+            get {
+                return ResourceManager.GetString("ResourceCheck_AppPackage_Script_Ver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Application Package Identification に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ResourceCheck_AppPackage_Title {
@@ -277,11 +295,29 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
-        ///   Loading... に類似しているローカライズされた文字列を検索します。
+        ///   Failed に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ResourceCheck_Failed {
+            get {
+                return ResourceManager.GetString("ResourceCheck_Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Checking... に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ResourceCheck_Loading {
             get {
                 return ResourceManager.GetString("ResourceCheck_Loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Healthy に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ResourceCheck_Success {
+            get {
+                return ResourceManager.GetString("ResourceCheck_Success", resourceCulture);
             }
         }
         

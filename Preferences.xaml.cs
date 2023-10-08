@@ -49,6 +49,9 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
             this.Owner = owner; //呼び出し元のWindow
             this.WindowStartupLocation = WindowStartupLocation.CenterOwner; //起動時の表示位置を親画面の中央に合わせる
+
+
+            Resource_Check(); // リソースチェック開始
         }
 
         private Process OpenUrl(string url)
@@ -117,6 +120,80 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
             Properties.Settings.Default.Save();
             boolDialogResult = true;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // RESOURCE CHECK
+
+
+        private async void Resource_Check()
+        {
+            await Task.Delay(5000);
+            Resource_Check_AppPackage();
+        }
+
+
+
+        // APP_PACKAGE
+        private void Resource_Check_AppPackage()
+        {
+
+            string SCRIPT_VERSION = "2023/10/08_1";
+            string APP_NAME = "InterlockingBatterySaverbyWi-Fi";
+
+
+            ResourceCheck_AppPackage_Script_Date.Text = SCRIPT_VERSION;
+            ResourceCheck_AppPackage_Script_Target_Name.Text = APP_NAME;
+
+
+            System.Diagnostics.Process p = new System.Diagnostics.Process();
+            //ComSpec(cmd.exe)のパスを取得して、FileNameプロパティに指定
+            p.StartInfo.FileName = System.Environment.GetEnvironmentVariable("ComSpec");
+            string cmd = "powershell \" Get-AppxPackage -Name *" + APP_NAME + "* \"";
+            p.StartInfo.Arguments = @"/c " + cmd;
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
+            p.StartInfo.RedirectStandardOutput = true;
+            p.Start();
+
+            string s = p.StandardOutput.ReadToEnd();
+
+
+            ResourceCheck_AppPackage_Ring.Visibility = Visibility.Collapsed;
+            if (CountChar(s, "PackageFullName") == 1)
+            {
+                ResourceCheck_AppPackage_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Success;
+                ResourceCheck_AppPackage_Success.Visibility = Visibility.Visible;
+            } else
+            {
+                ResourceCheck_AppPackage_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Failed;
+                ResourceCheck_AppPackage_Failed.Visibility = Visibility.Visible;
+            }
+
+
+
+        }
+
+        public static int CountChar(string s, string c)
+        {
+            return (s.Length - s.Replace(c.ToString(), "").Length) / c.Length;
         }
     }
 }

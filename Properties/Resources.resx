@@ -183,11 +183,23 @@
   <data name="ResourceCheck" xml:space="preserve">
     <value>Resource Check</value>
   </data>
+  <data name="ResourceCheck_AppPackage_Script_Target_Name_Title" xml:space="preserve">
+    <value>App Name:</value>
+  </data>
+  <data name="ResourceCheck_AppPackage_Script_Ver" xml:space="preserve">
+    <value>Script Version:</value>
+  </data>
   <data name="ResourceCheck_AppPackage_Title" xml:space="preserve">
     <value>Application Package Identification</value>
   </data>
+  <data name="ResourceCheck_Failed" xml:space="preserve">
+    <value>Failed</value>
+  </data>
   <data name="ResourceCheck_Loading" xml:space="preserve">
-    <value>Loading...</value>
+    <value>Checking...</value>
+  </data>
+  <data name="ResourceCheck_Success" xml:space="preserve">
+    <value>Healthy</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
