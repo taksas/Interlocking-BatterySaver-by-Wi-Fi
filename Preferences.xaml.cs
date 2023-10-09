@@ -146,10 +146,43 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         private async void Resource_Check()
         {
+            // exit_code: 0:success, 1:failed, 2:error
+            int[] exit_codes = { 0, 0, 0 };
+
+
+
+            // Check Tasks
+
             await Task.Delay(1000);
-            Resource_Check_AppPackage();
+            exit_codes[Resource_Check_AppPackage()]++;
             await Task.Delay(500);
-            Resource_Check_AppVersion();
+            exit_codes[await Resource_Check_AppVersion()]++;
+
+
+
+
+
+
+
+
+
+            Debug.WriteLine("EXIT_CODES_" + exit_codes[0] + " - " + exit_codes[1] +" - " + exit_codes[2]);
+
+
+            ResourceCheck_Total_Ring.Visibility = Visibility.Collapsed;
+            if (exit_codes[1] != 0)
+            {
+                ResourceCheck_Total_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Failed;
+                ResourceCheck_Total_Failed.Visibility = Visibility.Visible;
+            } else if (exit_codes[2] != 0)
+            {
+                ResourceCheck_Total_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Error;
+                ResourceCheck_Total_Error.Visibility = Visibility.Visible;
+            } else
+            {
+                ResourceCheck_Total_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Success;
+                ResourceCheck_Total_Success.Visibility = Visibility.Visible;
+            }
         }
 
 
@@ -162,8 +195,9 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
 
         // APP_PACKAGE
-        private void Resource_Check_AppPackage()
+        private int Resource_Check_AppPackage()
         {
+            int exit_code = 2;
 
             // Script Definitions
             string SCRIPT_VERSION = "2023/10/08_1";
@@ -194,14 +228,16 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             {
                 ResourceCheck_AppPackage_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Success;
                 ResourceCheck_AppPackage_Success.Visibility = Visibility.Visible;
+                exit_code = 0;
             }
             else
             {
                 ResourceCheck_AppPackage_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Failed;
                 ResourceCheck_AppPackage_Failed.Visibility = Visibility.Visible;
+                exit_code = 1;
             }
 
-
+            return exit_code;
 
         }
 
@@ -222,8 +258,10 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         // APP_VERSION
 
-        private async void Resource_Check_AppVersion()
+        private async Task<int> Resource_Check_AppVersion()
         {
+            int exit_code = 2;
+
             // Script Definitions
             string SCRIPT_VERSION = "2023/10/09_1";
 
@@ -242,9 +280,10 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             try
             {
                 var result = await client.GetStringAsync(uri);
-                if(result.Contains("ibsbw_app_version")) remote_ver = result.Replace("{\"acf\":{\"ibsbw_app_version\":\"", "").Replace("\"}}", "");
+                if (result.Contains("ibsbw_app_version")) remote_ver = result.Replace("{\"acf\":{\"ibsbw_app_version\":\"", "").Replace("\"}}", "");
                 else remote_ver = "ERROR!";
-            } catch
+            }
+            catch
             {
                 remote_ver = "ERROR!";
             }
@@ -257,7 +296,10 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             {
                 ResourceCheck_AppVersion_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Error;
                 ResourceCheck_AppVersion_Error.Visibility = Visibility.Visible;
-            } else {
+                exit_code = 2;
+            }
+            else
+            {
                 string[] rv = remote_ver.Split("."), lv = local_ver.Split(".");
                 int rv_me = Int32.Parse(rv[0]), rv_mi = Int32.Parse(rv[1]), rv_pa = Int32.Parse(rv[2]), lv_me = Int32.Parse(lv[0]), lv_mi = Int32.Parse(lv[1]), lv_pa = Int32.Parse(lv[2]);
                 int lv_all = lv_me * 10000000 + lv_mi * 10000 + lv_pa, rv_all = rv_me * 10000000 + rv_mi * 10000 + rv_pa;
@@ -265,12 +307,18 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 {
                     ResourceCheck_AppVersion_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Success;
                     ResourceCheck_AppVersion_Success.Visibility = Visibility.Visible;
-                } else
+                    exit_code = 0;
+                }
+                else
                 {
                     ResourceCheck_AppVersion_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Failed;
                     ResourceCheck_AppVersion_Failed.Visibility = Visibility.Visible;
+                    exit_code = 1;
                 }
             }
+
+
+            return exit_code;
 
         }
 
