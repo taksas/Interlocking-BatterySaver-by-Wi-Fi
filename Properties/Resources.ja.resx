@@ -219,6 +219,12 @@
   <data name="ResourceCheck_Script_Ver" xml:space="preserve">
     <value>スクリプトバージョン:</value>
   </data>
+  <data name="ResourceCheck_StartUp_Detail" xml:space="preserve">
+    <value>スタートアップスクリプトはアプリの常駐に必須のファイルです。このファイルが存在しない場合、PCを再起動後にこのアプリを自動起動することが出来なくなります。</value>
+  </data>
+  <data name="ResourceCheck_StartUp_Title" xml:space="preserve">
+    <value>スタートアップスクリプトのインストール状態</value>
+  </data>
   <data name="ResourceCheck_Success" xml:space="preserve">
     <value>正常</value>
   </data>

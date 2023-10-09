@@ -309,6 +309,55 @@
                                                 </Border>
                                             </StackPanel>
                                         </Expander>
+
+
+                                        <Expander Margin="5" >
+                                            <Expander.Header>
+                                                <Grid Margin="5 0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="6*"/>
+                                                        <ColumnDefinition Width="0.5*"/>
+                                                        <ColumnDefinition Width="1.5*"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <TextBlock Grid.Column="0" Margin="0 8" Text="{x:Static prop1:Resources.ResourceCheck_StartUp_Title}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" FontSize="14"/>
+
+                                                    <ui:ProgressRing Grid.Column="1" Margin="0 8" Height="20" Width="20" x:Name="ResourceCheck_StartUp_Ring" IsIndeterminate="True" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                                    <ui:SymbolIcon Grid.Column="1" Margin="0 8" Symbol="CheckmarkCircle32" x:Name="ResourceCheck_StartUp_Success"  VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="20" Visibility="Collapsed"/>
+                                                    <ui:SymbolIcon Grid.Column="1" Margin="0 8" Symbol="Warning28" x:Name="ResourceCheck_StartUp_Failed"  VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="20"  Visibility="Collapsed"/>
+                                                    <ui:SymbolIcon Grid.Column="1" Margin="0 8" Symbol="DismissCircle32" x:Name="ResourceCheck_StartUp_Error"  VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="20"  Visibility="Collapsed"/>
+
+
+
+                                                    <TextBlock Grid.Column="2" Margin="0 8"  x:Name="ResourceCheck_StartUp_Ring_Text" Text="{x:Static prop1:Resources.ResourceCheck_Loading}"  Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
+                                                </Grid>
+                                            </Expander.Header>
+                                            <StackPanel Margin="6 0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <TextBlock Grid.Column="2" Margin="8 0 8 8" Text="{x:Static prop1:Resources.ResourceCheck_StartUp_Detail}"  Foreground="{DynamicResource TextFillColorPrimaryBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TextWrapping="Wrap" FontSize="12"/>
+                                                <Border CornerRadius="7"  Padding="10,10,10,10" Margin="0,4,0,4" Background="{DynamicResource SystemFillColorNeutralBackgroundBrush }">
+                                                    <!-- check detail -->
+                                                    <Grid Margin="5 0">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="3*"/>
+                                                            <ColumnDefinition Width="4*"/>
+                                                            <ColumnDefinition Width="3*"/>
+                                                            <ColumnDefinition Width="3*"/>
+                                                            <ColumnDefinition Width="3*"/>
+                                                            <ColumnDefinition Width="3*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Grid.Column="0" Margin="5 0" Text="{x:Static prop1:Resources.ResourceCheck_Script_Ver}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center"  HorizontalAlignment="Right" FontSize="10"/>
+                                                        <TextBlock Grid.Column="1" x:Name="ResourceCheck_StartUp_Script_Date" Text="{x:Static prop1:Resources.ResourceCheck_Loading}"  Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="10"/>
+
+                                                        <TextBlock Grid.Column="2" Margin="5 0" Text="{x:Static prop1:Resources.ResourceCheck_AppPackage_Local_Version_Title}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center"  HorizontalAlignment="Right" FontSize="10"/>
+                                                        <TextBlock Grid.Column="3" x:Name="ResourceCheck_StartUp_Local_Version" Text="{x:Static prop1:Resources.ResourceCheck_Loading}"  Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="10"/>
+
+                                                        <TextBlock Grid.Column="4" Margin="5 0" Text="{x:Static prop1:Resources.ResourceCheck_AppPackage_Store_Version_Title}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center"  HorizontalAlignment="Right" FontSize="10"/>
+                                                        <TextBlock Grid.Column="5" x:Name="ResourceCheck_StartUp_Store_Version" Text="{x:Static prop1:Resources.ResourceCheck_Loading}"  Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="10"/>
+
+                                                    </Grid>
+                                                </Border>
+                                            </StackPanel>
+                                        </Expander>
                                     </StackPanel>
                                 </ScrollViewer>
                             </Border>

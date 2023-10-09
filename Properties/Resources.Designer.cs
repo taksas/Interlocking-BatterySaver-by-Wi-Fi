@@ -376,6 +376,24 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
+        ///   The startup script is an essential file for the application to reside. If this file is not present, this application will not be able to start automatically after restarting the PC. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ResourceCheck_StartUp_Detail {
+            get {
+                return ResourceManager.GetString("ResourceCheck_StartUp_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Startup script installation status に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ResourceCheck_StartUp_Title {
+            get {
+                return ResourceManager.GetString("ResourceCheck_StartUp_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Healthy に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ResourceCheck_Success {
