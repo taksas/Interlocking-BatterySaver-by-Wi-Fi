@@ -183,20 +183,41 @@
   <data name="ResourceCheck" xml:space="preserve">
     <value>リソースチェック</value>
   </data>
+  <data name="ResourceCheck_AppPackage_Detail" xml:space="preserve">
+    <value>アプリケーションパッケージをWindowsから特定できるかをテストします。スタートアップ処理が正常に動作する為にはこのテスト項目をパスする必要がありますが、Microsoft Store外からアプリをダウンロードした場合はこの項目のテストにパスしない可能性があります。</value>
+  </data>
+  <data name="ResourceCheck_AppPackage_Local_Version_Title" xml:space="preserve">
+    <value>現在のバージョン:</value>
+  </data>
+  <data name="ResourceCheck_AppPackage_Script_Result_Title" xml:space="preserve">
+    <value>テスト結果:</value>
+  </data>
   <data name="ResourceCheck_AppPackage_Script_Target_Name_Title" xml:space="preserve">
     <value>アプリ名称:</value>
   </data>
-  <data name="ResourceCheck_AppPackage_Script_Ver" xml:space="preserve">
-    <value>スクリプトバージョン:</value>
+  <data name="ResourceCheck_AppPackage_Store_Version_Title" xml:space="preserve">
+    <value>ストアのバージョン:</value>
   </data>
   <data name="ResourceCheck_AppPackage_Title" xml:space="preserve">
     <value>アプリケーションパッケージの特定</value>
   </data>
+  <data name="ResourceCheck_AppVersion_Detail" xml:space="preserve">
+    <value>アプリケーションを最新のバージョンに更新することで、発生している不具合が解消する可能性があります。このチェックで問題が発生した場合は、Microsoft Storeから最新版のアプリケーションにアップデートしてください。</value>
+  </data>
+  <data name="ResourceCheck_AppVersion_Title" xml:space="preserve">
+    <value>アプリケーションの更新</value>
+  </data>
+  <data name="ResourceCheck_Error" xml:space="preserve">
+    <value>エラー</value>
+  </data>
   <data name="ResourceCheck_Failed" xml:space="preserve">
-    <value>破損確認</value>
+    <value>問題発生</value>
   </data>
   <data name="ResourceCheck_Loading" xml:space="preserve">
     <value>チェック中...</value>
+  </data>
+  <data name="ResourceCheck_Script_Ver" xml:space="preserve">
+    <value>スクリプトバージョン:</value>
   </data>
   <data name="ResourceCheck_Success" xml:space="preserve">
     <value>正常</value>

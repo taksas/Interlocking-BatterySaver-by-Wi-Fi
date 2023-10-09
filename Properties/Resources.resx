@@ -183,20 +183,41 @@
   <data name="ResourceCheck" xml:space="preserve">
     <value>Resource Check</value>
   </data>
+  <data name="ResourceCheck_AppPackage_Detail" xml:space="preserve">
+    <value>Tests if the application package can be identified from Windows. The startup process must pass this test item in order to work properly, but if you downloaded the application from outside the Microsoft Store, it may not pass the test for this item.</value>
+  </data>
+  <data name="ResourceCheck_AppPackage_Local_Version_Title" xml:space="preserve">
+    <value>Current Version:</value>
+  </data>
+  <data name="ResourceCheck_AppPackage_Script_Result_Title" xml:space="preserve">
+    <value>Test Result:</value>
+  </data>
   <data name="ResourceCheck_AppPackage_Script_Target_Name_Title" xml:space="preserve">
     <value>App Name:</value>
   </data>
-  <data name="ResourceCheck_AppPackage_Script_Ver" xml:space="preserve">
-    <value>Script Version:</value>
+  <data name="ResourceCheck_AppPackage_Store_Version_Title" xml:space="preserve">
+    <value>Store Version:</value>
   </data>
   <data name="ResourceCheck_AppPackage_Title" xml:space="preserve">
     <value>Application Package Identification</value>
+  </data>
+  <data name="ResourceCheck_AppVersion_Detail" xml:space="preserve">
+    <value>Updating the application to the latest version may resolve the problem you are experiencing. If you experience problems with this check, please update to the latest version of the application from the Microsoft Store.</value>
+  </data>
+  <data name="ResourceCheck_AppVersion_Title" xml:space="preserve">
+    <value>Application Updates</value>
+  </data>
+  <data name="ResourceCheck_Error" xml:space="preserve">
+    <value>Error</value>
   </data>
   <data name="ResourceCheck_Failed" xml:space="preserve">
     <value>Failed</value>
   </data>
   <data name="ResourceCheck_Loading" xml:space="preserve">
     <value>Checking...</value>
+  </data>
+  <data name="ResourceCheck_Script_Ver" xml:space="preserve">
+    <value>Script Version:</value>
   </data>
   <data name="ResourceCheck_Success" xml:space="preserve">
     <value>Healthy</value>
@@ -229,7 +250,7 @@
     <value>Microsoft Store</value>
   </data>
   <data name="SYSTEM_APP_TITLE" xml:space="preserve">
-    <value>Interlocking BatterySaver by Wi-Fi  v2.2.2</value>
+    <value>Interlocking BatterySaver by Wi-Fi  v2.2.3</value>
   </data>
   <data name="SYSTEM_DEVELOPER" xml:space="preserve">
     <value>© 2023 taksas</value>

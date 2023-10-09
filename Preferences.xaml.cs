@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using System.IO;
 using System.Diagnostics;
 using System.Windows.Controls.Primitives;
+using System.Net.Http;
 
 namespace Interlocking_BatterySaver_by_Wi_Fi_
 {
@@ -29,10 +30,10 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         public Preferences(Window owner)
         {
-            
+
 
             InitializeComponent();
-            
+
             Wpf.Ui.Appearance.Accent.ApplySystemAccent();
 
             Loaded += (sender, args) =>
@@ -90,8 +91,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         private void Config_MainWindowPrefetch_Changed(object sender, RoutedEventArgs e)
         {
-            
-            
+
+
             if ((bool)(sender as ToggleButton).IsChecked)
             {
                 Properties.Settings.Default.PrefetchMainWindow = true;
@@ -145,9 +146,18 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         private async void Resource_Check()
         {
-            await Task.Delay(5000);
+            await Task.Delay(1000);
             Resource_Check_AppPackage();
+            await Task.Delay(500);
+            Resource_Check_AppVersion();
         }
+
+
+
+
+
+
+
 
 
 
@@ -155,10 +165,12 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         private void Resource_Check_AppPackage()
         {
 
+            // Script Definitions
             string SCRIPT_VERSION = "2023/10/08_1";
             string APP_NAME = "InterlockingBatterySaverbyWi-Fi";
 
 
+            // Set Definitions in GUI
             ResourceCheck_AppPackage_Script_Date.Text = SCRIPT_VERSION;
             ResourceCheck_AppPackage_Script_Target_Name.Text = APP_NAME;
 
@@ -177,11 +189,13 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
 
             ResourceCheck_AppPackage_Ring.Visibility = Visibility.Collapsed;
+            ResourceCheck_AppPackage_Script_Result.Text = CountChar(s, "PackageFullName").ToString();
             if (CountChar(s, "PackageFullName") == 1)
             {
                 ResourceCheck_AppPackage_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Success;
                 ResourceCheck_AppPackage_Success.Visibility = Visibility.Visible;
-            } else
+            }
+            else
             {
                 ResourceCheck_AppPackage_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Failed;
                 ResourceCheck_AppPackage_Failed.Visibility = Visibility.Visible;
@@ -195,5 +209,70 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         {
             return (s.Length - s.Replace(c.ToString(), "").Length) / c.Length;
         }
+
+
+
+
+
+
+
+
+
+
+
+        // APP_VERSION
+
+        private async void Resource_Check_AppVersion()
+        {
+            // Script Definitions
+            string SCRIPT_VERSION = "2023/10/09_1";
+
+
+            // Set Definitions in GUI
+            ResourceCheck_AppVersion_Script_Date.Text = SCRIPT_VERSION;
+
+
+            string local_ver = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.SYSTEM_APP_TITLE.Replace("Interlocking BatterySaver by Wi-Fi  v", "");
+            ResourceCheck_AppVersion_Local_Version.Text = local_ver;
+
+            string remote_ver;
+            var client = new HttpClient();
+            var uri = "https://taksas.net/wp-json/acf/v3/pages/1152";
+
+            try
+            {
+                var result = await client.GetStringAsync(uri);
+                if(result.Contains("ibsbw_app_version")) remote_ver = result.Replace("{\"acf\":{\"ibsbw_app_version\":\"", "").Replace("\"}}", "");
+                else remote_ver = "ERROR!";
+            } catch
+            {
+                remote_ver = "ERROR!";
+            }
+            ResourceCheck_AppVersion_Store_Version.Text = remote_ver;
+
+
+
+            ResourceCheck_AppVersion_Ring.Visibility = Visibility.Collapsed;
+            if (remote_ver == "ERROR!")
+            {
+                ResourceCheck_AppVersion_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Error;
+                ResourceCheck_AppVersion_Error.Visibility = Visibility.Visible;
+            } else {
+                string[] rv = remote_ver.Split("."), lv = local_ver.Split(".");
+                int rv_me = Int32.Parse(rv[0]), rv_mi = Int32.Parse(rv[1]), rv_pa = Int32.Parse(rv[2]), lv_me = Int32.Parse(lv[0]), lv_mi = Int32.Parse(lv[1]), lv_pa = Int32.Parse(lv[2]);
+                int lv_all = lv_me * 10000000 + lv_mi * 10000 + lv_pa, rv_all = rv_me * 10000000 + rv_mi * 10000 + rv_pa;
+                if (lv_all >= rv_all)
+                {
+                    ResourceCheck_AppVersion_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Success;
+                    ResourceCheck_AppVersion_Success.Visibility = Visibility.Visible;
+                } else
+                {
+                    ResourceCheck_AppVersion_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Failed;
+                    ResourceCheck_AppVersion_Failed.Visibility = Visibility.Visible;
+                }
+            }
+
+        }
+
     }
 }

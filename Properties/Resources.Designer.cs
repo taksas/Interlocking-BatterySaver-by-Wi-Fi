@@ -268,6 +268,33 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
+        ///   Tests if the application package can be identified from Windows. The startup process must pass this test item in order to work properly, but if you downloaded the application from outside the Microsoft Store, it may not pass the test for this item. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ResourceCheck_AppPackage_Detail {
+            get {
+                return ResourceManager.GetString("ResourceCheck_AppPackage_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Current Version: に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ResourceCheck_AppPackage_Local_Version_Title {
+            get {
+                return ResourceManager.GetString("ResourceCheck_AppPackage_Local_Version_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Test Result: に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ResourceCheck_AppPackage_Script_Result_Title {
+            get {
+                return ResourceManager.GetString("ResourceCheck_AppPackage_Script_Result_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   App Name: に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ResourceCheck_AppPackage_Script_Target_Name_Title {
@@ -277,11 +304,11 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
-        ///   Script Version: に類似しているローカライズされた文字列を検索します。
+        ///   Store Version: に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        public static string ResourceCheck_AppPackage_Script_Ver {
+        public static string ResourceCheck_AppPackage_Store_Version_Title {
             get {
-                return ResourceManager.GetString("ResourceCheck_AppPackage_Script_Ver", resourceCulture);
+                return ResourceManager.GetString("ResourceCheck_AppPackage_Store_Version_Title", resourceCulture);
             }
         }
         
@@ -291,6 +318,33 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         public static string ResourceCheck_AppPackage_Title {
             get {
                 return ResourceManager.GetString("ResourceCheck_AppPackage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Updating the application to the latest version may resolve the problem you are experiencing. If you experience problems with this check, please update to the latest version of the application from the Microsoft Store. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ResourceCheck_AppVersion_Detail {
+            get {
+                return ResourceManager.GetString("ResourceCheck_AppVersion_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Application Updates に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ResourceCheck_AppVersion_Title {
+            get {
+                return ResourceManager.GetString("ResourceCheck_AppVersion_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Error に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ResourceCheck_Error {
+            get {
+                return ResourceManager.GetString("ResourceCheck_Error", resourceCulture);
             }
         }
         
@@ -309,6 +363,15 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         public static string ResourceCheck_Loading {
             get {
                 return ResourceManager.GetString("ResourceCheck_Loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Script Version: に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ResourceCheck_Script_Ver {
+            get {
+                return ResourceManager.GetString("ResourceCheck_Script_Ver", resourceCulture);
             }
         }
         
@@ -403,7 +466,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
-        ///   Interlocking BatterySaver by Wi-Fi  v2.2.2 に類似しているローカライズされた文字列を検索します。
+        ///   Interlocking BatterySaver by Wi-Fi  v2.2.3 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string SYSTEM_APP_TITLE {
             get {
