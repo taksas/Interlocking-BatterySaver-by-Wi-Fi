@@ -27,6 +27,36 @@
                 <SplineDoubleKeyFrame KeyTime="00:00:00.1300000" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+
+        <Style TargetType="Grid">
+            <Setter Property="LayoutTransform" >
+                <Setter.Value>
+                    <ScaleTransform x:Name="scaleTransform" />
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation 
+                        Storyboard.TargetProperty="(UIElement.Opacity)" 
+                        From="0" To="1" Duration="0:0:0.155"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Unloaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation 
+                        Storyboard.TargetProperty="(UIElement.Opacity)"
+                        From="1" To="0" Duration="0:0:0.155"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+        
+        
     </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">

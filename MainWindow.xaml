@@ -14,6 +14,7 @@
     WindowStyle="None"
     Topmost="True"
     Background="Transparent"
+    Foreground="Transparent"
 	AllowsTransparency="True"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:prop1 ="clr-namespace:Interlocking_BatterySaver_by_Wi_Fi_.Properties"
@@ -29,13 +30,42 @@
                 <SplineDoubleKeyFrame KeyTime="00:00:00.1300000" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+
+        <Style TargetType="Grid">
+            <Setter Property="LayoutTransform" >
+                <Setter.Value>
+                    <ScaleTransform x:Name="scaleTransform" />
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation 
+                        Storyboard.TargetProperty="(UIElement.Opacity)" 
+                        From="0" To="1" Duration="0:0:0.155"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Unloaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation 
+                        Storyboard.TargetProperty="(UIElement.Opacity)"
+                        From="1" To="0" Duration="0:0:0.155"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+        
     </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
             <BeginStoryboard Storyboard="{StaticResource WindowOn}"/>
         </EventTrigger>
     </Window.Triggers>
-    <Border Background="{DynamicResource ApplicationBackgroundBrush}" CornerRadius="10" BorderThickness="1" BorderBrush="DarkGray" Opacity="1">
+    <Border Background="{DynamicResource ApplicationBackgroundBrush}" CornerRadius="7" BorderThickness="1" BorderBrush="DarkGray" Opacity="1">
 
 
 
@@ -68,7 +98,7 @@
                 
                 <ui:Button  Icon="Power24" ToolTip="{x:Static prop1:Resources.TOOLTIP_AppExit}" ToolTipService.InitialShowDelay="300" Click="ExitApp_Button_Click" Appearance="Danger" HorizontalAlignment="Left" VerticalAlignment="Center" />
                 <TextBlock Text="{x:Static prop1:Resources.SYSTEM_APP_TITLE}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="17"/>
-                <ui:Button Icon="ChatHelp24" ToolTip="{x:Static prop1:Resources.TOOLTIP_HelpWebSite}" Appearance="Primary" ToolTipService.InitialShowDelay="300" Click="Help_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <ui:Button Icon="MoreHorizontal32" ToolTip="{x:Static prop1:Resources.TOOLTIP_More}" Appearance="Primary" ToolTipService.InitialShowDelay="300" Click="Pref_Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" />
 
             </Grid>
             
@@ -132,11 +162,12 @@
 
             <Grid Grid.Row="4" VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.65*"/>
+                    <ColumnDefinition Width="0.75*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0" HorizontalAlignment="Left">
-                    <ui:Button x:Name="DeleteB" Content="{x:Static prop1:Resources.Delete}" ToolTip="{x:Static prop1:Resources.TOOLTIP_ListDelete}" ToolTipService.InitialShowDelay="300" Click="Delete_Button_Click"  Appearance="Danger" VerticalAlignment="Stretch" IsEnabled="False" />
+                <Grid Grid.Column="0">
+                    <ui:Button x:Name="DeleteB" HorizontalAlignment="Left" Content="{x:Static prop1:Resources.Delete}" ToolTip="{x:Static prop1:Resources.TOOLTIP_ListDelete}" ToolTipService.InitialShowDelay="300" Click="Delete_Button_Click"  Appearance="Danger" VerticalAlignment="Stretch" IsEnabled="False" />
+                    <ui:Button x:Name="Button_RestartAndShutdown" HorizontalAlignment="Right" Content="{x:Static prop1:Resources.AppMinimize}" ToolTip="{x:Static prop1:Resources.TOOLTIP_AppMinimize}" ToolTipService.InitialShowDelay="300" Click="AppMinimize_Button_Click"  Appearance="Secondary" VerticalAlignment="Stretch" Visibility="Hidden" />
                 </Grid>
                 <ui:Button Grid.Column="1"  x:Name="AddAP_B" Content="{x:Static prop1:Resources.Add_AP}" ToolTip="{x:Static prop1:Resources.TOOLTIP_AddAccessPoint}" ToolTipService.InitialShowDelay="300" Click="AddAP_Button_Click" Appearance="Primary" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
             </Grid>

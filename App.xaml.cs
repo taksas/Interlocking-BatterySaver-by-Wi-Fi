@@ -15,6 +15,8 @@ using System.Reflection;
 using System.Buffers.Text;
 using System.Windows.Controls;
 using System.Threading;
+using System.Diagnostics.Eventing.Reader;
+using Interlocking_BatterySaver_by_Wi_Fi_.Properties;
 
 namespace Interlocking_BatterySaver_by_Wi_Fi_
 {
@@ -35,14 +37,16 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         bool shutdown = false;
         bool isCreatingMainWindow = false;
         bool APDetectGate = true;
+        bool Registering = false;
 
-
+        bool EXCLUSION_RestartAndShutdown = false; // 排他処理用
 
         string[] Percentage = {"100", "90", "80", "70", "60", "50", "40", "30", "20", "10", "0"};
 
 
 
         MainWindow _win = null;
+        
 
 
         /// <summary>
@@ -121,16 +125,27 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             ExecuteMainFunc();
             
             Deactivated += ((obj, ev) => {
-                if (!shutdown && !isCreatingMainWindow)
+                if (Interlocking_BatterySaver_by_Wi_Fi_.Properties.Settings.Default.DeactivatedWindowClose && !shutdown && !isCreatingMainWindow && !Registering)
                 {
-                    System.Windows.Forms.Application.Restart();
-                    System.Windows.Application.Current.Shutdown();
+                    RestartAndShutdown();
                 }
             });
             
             RegisterStartup();
 
+            if (Interlocking_BatterySaver_by_Wi_Fi_.Properties.Settings.Default.PrefetchMainWindow) _win = new MainWindow(this);
+
         }
+
+        public void RestartAndShutdown()
+        {
+            if(EXCLUSION_RestartAndShutdown == true) { return; }
+            EXCLUSION_RestartAndShutdown = true;
+            System.Windows.Forms.Application.Restart();
+            System.Windows.Application.Current.Shutdown();
+        }
+
+
 
         /// <summary>
         /// 常駐終了時の処理
@@ -158,9 +173,10 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
         /// </summary>
         private void ShowMainWindow()
         {
+            
             isCreatingMainWindow = true;
             Debug.Print("SHOWING MAIN WINDOW...");
-                _win = new MainWindow(this);
+                if (_win == null)  _win = new MainWindow(this);
 
 
                 /*
@@ -348,10 +364,13 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
         private void RegisterStartup()
         {
+            Registering = true;
+
+
             // スタートアップフォルダにショートカット作成
             //try
             //{
-                string aplTitle = "Interlocking BatterySaver by Wi-Fi"; // アプリ名
+            string aplTitle = "Interlocking BatterySaver by Wi-Fi"; // アプリ名
                 // ショートカットのリンク名
                 String sMnu = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
                 string lnkFile = sMnu + "\\InterlockingBatterySaverbyWi-Fi_StartUP.bat";
@@ -367,9 +386,9 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 {
                 InitialRegisterWindow TempBW = new InitialRegisterWindow();
                 TempBW.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                TempBW.ShowDialog();
+                TempBW.Show();
 
-
+                Registering = false;
             }
 
 

@@ -129,6 +129,9 @@
   <data name="Always" xml:space="preserve">
     <value>Always</value>
   </data>
+  <data name="AppMinimize" xml:space="preserve">
+    <value>Minimize app</value>
+  </data>
   <data name="AP_Name" xml:space="preserve">
     <value>AP Name</value>
   </data>
@@ -141,6 +144,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
   <data name="Current_AP" xml:space="preserve">
     <value>Current AP</value>
   </data>
@@ -149,6 +155,12 @@
   </data>
   <data name="Exit" xml:space="preserve">
     <value>Exit</value>
+  </data>
+  <data name="GitHub" xml:space="preserve">
+    <value>GitHub</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
   </data>
   <data name="Invalid_AP_name_is_set___" xml:space="preserve">
     <value>Invalid AP name is set. Please reconfirm.</value>
@@ -161,6 +173,69 @@
   </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
+  </data>
+  <data name="Prefs_DeactivatedWindowClose" xml:space="preserve">
+    <value>Closing a window when operating another window</value>
+  </data>
+  <data name="Prefs_MainWindowPrefetch" xml:space="preserve">
+    <value>Pre-load the main window</value>
+  </data>
+  <data name="ResourceCheck" xml:space="preserve">
+    <value>Resource Check</value>
+  </data>
+  <data name="ResourceCheck_AppPackage_Detail" xml:space="preserve">
+    <value>Tests if the application package can be identified from Windows. The startup process must pass this test item in order to work properly, but if you downloaded the application from outside the Microsoft Store, it may not pass the test for this item.</value>
+  </data>
+  <data name="ResourceCheck_AppPackage_Local_Version_Title" xml:space="preserve">
+    <value>Current Version:</value>
+  </data>
+  <data name="ResourceCheck_AppPackage_Script_Result_Title" xml:space="preserve">
+    <value>Test Result:</value>
+  </data>
+  <data name="ResourceCheck_AppPackage_Script_Target_Name_Title" xml:space="preserve">
+    <value>App Name:</value>
+  </data>
+  <data name="ResourceCheck_AppPackage_Store_Version_Title" xml:space="preserve">
+    <value>Remote Version:</value>
+  </data>
+  <data name="ResourceCheck_AppPackage_Title" xml:space="preserve">
+    <value>Application Package Identification</value>
+  </data>
+  <data name="ResourceCheck_AppVersion_Detail" xml:space="preserve">
+    <value>Updating the application to the latest version may resolve the problem you are experiencing. If you experience problems with this check, please update to the latest version of the application from the Microsoft Store.</value>
+  </data>
+  <data name="ResourceCheck_AppVersion_Title" xml:space="preserve">
+    <value>Application Updates</value>
+  </data>
+  <data name="ResourceCheck_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ResourceCheck_Failed" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  <data name="ResourceCheck_Loading" xml:space="preserve">
+    <value>Checking...</value>
+  </data>
+  <data name="ResourceCheck_Script_Ver" xml:space="preserve">
+    <value>Script Version:</value>
+  </data>
+  <data name="ResourceCheck_StartUp_Detail" xml:space="preserve">
+    <value>The startup script is an essential file for the application to reside. If this file is not present, this application will not be able to start automatically after restarting the PC.</value>
+  </data>
+  <data name="ResourceCheck_StartUp_Script_Dir_Title" xml:space="preserve">
+    <value>Placed Directory:</value>
+  </data>
+  <data name="ResourceCheck_StartUp_Script_Name_Title" xml:space="preserve">
+    <value>Start-Up Script Name:</value>
+  </data>
+  <data name="ResourceCheck_StartUp_Script_Update_Time_Title" xml:space="preserve">
+    <value>Startup Script Last Modified:.</value>
+  </data>
+  <data name="ResourceCheck_StartUp_Title" xml:space="preserve">
+    <value>Startup script installation status</value>
+  </data>
+  <data name="ResourceCheck_Success" xml:space="preserve">
+    <value>Healthy</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
@@ -186,8 +261,14 @@
   <data name="StartupReg" xml:space="preserve">
     <value>The initial startup process will begin. After pressing "OK," click on the icon in the lower right status bar to begin the setup.</value>
   </data>
+  <data name="Store" xml:space="preserve">
+    <value>Microsoft Store</value>
+  </data>
   <data name="SYSTEM_APP_TITLE" xml:space="preserve">
-    <value>Interlocking BatterySaver by Wi-Fi  v2.0.20</value>
+    <value>Interlocking BatterySaver by Wi-Fi  v2.2.4</value>
+  </data>
+  <data name="SYSTEM_DEVELOPER" xml:space="preserve">
+    <value>© 2023 taksas</value>
   </data>
   <data name="TOOLTIP_AddAccessPoint" xml:space="preserve">
     <value>Add a new access point to the list.</value>
@@ -204,14 +285,35 @@
   <data name="TOOLTIP_AppExit" xml:space="preserve">
     <value>Exit the application and deactivate the resident application. If you want to keep the application resident without closing it, tap anywhere other than the application window.</value>
   </data>
-  <data name="TOOLTIP_HelpWebSite" xml:space="preserve">
-    <value>The help site will open in your browser.</value>
+  <data name="TOOLTIP_AppMinimize" xml:space="preserve">
+    <value>Minimizes the application and returns it to the taskbar. This button will appear if you have set the window not to close automatically from the settings.</value>
   </data>
   <data name="TOOLTIP_ListDelete" xml:space="preserve">
     <value>Deletes the selected battery saver rule.</value>
   </data>
   <data name="TOOLTIP_ListUpdate" xml:space="preserve">
     <value>Change the threshold of the power saving mode rule to the selected value.</value>
+  </data>
+  <data name="TOOLTIP_More" xml:space="preserve">
+    <value>Open Menu</value>
+  </data>
+  <data name="TOOLTIP_OpenLink_GitHub" xml:space="preserve">
+    <value>Open GitHub Page</value>
+  </data>
+  <data name="TOOLTIP_OpenLink_Help" xml:space="preserve">
+    <value>Open Help Page</value>
+  </data>
+  <data name="TOOLTIP_OpenLink_Store" xml:space="preserve">
+    <value>Open Store Page</value>
+  </data>
+  <data name="TOOLTIP_Prefs_DeactivatedWindowClose" xml:space="preserve">
+    <value>Select whether or not to automatically close this app's window when you operate another app's window.</value>
+  </data>
+  <data name="TOOLTIP_Prefs_MainWindowPrefetch" xml:space="preserve">
+    <value>The main window is preloaded to speed up startup. Memory usage will increase by 10MB or more while resident.</value>
+  </data>
+  <data name="TOOLTIP_Window_Close" xml:space="preserve">
+    <value>Close the Window</value>
   </data>
   <data name="Triggered_Wifi_Title" xml:space="preserve">
     <value>Currently applied settings</value>
