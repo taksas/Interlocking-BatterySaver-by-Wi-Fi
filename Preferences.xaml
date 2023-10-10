@@ -338,6 +338,10 @@
                                                             <Run Text="     " />
                                                             <Run  Text="{x:Static prop1:Resources.ResourceCheck_StartUp_Script_Dir_Title}" ></Run>
                                                             <Run x:Name="ResourceCheck_StartUp_Script_Dir" Text="{x:Static prop1:Resources.ResourceCheck_Loading}" ></Run>
+                                                            <Run Text="     " />
+                                                            <Run  Text="{x:Static prop1:Resources.ResourceCheck_StartUp_Script_Update_Time_Title}" ></Run>
+                                                            <Run x:Name="ResourceCheck_StartUp_Script_Update_Time" Text="{x:Static prop1:Resources.ResourceCheck_Loading}" ></Run>
+
                                                         </TextBlock>
                                                         
                                                     </Grid>

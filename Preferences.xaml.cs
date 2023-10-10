@@ -357,10 +357,12 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             ResourceCheck_StartUp_Ring.Visibility = Visibility.Collapsed;
             try
             {
-                if (File.Exists(STARTUP_SCRIPT_DIR + "\\" + STARTUP_SCRIPT_NAME))
+                string target_dir = STARTUP_SCRIPT_DIR + "\\" + STARTUP_SCRIPT_NAME;
+                if (File.Exists(target_dir))
                 {
                     ResourceCheck_StartUp_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Success;
                     ResourceCheck_StartUp_Success.Visibility = Visibility.Visible;
+                    ResourceCheck_StartUp_Script_Update_Time.Text = File.GetLastWriteTime(target_dir).ToString();
                     exit_code = 0;
                 }
                 else

@@ -403,6 +403,15 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
+        ///   Startup Script Last Modified:. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ResourceCheck_StartUp_Script_Update_Time_Title {
+            get {
+                return ResourceManager.GetString("ResourceCheck_StartUp_Script_Update_Time_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Startup script installation status に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ResourceCheck_StartUp_Title {

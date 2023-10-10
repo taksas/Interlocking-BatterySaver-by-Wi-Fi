@@ -228,6 +228,9 @@
   <data name="ResourceCheck_StartUp_Script_Name_Title" xml:space="preserve">
     <value>スタートアップスクリプト名:</value>
   </data>
+  <data name="ResourceCheck_StartUp_Script_Update_Time_Title" xml:space="preserve">
+    <value>スタートアップスクリプトの最終更新日時:</value>
+  </data>
   <data name="ResourceCheck_StartUp_Title" xml:space="preserve">
     <value>スタートアップスクリプトのインストール状態</value>
   </data>

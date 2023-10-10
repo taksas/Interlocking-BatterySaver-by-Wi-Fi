@@ -228,6 +228,9 @@
   <data name="ResourceCheck_StartUp_Script_Name_Title" xml:space="preserve">
     <value>Start-Up Script Name:</value>
   </data>
+  <data name="ResourceCheck_StartUp_Script_Update_Time_Title" xml:space="preserve">
+    <value>Startup Script Last Modified:.</value>
+  </data>
   <data name="ResourceCheck_StartUp_Title" xml:space="preserve">
     <value>Startup script installation status</value>
   </data>
