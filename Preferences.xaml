@@ -237,22 +237,16 @@
                                                 <Border CornerRadius="7"  Padding="10,10,10,10" Margin="0,4,0,4" Background="{DynamicResource SystemFillColorNeutralBackgroundBrush }">
                                                     <!-- check detail -->
                                                     <Grid Margin="5 0">
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="3*"/>
-                                                            <ColumnDefinition Width="4*"/>
-                                                            <ColumnDefinition Width="3*"/>
-                                                            <ColumnDefinition Width="7*"/>
-                                                            <ColumnDefinition Width="3*"/>
-                                                            <ColumnDefinition Width="2*"/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock Grid.Column="0" Margin="5 0" Text="{x:Static prop1:Resources.ResourceCheck_Script_Ver}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center"  HorizontalAlignment="Right" FontSize="10"/>
-                                                        <TextBlock Grid.Column="1" x:Name="ResourceCheck_AppPackage_Script_Date" Text="{x:Static prop1:Resources.ResourceCheck_Loading}"  Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="10"/>
-
-                                                        <TextBlock Grid.Column="2" Margin="5 0" Text="{x:Static prop1:Resources.ResourceCheck_AppPackage_Script_Target_Name_Title}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center"  HorizontalAlignment="Right" FontSize="10"/>
-                                                        <TextBlock Grid.Column="3" x:Name="ResourceCheck_AppPackage_Script_Target_Name" Text="{x:Static prop1:Resources.ResourceCheck_Loading}"  Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="10"/>
-
-                                                        <TextBlock Grid.Column="4" Margin="5 0" Text="{x:Static prop1:Resources.ResourceCheck_AppPackage_Script_Result_Title}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center"  HorizontalAlignment="Right" FontSize="10"/>
-                                                        <TextBlock Grid.Column="5" x:Name="ResourceCheck_AppPackage_Script_Result" Text="{x:Static prop1:Resources.ResourceCheck_Loading}"  Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="10"/>
+                                                        <TextBlock Margin="5 0" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center"  HorizontalAlignment="Center" FontSize="10" >
+                                                            <Run  Text="{x:Static prop1:Resources.ResourceCheck_Script_Ver}" ></Run>
+                                                            <Run x:Name="ResourceCheck_AppPackage_Script_Date" Text="{x:Static prop1:Resources.ResourceCheck_Loading}" ></Run>
+                                                            <Run Text="     " />
+                                                            <Run  Text="{x:Static prop1:Resources.ResourceCheck_AppPackage_Script_Target_Name_Title}" ></Run>
+                                                            <Run x:Name="ResourceCheck_AppPackage_Script_Target_Name" Text="{x:Static prop1:Resources.ResourceCheck_Loading}" ></Run>
+                                                            <Run Text="     " />
+                                                            <Run  Text="{x:Static prop1:Resources.ResourceCheck_AppPackage_Script_Result_Title}" ></Run>
+                                                            <Run x:Name="ResourceCheck_AppPackage_Script_Result" Text="{x:Static prop1:Resources.ResourceCheck_Loading}" ></Run>
+                                                        </TextBlock>
 
                                                     </Grid>
                                                 </Border>
@@ -288,23 +282,18 @@
                                                 <Border CornerRadius="7"  Padding="10,10,10,10" Margin="0,4,0,4" Background="{DynamicResource SystemFillColorNeutralBackgroundBrush }">
                                                     <!-- check detail -->
                                                     <Grid Margin="5 0">
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="3*"/>
-                                                            <ColumnDefinition Width="4*"/>
-                                                            <ColumnDefinition Width="3*"/>
-                                                            <ColumnDefinition Width="3*"/>
-                                                            <ColumnDefinition Width="3*"/>
-                                                            <ColumnDefinition Width="3*"/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock Grid.Column="0" Margin="5 0" Text="{x:Static prop1:Resources.ResourceCheck_Script_Ver}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center"  HorizontalAlignment="Right" FontSize="10"/>
-                                                        <TextBlock Grid.Column="1" x:Name="ResourceCheck_AppVersion_Script_Date" Text="{x:Static prop1:Resources.ResourceCheck_Loading}"  Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="10"/>
 
-                                                        <TextBlock Grid.Column="2" Margin="5 0" Text="{x:Static prop1:Resources.ResourceCheck_AppPackage_Local_Version_Title}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center"  HorizontalAlignment="Right" FontSize="10"/>
-                                                        <TextBlock Grid.Column="3" x:Name="ResourceCheck_AppVersion_Local_Version" Text="{x:Static prop1:Resources.ResourceCheck_Loading}"  Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="10"/>
-
-                                                        <TextBlock Grid.Column="4" Margin="5 0" Text="{x:Static prop1:Resources.ResourceCheck_AppPackage_Store_Version_Title}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center"  HorizontalAlignment="Right" FontSize="10"/>
-                                                        <TextBlock Grid.Column="5" x:Name="ResourceCheck_AppVersion_Store_Version" Text="{x:Static prop1:Resources.ResourceCheck_Loading}"  Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="10"/>
-
+                                                        <TextBlock Margin="5 0" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center"  HorizontalAlignment="Center" FontSize="10" >
+                                                            <Run  Text="{x:Static prop1:Resources.ResourceCheck_Script_Ver}" ></Run>
+                                                            <Run x:Name="ResourceCheck_AppVersion_Script_Date" Text="{x:Static prop1:Resources.ResourceCheck_Loading}" ></Run>
+                                                            <Run Text="     " />
+                                                            <Run  Text="{x:Static prop1:Resources.ResourceCheck_AppPackage_Local_Version_Title}" ></Run>
+                                                            <Run x:Name="ResourceCheck_AppVersion_Local_Version" Text="{x:Static prop1:Resources.ResourceCheck_Loading}" ></Run>
+                                                            <Run Text="     " />
+                                                            <Run  Text="{x:Static prop1:Resources.ResourceCheck_AppPackage_Store_Version_Title}" ></Run>
+                                                            <Run x:Name="ResourceCheck_AppVersion_Store_Version" Text="{x:Static prop1:Resources.ResourceCheck_Loading}" ></Run>
+                                                        </TextBlock>
+                                                        
                                                     </Grid>
                                                 </Border>
                                             </StackPanel>
@@ -337,23 +326,20 @@
                                                 <Border CornerRadius="7"  Padding="10,10,10,10" Margin="0,4,0,4" Background="{DynamicResource SystemFillColorNeutralBackgroundBrush }">
                                                     <!-- check detail -->
                                                     <Grid Margin="5 0">
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="3*"/>
-                                                            <ColumnDefinition Width="4*"/>
-                                                            <ColumnDefinition Width="3*"/>
-                                                            <ColumnDefinition Width="3*"/>
-                                                            <ColumnDefinition Width="3*"/>
-                                                            <ColumnDefinition Width="3*"/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock Grid.Column="0" Margin="5 0" Text="{x:Static prop1:Resources.ResourceCheck_Script_Ver}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center"  HorizontalAlignment="Right" FontSize="10"/>
-                                                        <TextBlock Grid.Column="1" x:Name="ResourceCheck_StartUp_Script_Date" Text="{x:Static prop1:Resources.ResourceCheck_Loading}"  Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="10"/>
 
-                                                        <TextBlock Grid.Column="2" Margin="5 0" Text="{x:Static prop1:Resources.ResourceCheck_AppPackage_Local_Version_Title}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center"  HorizontalAlignment="Right" FontSize="10"/>
-                                                        <TextBlock Grid.Column="3" x:Name="ResourceCheck_StartUp_Local_Version" Text="{x:Static prop1:Resources.ResourceCheck_Loading}"  Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="10"/>
 
-                                                        <TextBlock Grid.Column="4" Margin="5 0" Text="{x:Static prop1:Resources.ResourceCheck_AppPackage_Store_Version_Title}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center"  HorizontalAlignment="Right" FontSize="10"/>
-                                                        <TextBlock Grid.Column="5" x:Name="ResourceCheck_StartUp_Store_Version" Text="{x:Static prop1:Resources.ResourceCheck_Loading}"  Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="10"/>
 
+                                                        <TextBlock Margin="5 0" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center"  HorizontalAlignment="Center" FontSize="10" >
+                                                            <Run  Text="{x:Static prop1:Resources.ResourceCheck_Script_Ver}" ></Run>
+                                                            <Run x:Name="ResourceCheck_StartUp_Script_Date" Text="{x:Static prop1:Resources.ResourceCheck_Loading}" ></Run>
+                                                            <Run Text="     " />
+                                                            <Run  Text="{x:Static prop1:Resources.ResourceCheck_StartUp_Script_Name_Title}" ></Run>
+                                                            <Run x:Name="ResourceCheck_StartUp_Script_Name" Text="{x:Static prop1:Resources.ResourceCheck_Loading}" ></Run>
+                                                            <Run Text="     " />
+                                                            <Run  Text="{x:Static prop1:Resources.ResourceCheck_StartUp_Script_Dir_Title}" ></Run>
+                                                            <Run x:Name="ResourceCheck_StartUp_Script_Dir" Text="{x:Static prop1:Resources.ResourceCheck_Loading}" ></Run>
+                                                        </TextBlock>
+                                                        
                                                     </Grid>
                                                 </Border>
                                             </StackPanel>

@@ -304,7 +304,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
-        ///   Store Version: に類似しているローカライズされた文字列を検索します。
+        ///   Remote Version: に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ResourceCheck_AppPackage_Store_Version_Title {
             get {
@@ -381,6 +381,24 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         public static string ResourceCheck_StartUp_Detail {
             get {
                 return ResourceManager.GetString("ResourceCheck_StartUp_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Placed Directory: に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ResourceCheck_StartUp_Script_Dir_Title {
+            get {
+                return ResourceManager.GetString("ResourceCheck_StartUp_Script_Dir_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Start-Up Script Name: に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ResourceCheck_StartUp_Script_Name_Title {
+            get {
+                return ResourceManager.GetString("ResourceCheck_StartUp_Script_Name_Title", resourceCulture);
             }
         }
         

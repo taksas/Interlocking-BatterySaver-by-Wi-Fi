@@ -157,6 +157,8 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             exit_codes[Resource_Check_AppPackage()]++;
             await Task.Delay(500);
             exit_codes[await Resource_Check_AppVersion()]++;
+            await Task.Delay(500);
+            exit_codes[Resource_Check_StartUp()]++;
 
 
 
@@ -209,32 +211,42 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             ResourceCheck_AppPackage_Script_Target_Name.Text = APP_NAME;
 
 
-            System.Diagnostics.Process p = new System.Diagnostics.Process();
-            //ComSpec(cmd.exe)のパスを取得して、FileNameプロパティに指定
-            p.StartInfo.FileName = System.Environment.GetEnvironmentVariable("ComSpec");
-            string cmd = "powershell \" Get-AppxPackage -Name *" + APP_NAME + "* \"";
-            p.StartInfo.Arguments = @"/c " + cmd;
-            p.StartInfo.UseShellExecute = false;
-            p.StartInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
-            p.StartInfo.RedirectStandardOutput = true;
-            p.Start();
 
-            string s = p.StandardOutput.ReadToEnd();
-
-
-            ResourceCheck_AppPackage_Ring.Visibility = Visibility.Collapsed;
-            ResourceCheck_AppPackage_Script_Result.Text = CountChar(s, "PackageFullName").ToString();
-            if (CountChar(s, "PackageFullName") == 1)
+            try
             {
-                ResourceCheck_AppPackage_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Success;
-                ResourceCheck_AppPackage_Success.Visibility = Visibility.Visible;
-                exit_code = 0;
+                System.Diagnostics.Process p = new System.Diagnostics.Process();
+                //ComSpec(cmd.exe)のパスを取得して、FileNameプロパティに指定
+                p.StartInfo.FileName = System.Environment.GetEnvironmentVariable("ComSpec");
+                string cmd = "powershell \" Get-AppxPackage -Name *" + APP_NAME + "* \"";
+                p.StartInfo.Arguments = @"/c " + cmd;
+                p.StartInfo.UseShellExecute = false;
+                p.StartInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
+                p.StartInfo.RedirectStandardOutput = true;
+                p.Start();
+
+                string s = p.StandardOutput.ReadToEnd();
+
+
+                ResourceCheck_AppPackage_Ring.Visibility = Visibility.Collapsed;
+                ResourceCheck_AppPackage_Script_Result.Text = CountChar(s, "PackageFullName").ToString();
+                if (CountChar(s, "PackageFullName") == 1)
+                {
+                    ResourceCheck_AppPackage_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Success;
+                    ResourceCheck_AppPackage_Success.Visibility = Visibility.Visible;
+                    exit_code = 0;
+                }
+                else
+                {
+                    ResourceCheck_AppPackage_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Failed;
+                    ResourceCheck_AppPackage_Failed.Visibility = Visibility.Visible;
+                    exit_code = 1;
+                }
+
             }
-            else
+            catch
             {
-                ResourceCheck_AppPackage_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Failed;
-                ResourceCheck_AppPackage_Failed.Visibility = Visibility.Visible;
-                exit_code = 1;
+                ResourceCheck_AppPackage_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Error;
+                ResourceCheck_AppPackage_Error.Visibility = Visibility.Visible;
             }
 
             return exit_code;
@@ -320,6 +332,51 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
 
             return exit_code;
 
+        }
+
+
+
+
+        private int Resource_Check_StartUp()
+        {
+            int exit_code = 2;
+
+            // Script Definitions
+            string SCRIPT_VERSION = "2023/10/10_1";
+            string STARTUP_SCRIPT_NAME = "InterlockingBatterySaverbyWi-Fi_StartUP.bat";
+            string STARTUP_SCRIPT_DIR = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+
+
+            // Set Definitions in GUI
+            ResourceCheck_StartUp_Script_Date.Text = SCRIPT_VERSION;
+            ResourceCheck_StartUp_Script_Name.Text = STARTUP_SCRIPT_NAME;
+            ResourceCheck_StartUp_Script_Dir.Text = STARTUP_SCRIPT_DIR;
+
+
+
+            ResourceCheck_StartUp_Ring.Visibility = Visibility.Collapsed;
+            try
+            {
+                if (File.Exists(STARTUP_SCRIPT_DIR + "\\" + STARTUP_SCRIPT_NAME))
+                {
+                    ResourceCheck_StartUp_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Success;
+                    ResourceCheck_StartUp_Success.Visibility = Visibility.Visible;
+                    exit_code = 0;
+                }
+                else
+                {
+                    ResourceCheck_StartUp_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Failed;
+                    ResourceCheck_StartUp_Failed.Visibility = Visibility.Visible;
+                    exit_code = 1;
+                }
+            }
+            catch
+            {
+                ResourceCheck_StartUp_Ring_Text.Text = Interlocking_BatterySaver_by_Wi_Fi_.Properties.Resources.ResourceCheck_Error;
+                ResourceCheck_StartUp_Error.Visibility = Visibility.Visible;
+            }
+
+            return exit_code;
         }
 
     }

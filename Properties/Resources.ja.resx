@@ -196,7 +196,7 @@
     <value>アプリ名称:</value>
   </data>
   <data name="ResourceCheck_AppPackage_Store_Version_Title" xml:space="preserve">
-    <value>ストアのバージョン:</value>
+    <value>リモートのバージョン:</value>
   </data>
   <data name="ResourceCheck_AppPackage_Title" xml:space="preserve">
     <value>アプリケーションパッケージの特定</value>
@@ -221,6 +221,12 @@
   </data>
   <data name="ResourceCheck_StartUp_Detail" xml:space="preserve">
     <value>スタートアップスクリプトはアプリの常駐に必須のファイルです。このファイルが存在しない場合、PCを再起動後にこのアプリを自動起動することが出来なくなります。</value>
+  </data>
+  <data name="ResourceCheck_StartUp_Script_Dir_Title" xml:space="preserve">
+    <value>配置ディレクトリ:</value>
+  </data>
+  <data name="ResourceCheck_StartUp_Script_Name_Title" xml:space="preserve">
+    <value>スタートアップスクリプト名:</value>
   </data>
   <data name="ResourceCheck_StartUp_Title" xml:space="preserve">
     <value>スタートアップスクリプトのインストール状態</value>

@@ -196,7 +196,7 @@
     <value>App Name:</value>
   </data>
   <data name="ResourceCheck_AppPackage_Store_Version_Title" xml:space="preserve">
-    <value>Store Version:</value>
+    <value>Remote Version:</value>
   </data>
   <data name="ResourceCheck_AppPackage_Title" xml:space="preserve">
     <value>Application Package Identification</value>
@@ -221,6 +221,12 @@
   </data>
   <data name="ResourceCheck_StartUp_Detail" xml:space="preserve">
     <value>The startup script is an essential file for the application to reside. If this file is not present, this application will not be able to start automatically after restarting the PC.</value>
+  </data>
+  <data name="ResourceCheck_StartUp_Script_Dir_Title" xml:space="preserve">
+    <value>Placed Directory:</value>
+  </data>
+  <data name="ResourceCheck_StartUp_Script_Name_Title" xml:space="preserve">
+    <value>Start-Up Script Name:</value>
   </data>
   <data name="ResourceCheck_StartUp_Title" xml:space="preserve">
     <value>Startup script installation status</value>
