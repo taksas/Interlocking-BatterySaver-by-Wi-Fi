@@ -125,8 +125,13 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
             ExecuteMainFunc();
             
             Deactivated += ((obj, ev) => {
+                Debug.Print("EVENT 1");
+                if (Interlocking_BatterySaver_by_Wi_Fi_.Properties.Settings.Default.DeactivatedWindowClose) Debug.Print("EVENT 2");
+                if (isCreatingMainWindow) Debug.Print("EVENT 3");
+                if (Registering) Debug.Print("EVENT 4");
                 if (Interlocking_BatterySaver_by_Wi_Fi_.Properties.Settings.Default.DeactivatedWindowClose && !shutdown && !isCreatingMainWindow && !Registering)
                 {
+                    
                     RestartAndShutdown();
                 }
             });
@@ -388,7 +393,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                 TempBW.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                 TempBW.Show();
 
-                Registering = false;
+                
             }
 
 
@@ -400,7 +405,7 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_
                         w.WriteLine("cd /d %~dp0 && powershell \"$app = Get-AppxPackage -Name *InterlockingBatterySaverbyWi-Fi* ; if($app -eq $null) { Remove-item .\\InterlockingBatterySaverbyWi-Fi_StartUP.bat } Else { $appname = $app.PackageFamilyName ; $package = $app | Get-AppxPackageManifest ; $id = $package.Package.Applications.Application.Id ; Start-Process shell:AppsFolder\\$appname!$id }\"");
                     }
 
-            
+            Registering = false;
 
 
         }
