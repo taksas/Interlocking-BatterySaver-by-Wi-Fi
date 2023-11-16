@@ -70,5 +70,17 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
                 this["DeactivatedWindowClose"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string APList {
+            get {
+                return ((string)(this["APList"]));
+            }
+            set {
+                this["APList"] = value;
+            }
+        }
     }
 }
