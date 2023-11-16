@@ -180,6 +180,9 @@
   <data name="Prefs_MainWindowPrefetch" xml:space="preserve">
     <value>Pre-load the main window</value>
   </data>
+  <data name="PROJECT_GIT_NULL" xml:space="preserve">
+    <value> </value>
+  </data>
   <data name="ResourceCheck" xml:space="preserve">
     <value>Resource Check</value>
   </data>

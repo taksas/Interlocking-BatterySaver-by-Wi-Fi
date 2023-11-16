@@ -259,6 +259,15 @@ namespace Interlocking_BatterySaver_by_Wi_Fi_.Properties {
         }
         
         /// <summary>
+        ///     に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PROJECT_GIT_NULL {
+            get {
+                return ResourceManager.GetString("PROJECT_GIT_NULL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Resource Check に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ResourceCheck {
